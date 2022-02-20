@@ -4,3 +4,4 @@ venv
 *.html
 __pycache__
 test*
+*.csv
