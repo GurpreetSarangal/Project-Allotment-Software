@@ -1,0 +1,6 @@
+*.env
+venv
+*.vscode
+*.html
+__pycache__
+test*
