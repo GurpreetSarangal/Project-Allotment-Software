@@ -34,3 +34,4 @@ def fetch_students(driver):
     driver.close()
     csv_data = pd.DataFrame(data, columns=header)
     csv_data.to_csv(f'data/student/{(data[0])[2]}-{(data[0])[3]}.csv', index=False)
+    return f'data/student/{(data[0])[2]}-{(data[0])[3]}.csv'
