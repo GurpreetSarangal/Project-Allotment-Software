@@ -53,6 +53,6 @@ def get_inputs():
 
     inputs.append(input("Input subject eg: COMPUTER NETWORKS :: "))
 
-    inputs.append(input("Input year of subject eg: 2019,2021,2022:: "))
+    inputs.append(input("Input subject year eg: 2019,2021,2022:: "))
     
     return inputs
