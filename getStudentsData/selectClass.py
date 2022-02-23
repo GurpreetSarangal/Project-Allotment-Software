@@ -1,39 +1,40 @@
-from ast import Str
-from email.utils import formataddr
-from selenium import webdriver
+import time
+import re
+import logging
+
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-import time
-import re
+
+def isValide(inputs):
+    pass
 
 
-def format_inputs(inputs):
+def formatInput(inputs):
     formatted_input = {
-        "session": inputs[0],
+        "session": inputs["session"],
     }
 
     # format the date
-    date = re.split(r"-", inputs[1])
+    date = re.split(r"-", inputs["date"])
     formatted_input["day"] = date[0]
     formatted_input["month"] = date[1]
     formatted_input["year"] = date[2]
 
-    formatted_input["ExamSession"] = inputs[2]  # Exam Session
-    if int(inputs[3]) < 16:
-        centernumber = (
+    formatted_input["ExamSession"] = inputs["examSession"]  # Exam Session
+    if int(inputs["centre"]) < 16:
+        centerName = (
             "Amritsar-"
-            + str(inputs[3])
+            + str(inputs["centre"])
             + " [D.A.V.College,Block-"
-            + str(inputs[3] - 12)
+            + str(inputs["centre"] - 12)
             + " , Amritsar]"
         )  # Center number
     else:
-        centernumber = "P-Amritsar-16 [D.A.V.College,Block-4(Common) , Amritsar]"
-    formatted_input["centerNumber"] = centernumber
-    className = inputs[4]
-    sem = inputs[5]
+        centerName = "P-Amritsar-16 [D.A.V.College,Block-4(Common) , Amritsar]"
+    formatted_input["centerNumber"] = centerName
+    className = inputs["class"]
+    sem = inputs["semester"]
     if sem == 1:
         sem = "I"
     if sem == 2:
@@ -49,9 +50,9 @@ def format_inputs(inputs):
 
     formatted_input["className"] = className + ", Semester - " + sem
 
-    subjectName = str(inputs[6])
+    subjectName = str(inputs["subject"])
     subjectName = subjectName.upper()
-    subjectName = subjectName + " {" + str(inputs[7]) + "}"
+    subjectName = subjectName + " {" + str(inputs["subjectYear"]) + "}"
 
     formatted_input["subjectName"] = subjectName
     # print(formatted_input)
@@ -59,7 +60,16 @@ def format_inputs(inputs):
 
 
 def set_options(driver, data):
-    data = format_inputs(data)
+    logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s :  %(message)s')  
+    logger = logging.getLogger("ClassSelector")
+    logger.setLevel(logging.DEBUG) 
+
+    if isValide(data) == False:
+        logger.critical("Invalide Inputs")
+        return 0
+
+    data = formatInput(data)
+    logger.info("Selecting class...")
 
     sel = driver.find_element(By.ID, "DropDownSession")
     sel = Select(sel)
@@ -89,4 +99,6 @@ def set_options(driver, data):
 
     year = driver.find_element(By.ID, "buttonDateSubmit")
     year.send_keys(Keys.RETURN)
+
+    logger.info("Class Selected")
     return driver

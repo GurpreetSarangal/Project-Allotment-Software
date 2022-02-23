@@ -1,18 +1,16 @@
-from operator import index
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from dotenv import load_dotenv
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.select import Select
+import logging
+
 from selenium.webdriver.common.by import By
 import pandas as pd
-# import os
-import time
 
 
 
+def data_scraper(driver):
+    logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s :  %(message)s')  
+    logger = logging.getLogger("DataScraper")
+    logger.setLevel(logging.DEBUG) 
 
-def fetch_students(driver):
+    logger.info("Starting to fetch data...")
     table = driver.find_element(By.XPATH, '//table[@id="gridViewDetail"]')
     header = []
     data = []
@@ -31,7 +29,11 @@ def fetch_students(driver):
             st_det.remove('')
             data.append(st_det)
 
+    logger.info("Fetching done")
     driver.close()
+
+    logger.info("Converting Fetched data into raw CSV")
     csv_data = pd.DataFrame(data, columns=header)
     csv_data.to_csv(f'data/student/{(data[0])[2]}-{(data[0])[3]}.csv', index=False)
+    logger.info("Raw CSV created")
     return f'data/student/{(data[0])[2]}-{(data[0])[3]}.csv'
