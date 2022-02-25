@@ -115,3 +115,58 @@ import time
 
 time.sleep(10)# this will stop execution for 10 seconds
 ```
+# Django
+
+### Installing django
+    pip install django
+    
+### Starting django project
+    django-admin startproject <project_name>
+
+### Running project
+    python manage.py runserver
+
+### Sreating new app
+    python manage.py startapp <app_name>
+
+Django does not automatically detect that an app exists. Instead it has to be registered by adding its name to the list of `INSTALLED_APPS` in your settings.
+```python
+INSTALLED_APPS = [
+    # ...
+    'app_name'
+]
+```
+
+### Create models
+```python
+from django.db import models
+class model_name(models.Model):
+    column_name = models.IntegerField()
+    # ...
+```
+These models represents tables in database. We can use different models fields for various relations.
+
+After creating models we need to run 
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+to execute the changes in database.
+
+### Create views
+```python
+def index(request):
+    return HttpResponse("this is dummy text")
+```
+
+```python
+
+urlpatterns = [
+    path('index/', views.index, name='index'),
+]
+```
+In views.py of app, this function will be called if we visit 
+`http://127.0.0.1:8000/index/` 
+
+### Create templates
+
