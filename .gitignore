@@ -1,7 +1,7 @@
 *.env
 venv
 *.vscode
-*.html
+# *.html
 __pycache__
-test*
+test.*
 *.csv
