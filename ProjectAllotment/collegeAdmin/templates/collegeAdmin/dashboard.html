@@ -1,0 +1,60 @@
+{% extends 'collegeAdmin/base.html' %}
+{% block title %}Dashboard{% endblock title %}
+
+{% block navbar %}
+{% include 'collegeAdmin/header.html'%}
+{% endblock navbar %}
+
+
+{% block body %}
+
+<div id="menu-container">
+  
+      <div class="menu-items">
+        <a href="staff">
+          <div class="menu-icon">
+            <img src="../../static/images/staff2.jpg" alt="staff-icon"  class="icon-img">
+          </div>
+          <div class="menu-heading">
+            <strong>
+              Staff
+            </strong>
+          </div>
+        </a>
+      </div>
+        
+      <div class="menu-items">
+        <a href="guides">
+          <div class="menu-icon">
+            <img src="../../static/images/guides2.png" alt="guide-icon"  class="icon-img">
+          </div>
+          <div class="menu-heading">
+            <strong>
+              Guides
+            </strong>
+          </div>
+        </a>
+      </div>
+
+      <div class="menu-items">
+        <a href="sessions">
+          <div class="menu-icon">
+            <img src="../../static/images/students2.webp" alt="students-icon " class="icon-img">
+          </div>
+          <div class="menu-heading">
+            <strong>
+              Students
+            </strong>
+          </div>
+        </a>
+      </div>
+
+</div>
+<div>
+
+</div>
+{% endblock body %}
+
+{%block footer%}
+{% include 'collegeAdmin/footer.html' %}
+{%endblock footer%}

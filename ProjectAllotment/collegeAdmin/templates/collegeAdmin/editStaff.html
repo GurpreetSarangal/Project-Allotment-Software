@@ -1,0 +1,50 @@
+{% extends 'collegeAdmin/base.html' %}
+{% block title %}Edit Staff{% endblock title %}
+
+{% block navbar %}
+{% include 'collegeAdmin/header.html'%}
+{% endblock navbar %}
+
+{% block body %}
+
+<div id="menu-container">
+    {% for staffmember in staff %}
+
+        <div class="menu-items py-2 px-2">
+            <div class="pencil">
+                <a href="">
+                    <i class="fa fa-pencil "></i>
+                </a>
+            </div>
+            <a href="staff">
+                <div class="menu-icon">
+                    <img src="../../static/images/staff2.jpg" alt="staff-icon"  class="icon-img">
+                </div>
+                
+                <div class="menu-heading text-center my-3 mx-2">
+                <strong>
+                    {{staffmember.name}}
+                </strong>
+                <strong>
+                    {{staffmember.email}}
+                </strong>
+                <strong>
+                    {{staffmember.phone}}
+                </strong>
+                </div>
+            </a>
+        </div>
+
+    {% endfor %}  
+    
+</div>
+<div>
+
+</div>
+
+{% endblock body %}
+
+
+{%block footer%}
+{% include 'collegeAdmin/footer.html' %}
+{%endblock footer%}

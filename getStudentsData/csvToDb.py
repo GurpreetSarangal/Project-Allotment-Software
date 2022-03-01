@@ -31,18 +31,18 @@ def create_students_table():
     conn.commit()
     conn.close()
     
-def insert_stu_details(csv_path):
+def insert_stu_details(csv_path, DATABASE_PATH=DATABASE_PATH):
     logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s :  %(message)s')  
 
     logger=logging.getLogger("DataInserter")
     logger.setLevel(logging.DEBUG) 
     
     conn = sqlite3.connect(DATABASE_PATH)
-    check = conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='students';")
+    check = conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='student';")
     if not check.fetchall():
         create_students_table()
 
-    sql = 'insert into students values (?,?,?,?,?,?,?,?)'
+    sql = 'insert into student values (?,?,?,?,?,?,?,?)'
     data = pd.read_csv(csv_path)
     student_details = data.values
 

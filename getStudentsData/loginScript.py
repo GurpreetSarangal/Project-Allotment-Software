@@ -14,6 +14,7 @@ def login():
     logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s :  %(message)s')  
     logger = logging.getLogger("WebsiteLogger")
     logger.setLevel(logging.DEBUG) 
+    
     logger.info("logging-in to website")
     driver = webdriver.Chrome()
     driver.get("https://collegeadmissions.gndu.ac.in/loginNew.aspx")

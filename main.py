@@ -1,14 +1,17 @@
 import getStudentsData
 
+
 class_data = {
     "session" : "Dec-2021",
     "date" : "29-01-2022",
     "examSession" : "A",
-    "centre" : 14,
-    "class" : "B.Sc. (Information Technology)",
+    "centre" : 15,
+    "class" : "Bachelor of Computer Applications",
     "semester" : 5,
     "subject" : "computer Networks",
     "subjectYear" : 2021,
 }
 
-getStudentsData.from_website(class_data)
+CSV_PATH = "data/student/Bachelor of Computer Applications, Semester - V-2021.csv"
+DATABASE_PATH = "ProjectAllotment/college.db"
+getStudentsData.from_csv(CSV_PATH,DATABASE_PATH)

@@ -149,7 +149,11 @@ These models represents tables in database. We can use different models fields f
 After creating models we need to run 
 
     python manage.py makemigrations
+makemigrations - create changes and store them in a file.
+
     python manage.py migrate
+
+migrate - apply the pending changes to database
 
 to execute the changes in database.
 
@@ -169,4 +173,29 @@ In views.py of app, this function will be called if we visit
 `http://127.0.0.1:8000/index/` 
 
 ### Create templates
+```django html
+<html>
+{% block block_name %}
+{% endblock block_name %}
+</html>
+```
+basically write you html in pieces and join them at time of rendering
 
+`{% extends 'base.html' %}`
+
+this is used to specify base html file, this `base.html` file basically contains the basic format of the html page
+
+### Create views that acutally do something
+```python
+def index(request):
+    return render(request, 'index.html')
+```
+this view will return an html page (`index.html`) 
+
+### How to handle forms
+
+### How to fetch data from tables
+
+### How to generate html dynamically
+
+### How to input values to tables using the existing data in csv files

@@ -12,6 +12,6 @@ def from_website(data):
     formatData.format_csv(csv_path)
     csvToDb.insert_stu_details(csv_path)
 
-def from_csv(CSV_PATH):
+def from_csv(CSV_PATH, DATABASE_PATH='database/college.db'):
     formatData.format_csv(CSV_PATH)
-    csvToDb.insert_stu_details(CSV_PATH)
+    csvToDb.insert_stu_details(CSV_PATH,DATABASE_PATH)
