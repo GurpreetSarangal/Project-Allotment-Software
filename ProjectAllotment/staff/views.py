@@ -10,7 +10,10 @@ def dashboard(request):
     return render(request, 'dashboard.html',context)
 
 def allocate_project(request):
-    return HttpResponse("Allocate- projects here")
+    context={
+        "heading":f"Project Allocation Window",
+    }
+    return render(request, 'allocate_projects.html',context)
 
 def allocate_guides(request):
     return HttpResponse("Allocate- guides here")

@@ -37,20 +37,23 @@
     border-color: var(--bg-primary);
     color: var(--text-primary);
     text-decoration: none;
-    transition: background 0.5s;
+    transition: background 0.2s;
     font-size: 18px;
     font-weight: 500;
     
 }
 
 #nav-div div a:hover{
-    background: var(--bg-primary);
+    background: var(--secondary);
     color: #fff;
 } 
 /* body starts */
 #main-content{
-    background: var(--primary);
-    width: 99vw;
+    background: url(https://api.unsplash.com/search/photos?query=wanderlust) no-repeat center;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+    width: 50vw;
     height: 100vh;
     
 }
@@ -80,7 +83,22 @@ width: 90%;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    transition: 0.2s;
+}
+.card:hover{
     backdrop-filter: blur(5px);
+}
+
+.card a,
+.card p{
+    text-decoration: none;
+    color: var(--tertiary);
+    transition: 0.3s;
+}
+.card a:hover{
+    text-decoration: underline;
+    color: var(--primary);
 }
 
 

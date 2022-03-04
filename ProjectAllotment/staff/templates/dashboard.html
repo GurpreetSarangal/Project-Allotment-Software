@@ -11,17 +11,17 @@
 {% block body %}
 <div class="container">
     <div class="card">
-        <a href="#" id="projects"><h1>Allocate Projects</h1></a>
+        <a href="{%url 'allocate-project'%} " id="projects"><h1>Allocate Projects</h1></a>
         <p>Allocate projects to students by their roll numbers.</p>
         
     </div>
     <div class="card">
-        <a href="#" id="guides"><h1>Allocate Guides</h1></a>
+        <a href=" {% url 'allocate-guides'%} " id="guides"><h1>Allocate Guides</h1></a>
         
         <p>Allocate guides to students by their roll numbers and projects allocated.</p>
     </div>
     <div class="card">
-        <a href="#" id="groups"><h1>Allocate Groups</h1></a>
+        <a href=" {% url 'allocate-groups'%} " id="groups"><h1>Allocate Groups</h1></a>
         
         <p>Allocate groups to students by their roll numbers.</p>
         
