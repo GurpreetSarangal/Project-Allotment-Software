@@ -15,14 +15,14 @@ def allocate_project(request):
     }
     return render(request, 'allocate_projects.html',context)
 
-def allocate_guides(request):
-    return HttpResponse("Allocate- guides here")
+def allocate_guides_groups(request):
+    return HttpResponse("Allocate- guides and groups here")
 
-def allocate_groups(request):
-    return HttpResponse("Allocate- groups here")
+def projectswise(request):
+    return HttpResponse("Project wise here")
 
-def projectsview(request):
-    return HttpResponse("View projects here")
+def guideswise(request):
+    return HttpResponse("Guides wise here")
 
-def guidesview(request):
-    return HttpResponse("Guides view here")
+def add_projects(request):
+    return HttpResponse("Add new projects  here")

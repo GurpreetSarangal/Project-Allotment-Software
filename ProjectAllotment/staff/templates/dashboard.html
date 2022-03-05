@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block cssfile %}../static/dashboard.css{% endblock cssfile %}
+{% block cssfile %}static/css/dashboard.css{% endblock cssfile %}
 
 {% block title %}Dashboard{% endblock title %}
 
@@ -9,25 +9,38 @@
 {% endblock navbar %}
 
 {% block body %}
-<div class="container">
-    <div class="card">
-        <a href="{%url 'allocate-project'%} " id="projects"><h1>Allocate Projects</h1></a>
-        <p>Allocate projects to students by their roll numbers.</p>
-        
-    </div>
-    <div class="card">
-        <a href=" {% url 'allocate-guides'%} " id="guides"><h1>Allocate Guides</h1></a>
-        
-        <p>Allocate guides to students by their roll numbers and projects allocated.</p>
-    </div>
-    <div class="card">
-        <a href=" {% url 'allocate-groups'%} " id="groups"><h1>Allocate Groups</h1></a>
-        
-        <p>Allocate groups to students by their roll numbers.</p>
-        
+<div id="main-content">
+    <div class="container">
+        <div class="card">
+            <a href="{%url 'allocate-project'%} " id="projects"><h1>Allocate Projects</h1></a>
+            <p>Allocate projects to students by their roll numbers.</p>
+            
+        </div>
+        <div class="card">
+            <a href="{% url 'allocate-guide-group'%}" id="guides-groups"><h1>Allocate Guides / Groups</h1></a>
+            
+            <p>Allocate guides and groups to students by their roll numbers and projects allocated.</p>
+        </div>
     </div>
 </div>
-
+<div class="bottom">
+    <div class="right-side">
+        <div>
+            <a href="{% url 'project-wise-table'%}"><h1>View Project Wise Allocation Table</h1></a>
+            <p>Click here to view and download the project allocation table of class {{recent_class}}. </p>
+        </div>
+        <div>
+            <a href="{% url 'guide-wise-table'%}"><h1>View Guide Wise Allocation Table</h1></a>
+            <p>Click here to view and download the project allocation table of class {{recent_class}}. </p>
+        </div>
+    </div>
+    <div class="left-side">
+        <div>
+            <a href="{% url 'add-project'%}"><h1>Add New Projects</h1></a>
+            <p>Click here to add new project ideas and to view existing projects.</p>
+        </div>
+    </div>
+</div>
 {% endblock body %}
 
 
