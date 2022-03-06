@@ -1,5 +1,7 @@
 from django.http import HttpRequest, HttpResponse
+from django.shortcuts import redirect
 
 
 def main(response):
-    return HttpResponse("this is main")
+    
+    return redirect("login/")

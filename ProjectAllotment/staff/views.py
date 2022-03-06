@@ -7,13 +7,13 @@ def dashboard(request):
     context={
         "heading":f"Welcome staff",
     }
-    return render(request, 'dashboard.html',context)
+    return render(request, 'staff_dashboard.html',context)
 
 def allocate_project(request):
     context={
         "heading":f"Project Allocation Window",
     }
-    return render(request, 'allocate_projects.html',context)
+    return render(request, 'allocate_project.html',context)
 
 def allocate_guides_groups(request):
     return HttpResponse("Allocate- guides and groups here")
