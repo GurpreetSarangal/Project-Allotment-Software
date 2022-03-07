@@ -3,11 +3,11 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
-def dashboard(request):
+def dashboard(request, ):
     context={
-        "heading":f"Welcome staff",
+        "username":f"Welcome staff",
     }
-    return render(request, 'staff_dashboard.html',context)
+    return render(request, 'staff_dashboard.html')
 
 def allocate_project(request):
     context={

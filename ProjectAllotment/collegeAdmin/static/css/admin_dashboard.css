@@ -27,14 +27,14 @@
 #nav-div div{
     margin: .5rem 2rem;
 }
-#nav-div div button{
+#nav-div div a{
     padding: 0.5rem 1.5rem;
     border-radius: 8%;
     background-color: var(--tertiary);
     border-color: var(--bg-primary);
     color: var(--text-primary);
 }
-#nav-div div button:hover{
+#nav-div div a:hover{
     background-color: var(--bg-primary);
     color: #fff;
 }

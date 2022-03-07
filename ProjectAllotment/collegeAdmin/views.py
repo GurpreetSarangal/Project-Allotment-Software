@@ -4,8 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 def adminDashboard(request):
     context = {
-        "heading":"Welcome, "+"Admin.name",
-        "css": "dashboard"
+        "heading":f"Welcome, { request.user.username }",
+        "css": "admin_dashboard"
     }
     return render(request, "collegeAdmin/dashboard.html", context)
 
