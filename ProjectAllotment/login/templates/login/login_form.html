@@ -1,0 +1,34 @@
+{% extends 'login/base.html' %}
+
+{% block form %}
+<div class="main-content">
+    <div class="left-side">
+        
+    </div>
+    <div class="right-side">
+        <div class="upper-right-heading">
+            <h1>Welcome Back :)</h1>
+            <p>To start working please login with your credentials</p>
+        </div>
+        <div class="login-form-div">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="fields">
+                    <div>
+                        <input class="input-field" type="text" placeholder="username" name="username">
+                    </div>
+                    <div>
+                        <input class="input-field" type="text" placeholder="password" name="password">
+                    </div>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" name="remember_me" id="remember-me"> Remember Me
+                </div>
+                <div class="login-button">
+                    <input type="submit" value="Login Now">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock form %}

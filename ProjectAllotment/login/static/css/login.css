@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.main-content {
+    padding: 3.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    max-width: 87vw;
+    min-height: 44vh;
+    margin: 0rem;
+}
+.left-side{
+    background: url(../images/template.jpg) no-repeat center;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+    width: 52vw;
+    height: 70vh;
+}
+.right-side {
+    margin: 3rem 1rem;
+    padding: 1rem 3rem;
+}
+
+.upper-right-heading {
+    margin: 2rem 1rem;
+}
+
+.fields div{
+    margin: 1rem 0rem;
+}
