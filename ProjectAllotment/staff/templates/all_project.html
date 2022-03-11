@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block cssfile %}/static/css/all_project.css{% endblock cssfile %}
+
+{% block title %}New Project{% endblock title %}
+
+{% block navbar %}
+{% include 'header.html' %}
+{% endblock navbar %}
+
+
+{% block body %}
+<div class="container main-content">
+    <div class="new-project">
+        <a href="{% url 'add-project'%}">
+            Add New Project <i class="fa fa-plus"></i>
+        </a>
+    </div>
+    <div class="all-projects-list">
+        <ul>
+            <li>
+                <div class="project-details">
+                    <div class="project-id" style="border : none !important;">
+                        Project ID
+                    </div>
+                    <div class="project-name" style="border : none !important;">
+                        Project Title
+                    </div>
+                    <div class="project-language" style="border : none !important;">
+                        Langugage
+                    </div>
+                    <div class="project-tech" style="border : none !important;">
+                        Technology Used
+                    </div>
+                    <div class="edit-project ">
+                        
+                    </div>
+                </div>
+            </li>
+            {% for project in projects %}
+                <li>
+                    <div class="project-details">
+                        <div class="project-id">
+                            {{ project.id }}
+                        </div>
+                        <div class="project-name">
+                            {{ project.name }}
+                        </div>
+                        <div class="project-language">
+                            {{ project.lang }}
+                        </div>
+                        <div class="project-tech">
+                            {{ project.tech }}
+                        </div>
+                        <div class="edit-project ">
+                            <a href="{% url 'home' %}editproject/{{project.id}}">Edit</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}            
+        </ul>
+    </div>
+</div>
+{% endblock body %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

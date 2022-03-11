@@ -8,5 +8,9 @@ urlpatterns = [
     path('allocateguidesgroups/', views.allocate_guides_groups, name="allocate-guide-group"),
     path('projectwise/', views.projectswise, name="project-wise-table"),
     path('guidewise/', views.guideswise, name="guide-wise-table"),
+    path('allprojects/', views.all_projects, name="all-project"),
     path('addprojects/', views.add_projects, name="add-project"),
+    path('editproject/<int:id>/', views.edit_projects, name="edit-project"),
+    path('editproject/delete/<int:id>/', views.delete_projects, name="delete-project"),
+
 ]

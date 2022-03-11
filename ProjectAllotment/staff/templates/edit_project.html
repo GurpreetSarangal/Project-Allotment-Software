@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block cssfile %}/static/css/add_project.css{% endblock cssfile %}
+{% block cssfile %}/static/css/edit_project.css{% endblock cssfile %}
 
-{% block title %}New Project{% endblock title %}
+{% block title %}Edit Project{% endblock title %}
 
 {% block navbar %}
 {% include 'header.html' %}
@@ -11,6 +11,12 @@
 
 {% block body %}
 <div class="container main-content">
+    <div class="menu">
+    
+        <a class="btn  btn-danger" href="/staff/editproject/delete/{{project.id}}/">
+            Delete
+        </a>
+    </div>
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -22,13 +28,13 @@
         {% csrf_token %}
         <div class="new-project-div">
             <div class="project-name">
-                <input type="text" name="project_name" id="title" placeholder="Project Title" >
+                <input type="text" name="project_name" id="title" value="{{project.name}}" >
             </div>
             <div class="project-language">
-                <input type="text" name="project_lang" id="lang" placeholder="Language" >
+                <input type="text" name="project_lang" id="lang" value="{{project.lang}}" >
             </div>
             <div class="project-tech">
-                <input type="text" name="project_tech" id="tech" placeholder="Any Other Technology Used" >
+                <input type="text" name="project_tech" id="tech" value="{{project.tech}}" >
             </div>
             <div class="save-button-div">
                 <input class="save-btn" type="submit" value="SAVE">

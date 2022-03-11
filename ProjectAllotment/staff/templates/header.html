@@ -1,10 +1,61 @@
 
 <nav id="nav-div">
+    {% url "edit-project" project.id as edit %}
+    {% if request.path == "/staff/"  %}
     <div>
         <h1>Welcome, {{user.username}}</h1>
     </div>
-    
+    {% elif request.path == "/staff/allocateprojects/" %}
     <div>
-        <a class="logout">logout</a>
+        <h1>Allocate Projects</h1>
     </div>
+    {% elif request.path == "/staff/allocateguidesgroups/" %}
+    <div>
+        <h1>Allocate Guides and Groups</h1>
+    </div>
+    {% elif request.path == "/staff/projectwise/" %}
+    <div>
+        <h1>Project Wise Allocation Table</h1>
+    </div>
+    {% elif request.path == "/staff/guidewise/" %}
+    <div>
+        <h1>Guide Wise Allocation Table</h1>
+    </div>
+    {% elif request.path == "/staff/allprojects/" %}
+    <div>
+        <h1>All Projects</h1>
+    </div>
+    {% elif request.path == "/staff/addprojects/" %}
+    <div>
+        <h1>Add New Project</h1>
+    </div>
+    {% elif request.path == "/staff/editprojects/" %}
+    <div>
+        <h1>Edit Project</h1>
+    </div>
+    {% elif request.path ==  edit %}
+    <div>
+        <h1>{{project.name}}</h1>
+    </div>
+
+    {% endif %}
+    
+    {% url 'add-project' as add %}
+
+    {% if request.path == "/staff/" %}
+        <div>
+            <a class="logout" href=" {% url 'logout' %}">logout</a>
+        </div>
+
+        {% elif request.path == add or request.path == edit %}
+        <div>
+            <a class="logout" href=" {% url 'all-project' %}">All Projects</a>
+        </div>
+
+        {% else %}
+        <div>
+            <a class="logout" href=" {% url 'home' %}">Home</a>
+        </div>
+        
+    {% endif %}
 </nav>
