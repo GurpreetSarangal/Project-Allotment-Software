@@ -13,7 +13,7 @@ class student(models.Model):
     mobile_2 = models.IntegerField()
 
     def __str__(self):
-        return str(self.rollNo) + self.name
+        return str(self.rollNo) +"-"+ self.name
 
 class guide(models.Model):
     name = models.CharField(max_length=60)
