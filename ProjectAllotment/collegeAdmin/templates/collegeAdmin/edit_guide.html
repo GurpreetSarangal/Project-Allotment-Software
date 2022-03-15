@@ -1,0 +1,53 @@
+{% extends 'collegeAdmin/base.html' %}
+{% block title %}Edit Guide's Details{% endblock title %}
+
+{% block navbar %}
+{% include 'collegeAdmin/header.html'%}
+{% endblock navbar %}
+
+{% block body %}
+
+<div class="container main-content">
+    <div class="menu">
+    
+        <a class="btn  btn-danger" href="{% url 'delete_guide' user.id %}">
+            Delete
+        </a>
+    </div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="#" method="post" class="new-guide-form">
+        {% csrf_token %}
+        <div class="new-guide-div">
+            <div class="guide-name">
+                <input type="text" name="guide_name" id="name" value="{{user.username}}" >
+            </div>
+            <div class="mobile-number">
+                <input type="number" name="mobile1" id="mobile1" value="{{user.mobile1}}" >
+            </div>
+            <div class="mobile-number">
+                <input type="number" name="mobile2" id="mobile2" value="{{user.mobile2}}" >
+            </div>
+            <div class="email">
+                <input type="email" name="email" id="email" value="{{user.email}}" >
+            </div>
+            
+            <div class="save-button-div">
+                <input class="save-btn" type="submit" value="EDIT">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock body %}
+
+
+{%block footer%}
+{% include 'collegeAdmin/footer.html' %}
+{%endblock footer%}

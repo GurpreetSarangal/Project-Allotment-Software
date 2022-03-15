@@ -1,0 +1,132 @@
+*{
+    margin:0px;
+    padding: 0px;
+  }
+:root {
+    --primary: #4f6979;
+    --secondary: #607a83;
+    --tertiary: #6f8b8f;
+    --bg-primary: #928787;
+    --bg-secondary: #bdab9b;
+    --bg-tertiary: #ccbeae;
+    --text-primary: #e1d5c8;
+}
+
+/* dashboard  starts*/
+
+#nav-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--tertiary);
+}
+#nav-div h1{
+    /* margin: .5rem 2rem; */
+    color:var(--text-primary);
+}
+#nav-div div{
+    margin: .5rem 2rem;
+}
+#nav-div div a{
+    padding: 0.5rem 1.5rem;
+    border-radius: 8%;
+    background-color: var(--tertiary);
+    border-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+#nav-div div a:hover{
+    background-color: var(--bg-primary);
+    color: #fff;
+}
+#main-content{
+    /* min-width:100%;
+    min-height:100vh; */
+  background:var(--bg-tertiary);
+}
+
+.new-guide{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.new-guide a{
+    margin: 0.5rem 2rem 0rem;
+}
+
+#menu-container{
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+margin: 1rem 3rem 9rem;
+
+}
+
+.menu-items{
+background-color: var(--tertiary);
+border-radius: 14px;
+/* padding: 4rem 2rem; */
+min-width: 18rem;
+min-height: 25rem;
+margin: 3rem 2rem;
+
+}
+
+.pencil{
+    display: flex;
+    justify-content: end;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+
+}
+
+.menu-items a{      
+    text-decoration:none;
+    color: var(--text-primary);
+}
+.menu-items a:hover{      
+    text-decoration:none;
+}
+.menu-icon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-img{
+max-width: 10rem;
+min-width: 10rem;
+max-height: 10rem;
+min-height: 10rem;
+border-radius: 50%;
+}
+.menu-heading{
+    color: var(--text-primary);
+
+}
+
+.menu-heading strong{
+    display: block;
+}
+
+.edit-icon{
+    align-self: flex-end;
+}
+
+.edit-icon i{
+    font-size: medium;
+}
+
+.footer-dark{
+    background:var(--secondary);
+    color: var(--bg-secondary);
+}
+
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}
+/* dashboard ends */

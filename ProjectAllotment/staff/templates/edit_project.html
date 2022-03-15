@@ -13,7 +13,7 @@
 <div class="container main-content">
     <div class="menu">
     
-        <a class="btn  btn-danger" href="/staff/editproject/delete/{{project.id}}/">
+        <a class="btn  btn-danger" href="{% url 'delete-project' project.id %}">
             Delete
         </a>
     </div>

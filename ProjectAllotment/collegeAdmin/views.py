@@ -1,10 +1,12 @@
-from django.http import HttpResponse
+from multiprocessing import context
+from django.contrib import messages
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 from .models import *
 from . import getStudentsData
 import logging
 import pandas as pd
+import re
 
 
 
@@ -27,12 +29,84 @@ def staffview(request):
         temp["email"]=(u.email)
         data["users"].append(temp)
     
-    return render(request, "collegeAdmin/editStaff.html", data)
+    return render(request, "collegeAdmin/all_staff.html", data)
     
 
-def guidesview(request):
-    return HttpResponse("this is guides")
-    pass
+def all_guide(request):
+    context = {
+        "css":"all_guide",
+        "users": []
+    }
+
+    all_guides = guide.objects.all()
+    for one_guide in all_guides:
+        temp = {
+            "id":one_guide.id,
+            "username":one_guide.name,
+            "email":one_guide.email,
+            "mobile1":one_guide.mobile_1,
+            "mobile2":one_guide.mobile_2,
+        }
+        context["users"].append(temp)
+    return render(request, "collegeAdmin/all_guide.html",context)
+
+def add_guide(request):
+    context={
+        "css":"add_guide",
+        
+    }
+
+    if(request.method == "POST"):
+        new_details = {
+        "guide_name" : request.POST["guide_name"],
+        "mobile_1" : request.POST["mobile1"],
+        "mobile_2" : request.POST["mobile2"],
+        "email" : request.POST["email"],
+        }
+        new_guide = validate_inputs(request, new_details)
+        if new_guide != None:
+            new_guide.save()
+            messages.info(request, 'New guide has been added successfully!')
+       
+
+        
+    return render(request, 'collegeAdmin/add_guide.html',context)
+
+def edit_guide(request, id):
+    curr_guide = guide.objects.get(id=id)
+    if request.method == "POST":
+        new_details = {
+            "id":id,
+            "guide_name" : request.POST["guide_name"],
+            "mobile_1" : request.POST["mobile1"],
+            "mobile_2" : request.POST["mobile2"],
+            "email" : request.POST["email"],
+        }
+
+        updated_guide = validate_inputs(request, new_details)
+        if updated_guide != None:
+            curr_guide=updated_guide
+            curr_guide.save()
+            messages.info(request, 'Details of Guide has been changed successfully!')
+        
+
+    context = {
+        "css":'edit_guide',
+        "user":{
+            "id":curr_guide.id,
+            "username":curr_guide.name,
+            "mobile1":curr_guide.mobile_1,
+            "mobile2":curr_guide.mobile_2,
+            "email":curr_guide.email,
+        }
+    }
+
+
+    return render(request, "collegeAdmin/edit_guide.html",context)
+
+def delete_guide(request, id):
+    guide.objects.get(id=id).delete()
+    return redirect("all_guide")
 
 def sessionsview(request):
     return HttpResponse("this is sessions")
@@ -97,3 +171,80 @@ def insert_stu_details(csv_path):
 def csv_to_django_db(CSV_PATH):
     getStudentsData.formatData.format_csv(CSV_PATH)
     insert_stu_details(CSV_PATH)
+
+# to validate emails
+def is_valid(email):
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    return re.fullmatch(regex, email)
+
+# to validate input data
+def validate_inputs(request, obj):
+    if not is_valid(obj["email"]):
+        messages.error(request, 'No Email Provided')
+        return None;
+
+    if(obj["mobile_1"]=='' and obj["mobile_2"]==''):
+        messages.error(request, 'No Mobile Number Provided')
+        return None
+
+    elif(obj["mobile_1"]==""):
+        obj["mobile_1"] = 0
+        try:
+            new_guide = guide(
+                id = obj["id"],
+                name = obj["guide_name"],
+                email = obj["email"],
+                mobile_1 = obj["mobile_1"],
+                mobile_2 = obj["mobile_2"],
+                
+            )
+        except:
+            new_guide = guide(
+                name = obj["guide_name"],
+                email = obj["email"],
+                mobile_1 = obj["mobile_1"],
+                mobile_2 = obj["mobile_2"],
+            )
+        return new_guide
+        
+
+    elif(obj["mobile_2"]==""):
+        obj["mobile_2"] = 0
+        try:
+            new_guide = guide(
+                id = obj["id"],
+                name = obj["guide_name"],
+                email = obj["email"],
+                mobile_1 = obj["mobile_1"],
+                mobile_2 = obj["mobile_2"],
+                
+            )
+        except:
+            new_guide = guide(
+                name = obj["guide_name"],
+                email = obj["email"],
+                mobile_1 = obj["mobile_1"],
+                mobile_2 = obj["mobile_2"],
+                
+            )
+
+        return new_guide
+
+    else:
+        try:
+            new_guide = guide(
+                id = obj["id"],
+                name = obj["guide_name"],
+                email = obj["email"],
+                mobile_1 = obj["mobile_1"],
+                mobile_2 = obj["mobile_2"], 
+            )
+        except:
+            new_guide = guide(
+                name = obj["guide_name"],
+                email = obj["email"],
+                mobile_1 = obj["mobile_1"],
+                mobile_2 = obj["mobile_2"],
+                
+            )
+        return new_guide

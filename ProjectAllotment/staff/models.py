@@ -19,7 +19,7 @@ class guide(models.Model):
     name = models.CharField(max_length=60)
     email = models.EmailField()
     mobile_1 = models.IntegerField()
-    mobile_2 = models.IntegerField()
+    mobile_2 = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.name

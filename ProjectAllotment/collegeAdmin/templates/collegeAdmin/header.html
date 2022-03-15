@@ -1,10 +1,54 @@
 <nav id="nav-div">
+  {% if request.path == '/projectadmin/' %}
     <div>
       <h1>Welcome, {{user.username}}</h1>
     </div>
-      <div>
-        <a type="button" class="btn" href="/logout" >logout</a>
-      </div>
+  
+  {% elif request.path == '/projectadmin/allstaff/'%}
+    <div>
+      <h1>All Staff</h1>
+    </div>
+  
+  {% elif request.path == '/projectadmin/allguides/'%}
+    <div>
+      <h1>All Guides</h1>
+    </div>
+
+  {% elif request.path == '/projectadmin/addguides/'%}
+    <div>
+      <h1>Add New Guide</h1>
+    </div>
+
+  {% elif request.path == '/projectadmin/sessions/'%}
+    <div>
+      <h1>Sessions</h1>
+    </div>
+  
+  {% elif request.path == '/projectadmin/class/'%}
+    <div>
+      <h1>Students | {{classname}}</h1>
+    </div>
+  {% endif %}
+
+
+
+
+  {% if request.path == '/projectadmin/' %}
+    <div>
+      <a type="button" class="btn" href="/logout" >logout</a>
+    </div>
+    
+  {% elif request.path == '/projectadmin/class/'%}
+    <div>
+      <a type="button" class="btn" href=" {% url 'sessions_url' %}" >Sessions</a>
+    </div>
+  
+  {% else %}
+    <div>
+      <a type="button" class="btn" href="{% url 'adminDashboard' %}" >Home</a>
+    </div>
+
+  {% endif %}
   </nav>
 
 

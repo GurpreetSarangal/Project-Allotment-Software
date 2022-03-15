@@ -1,0 +1,46 @@
+{% extends 'collegeAdmin/base.html' %}
+{% block title %}Add New Guide{% endblock title %}
+
+{% block navbar %}
+{% include 'collegeAdmin/header.html'%}
+{% endblock navbar %}
+
+{% block body %}
+
+<div class="container main-content">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="#" method="post" class="new-guide-form">
+        {% csrf_token %}
+        <div class="new-guide-div">
+            <div class="guide-name">
+                <input type="text" name="guide_name" id="name" placeholder="Guide Name" >
+            </div>
+            <div class="mobile-number">
+                <input type="number" name="mobile1" id="mobile1" placeholder="Mobile 1" >
+            </div>
+            <div class="mobile-number">
+                <input type="number" name="mobile2" id="mobile2" placeholder="Mobile 2" >
+            </div>
+            <div class="email">
+                <input type="email" name="email" id="email" placeholder="guidesemail@example.com" >
+            </div>
+            
+            <div class="save-button-div">
+                <input class="save-btn" type="submit" value="SAVE">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock body %}
+
+
+{%block footer%}
+{% include 'collegeAdmin/footer.html' %}
+{%endblock footer%}

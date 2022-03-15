@@ -1,5 +1,5 @@
 {% extends 'collegeAdmin/base.html' %}
-{% block title %}Edit Staff{% endblock title %}
+{% block title %}All Guides{% endblock title %}
 
 {% block navbar %}
 {% include 'collegeAdmin/header.html'%}
@@ -7,12 +7,17 @@
 
 {% block body %}
 
+<div class="new-guide">
+    <a href="{% url 'add_guide'%}">
+        Add New guide <i class="fa fa-plus"></i>
+    </a>
+</div>
 <div id="menu-container">
     {% for user in users %}
 
         <div class="menu-items py-2 px-2">
             <div class="pencil">
-                <a href="#">
+                <a href="{{user.id}}">
                     <i class="fa fa-pencil "></i>
                 </a>
             </div>
@@ -24,6 +29,19 @@
                 <strong>
                     {{user.username}}
                 </strong>
+
+                {% if user.mobile1 != 0 %}
+                    <strong>
+                        {{user.mobile1}}
+                    </strong>
+                {% endif %}
+
+                {% if user.mobile2 != 0 %}
+                    <strong>
+                        {{user.mobile2}}
+                    </strong>
+                {% endif %}
+
                 <strong>
                     {{user.email}}
                 </strong>
