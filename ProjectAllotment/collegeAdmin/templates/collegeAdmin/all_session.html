@@ -1,0 +1,47 @@
+{% extends 'collegeAdmin/base.html' %}
+{% block title %}All Sessions{% endblock title %}
+
+{% block navbar %}
+{% include 'collegeAdmin/header.html'%}
+{% endblock navbar %}
+
+
+{% block body %}
+
+<div id="menu-container">
+  <button onclick="get_classes(this.innerHTML)" class="sessions" id="2019"><H1>2019 - 2020</H1></button>
+  <button onclick="get_classes(this.innerHTML)" class="sessions" id="2020"><H1>2020 - 2021</H1></button>
+  <button onclick="get_classes(this.innerHTML)" class="sessions" id="2021"><H1>2021 - 2022</H1></button>
+   <!-- The Modal -->
+    <div id="classes" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="cross" >
+                <span class="close">&times;</span>
+            </div>
+        <table>
+            <tr>
+                <th>Class</th>
+                <th>No of Students</th>
+            </tr>
+            <tr>
+                <td>BCA IV</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>BSc IT - IV</td>
+                <td>10</td>
+            </tr>
+        </table>
+        </div>
+  
+    </div>
+  
+</div>
+{% endblock body %}
+
+{%block footer%}
+{% include 'collegeAdmin/footer.html' %}
+{%endblock footer%}
+

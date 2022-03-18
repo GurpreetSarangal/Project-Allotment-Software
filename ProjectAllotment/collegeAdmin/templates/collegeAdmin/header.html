@@ -1,4 +1,6 @@
+
 <nav id="nav-div">
+  {% url 'edit_guide' user.id as edit %}
   {% if request.path == '/projectadmin/' %}
     <div>
       <h1>Welcome, {{user.username}}</h1>
@@ -18,6 +20,10 @@
     <div>
       <h1>Add New Guide</h1>
     </div>
+  {% elif request.path == edit %}
+    <div>
+      <h1>Edit Details of Guide</h1>
+    </div>
 
   {% elif request.path == '/projectadmin/sessions/'%}
     <div>
@@ -32,7 +38,7 @@
 
 
 
-
+  {% url 'add_guide' as add %}
   {% if request.path == '/projectadmin/' %}
     <div>
       <a type="button" class="btn" href="/logout" >logout</a>
@@ -41,6 +47,15 @@
   {% elif request.path == '/projectadmin/class/'%}
     <div>
       <a type="button" class="btn" href=" {% url 'sessions_url' %}" >Sessions</a>
+    </div>
+
+  {% elif request.path == edit %}
+    <div>
+      <a type="button" class="btn" href=" {% url 'all_guide' %}" >All Guides</a>
+    </div>
+  {% elif request.path == add %}
+    <div>
+      <a type="button" class="btn" href=" {% url 'all_guide' %}" >All Guides</a>
     </div>
   
   {% else %}

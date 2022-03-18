@@ -1,4 +1,8 @@
-from multiprocessing import context
+
+import string
+from telnetlib import STATUS
+from urllib.error import ContentTooShortError
+from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, HttpResponse
@@ -7,6 +11,7 @@ from . import getStudentsData
 import logging
 import pandas as pd
 import re
+import json
 
 
 
@@ -109,8 +114,37 @@ def delete_guide(request, id):
     return redirect("all_guide")
 
 def sessionsview(request):
-    return HttpResponse("this is sessions")
-    pass
+    context = {
+        "css" : "all_session",
+        "js" : "all_session",
+    }
+    if is_ajax(request=request) and request.method == "GET":
+    
+        context["classes"] = []
+        session = request.GET.get("curr_session")
+
+        print(session)
+        session = f"{session}-{int(session)+1}"
+        print(session)
+        classes = student.objects.filter(session=session).values("className").distinct()
+        print(classes)
+        # classes is a query set but class_ will be a str which will be appended in "classes" array of context
+        for class_ in classes:
+            curr_class = {}
+            curr_class["className"] = class_["className"]
+            curr_class["count"] = student.objects.filter(className=class_["className"]).values("rollNo").distinct().count()
+            print("class_ = ", class_)
+            print(curr_class)
+            context["classes"].append(curr_class)
+            print(context["classes"])
+
+        print(context["classes"])
+        print("this is json",json.dumps(context["classes"]))
+        response = json.dumps(context["classes"])
+        return JsonResponse(response, status=200, safe=False)
+    else:
+        return render(request, "collegeAdmin/all_session.html",context)
+    
 
 def classview(request):
     return HttpResponse("this is class")
@@ -248,3 +282,7 @@ def validate_inputs(request, obj):
                 
             )
         return new_guide
+
+# this is to check if request is ajax
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'

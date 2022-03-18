@@ -199,3 +199,9 @@ this view will return an html page (`index.html`)
 ### How to generate html dynamically
 
 ### How to input values to tables using the existing data in csv files
+
+## Troubleshooting
+
+__Error: That port is already in use.__  
+    
+    sudo fuser -k 8000/tcp
