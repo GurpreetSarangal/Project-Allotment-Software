@@ -119,30 +119,39 @@ def sessionsview(request):
         "js" : "all_session",
     }
     if is_ajax(request=request) and request.method == "GET":
-    
         context["classes"] = []
         session = request.GET.get("curr_session")
 
-        print(session)
+        # print(session)
         session = f"{session}-{int(session)+1}"
-        print(session)
+        # print(session)
         classes = student.objects.filter(session=session).values("className").distinct()
-        print(classes)
+        # print(classes)
         # classes is a query set but class_ will be a str which will be appended in "classes" array of context
         for class_ in classes:
             curr_class = {}
             curr_class["className"] = class_["className"]
             curr_class["count"] = student.objects.filter(className=class_["className"]).values("rollNo").distinct().count()
-            print("class_ = ", class_)
-            print(curr_class)
+            # print("class_ = ", class_)
+            # print(curr_class)
             context["classes"].append(curr_class)
-            print(context["classes"])
+            # print(context["classes"])
 
-        print(context["classes"])
-        print("this is json",json.dumps(context["classes"]))
+        # print(context["classes"])
+        # print("this is json",json.dumps(context["classes"]))
+
         response = json.dumps(context["classes"])
         return JsonResponse(response, status=200, safe=False)
     else:
+        context["sessions"] = []
+        all_session = student.objects.all().values("session").distinct()
+        for session in all_session:
+            session_obj = {}
+            session_obj["id"] = re.split("-",str(session["session"]))[0]
+            session_obj["title"] = session["session"]
+            context["sessions"].append(session_obj)
+            print(context["sessions"])
+            
         return render(request, "collegeAdmin/all_session.html",context)
     
 
