@@ -66,14 +66,43 @@ $('.sessions').click(function(){
         // }
 
         data.forEach(class_ => {
-          initial_html +=  "<tr><td>"+class_.className+"</td><td>"+class_.count+"</td></th>";
+          initial_html +=  '<tr><td class="className">'+class_.thisSession+' | '+class_.className+'</td><td>'+class_.count+'</td></th>';
         });
-        console.log(initial_html);
+        
         document.getElementById("classes-table").innerHTML = initial_html;
-        console.log((data[0]).className );
-        console.log((data[0]).count );
-        console.log((data[1]).className );
-        console.log((data[1]).count);
+        classes = document.getElementsByClassName("className")
+        // classes .forEach(class_ => {
+        //     class_.onclick = function() {go_to_class(class_) }
+        // });
+        for( class_ of classes){
+          class_.onclick = function() {go_to_class(class_) }
+        }
+
+        
       }
    })
 });
+
+
+
+// $('.className').click(function(){
+//   var name;
+//   name = $(this).innerHTML;
+//   $.ajax(
+//   {
+//       type:"GET",
+//       url: "/projectadmin/sessions",
+//       data:{
+//                className : name
+//       },
+//    }
+//    )
+
+// });
+
+function go_to_class(class_){
+    console.log("this runs");
+   
+    className = class_.innerHTML;
+    window.location.replace("/projectadmin/sessions/class/"+String(className));
+}

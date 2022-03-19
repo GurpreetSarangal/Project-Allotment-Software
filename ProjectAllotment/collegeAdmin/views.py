@@ -130,6 +130,7 @@ def sessionsview(request):
         # classes is a query set but class_ will be a str which will be appended in "classes" array of context
         for class_ in classes:
             curr_class = {}
+            curr_class["thisSession"] = session
             curr_class["className"] = class_["className"]
             curr_class["count"] = student.objects.filter(className=class_["className"]).values("rollNo").distinct().count()
             # print("class_ = ", class_)
@@ -155,9 +156,31 @@ def sessionsview(request):
         return render(request, "collegeAdmin/all_session.html",context)
     
 
-def classview(request):
-    return HttpResponse("this is class")
-    pass
+def classview(request, className):
+    context = {
+        "css" : "class_template",
+        
+    }
+    session = re.split(" \| ", className)[0]
+    className = re.split(" \| ", className)[1]
+    context["curr_class"] = className
+    context["curr_session"] = session
+    all_students = student.objects.filter(className=className, session=session)
+    context["all_students"] = []
+    for stu in all_students:
+        temp = {
+            "rollNo": stu.rollNo,
+            "name": stu.name,
+            "fatherName" : stu.fatherName,
+            "mobile_1": stu.mobile_1,
+            "mobile_2": stu.mobile_2,
+            "email": stu.email,
+        }
+        context["all_students"].append(temp)
+        
+    
+    return render(request, "collegeAdmin/class_template.html", context)
+  
 
 
 # ! utility functions

@@ -1,0 +1,112 @@
+*{
+    margin:0px;
+    padding: 0px;
+  }
+:root {
+    --primary: #4f6979;
+    --secondary: #607a83;
+    --tertiary: #6f8b8f;
+    --bg-primary: #928787;
+    --bg-secondary: #bdab9b;
+    --bg-tertiary: #ccbeae;
+    --text-primary: #e1d5c8;
+}
+
+/* dashboard  starts*/
+
+#nav-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--tertiary);
+}
+#nav-div h1{
+    /* margin: .5rem 2rem; */
+    color:var(--text-primary);
+}
+#nav-div div{
+    margin: .5rem 2rem;
+}
+#nav-div div a{
+    padding: 0.5rem 1.5rem;
+    border-radius: 8%;
+    background-color: var(--tertiary);
+    border-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+#nav-div div a:hover{
+    background-color: var(--bg-primary);
+    color: #fff;
+}
+#main-content{
+    /* min-width:100%;
+    min-height:100vh; */
+  background:var(--bg-tertiary);
+}
+
+#menu-container{
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+flex-wrap: wrap;
+margin: 1rem 3rem 9rem;
+
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+.cross{
+    display: flex;
+    justify-content: right;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer-dark{
+    background:var(--secondary);
+    color: var(--bg-secondary);
+}
+
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}
+/* dashboard ends */

@@ -1,0 +1,40 @@
+{% extends 'collegeAdmin/base.html' %}
+{% block title %}{{ curr_session }}{% endblock title %}
+
+{% block navbar %}
+{% include 'collegeAdmin/header.html'%}
+{% endblock navbar %}
+
+
+{% block body %}
+
+<div id="menu-container">
+    <table>
+        <tr>
+            <th>RollNo</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Mobile-1</th>
+            <th>Mobile-2</th>
+            <th>Email</th>
+        </tr>
+        {% for stu in all_students %}
+        <tr>
+            <td>{{ stu.rollNo}} </td>
+            <td>{{ stu.name}} </td>
+            <td>{{ stu.fatherName}} </td>
+            <td>{{ stu.mobile_1}} </td>
+            <td>{{ stu.mobile_2}} </td>
+            <td>{{ stu.email}} </td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+  
+</div>
+{% endblock body %}
+
+{%block footer%}
+{% include 'collegeAdmin/footer.html' %}
+{%endblock footer%}
+
