@@ -10,6 +10,6 @@ urlpatterns = [
     path('allguides/<int:id>', views.edit_guide, name="edit_guide"),
     path('allguides/delete/<int:id>', views.delete_guide, name="delete_guide"),
     path('sessions', views.sessionsview, name="sessions"),
-    path('sessions/class/<className>', views.classview, name="sessions"),
-    path('class/', views.classview, name="class"),
+    path('sessions/class/<className>', views.classview, name="class"),
+        
 ]

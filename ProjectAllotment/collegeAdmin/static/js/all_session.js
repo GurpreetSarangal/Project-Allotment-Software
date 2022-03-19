@@ -1,15 +1,4 @@
-// function get_classes(session){
-//     console.log("this runs");
-   
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//           console.log(this);
-//         }
-//     };
-//     xhttp.open("GET", "/projectadmin/sessions/"+String(session), true);
-//     xhttp.send();
-// }
+
 
 // Get the modal
 var modal = document.getElementById("classes");
@@ -61,9 +50,7 @@ $('.sessions').click(function(){
         data = JSON.parse(data);
         console.log("after parse \n",data);
         console.log(data.lenght);
-        // for (let i=0; i<data.lenght; i++){
-        //   initial_html = initial_html+ "<tr><td>"+data[i].className+"</td><td>"+data[i].count+"</td></th>";
-        // }
+        
 
         data.forEach(class_ => {
           initial_html +=  '<tr><td class="className">'+class_.thisSession+' | '+class_.className+'</td><td>'+class_.count+'</td></th>';
@@ -71,38 +58,19 @@ $('.sessions').click(function(){
         
         document.getElementById("classes-table").innerHTML = initial_html;
         classes = document.getElementsByClassName("className")
-        // classes .forEach(class_ => {
-        //     class_.onclick = function() {go_to_class(class_) }
-        // });
-        for( class_ of classes){
-          class_.onclick = function() {go_to_class(class_) }
-        }
-
+        length = document.getElementsByClassName("className").length
         
+        Array.from(classes).forEach(function (element) {
+          console.log(typeof(element.innerHTML))
+          element.onclick = () =>{ go_to_class(element.innerHTML);}
+        });        
       }
    })
 });
 
 
 
-// $('.className').click(function(){
-//   var name;
-//   name = $(this).innerHTML;
-//   $.ajax(
-//   {
-//       type:"GET",
-//       url: "/projectadmin/sessions",
-//       data:{
-//                className : name
-//       },
-//    }
-//    )
 
-// });
-
-function go_to_class(class_){
-    console.log("this runs");
-   
-    className = class_.innerHTML;
+function go_to_class(className){    
     window.location.replace("/projectadmin/sessions/class/"+String(className));
 }

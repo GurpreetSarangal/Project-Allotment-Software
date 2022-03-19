@@ -159,12 +159,17 @@ def sessionsview(request):
 def classview(request, className):
     context = {
         "css" : "class_template",
+        "js": "class_template",
+        "rawURL": "/projectadmin/sessions/class/"+className,
         
     }
     session = re.split(" \| ", className)[0]
     className = re.split(" \| ", className)[1]
+
     context["curr_class"] = className
     context["curr_session"] = session
+    context["No_of_students"] = student.objects.filter(className=className, session=session).count()
+
     all_students = student.objects.filter(className=className, session=session)
     context["all_students"] = []
     for stu in all_students:
