@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block cssfile %}/static/css/all_project.css{% endblock cssfile %}
+{% block cssfile %}all_project.css{% endblock cssfile %}
 
 {% block title %}New Project{% endblock title %}
 
@@ -21,7 +21,7 @@
             <li>
                 <div class="project-details">
                     <div class="project-id" style="border : none !important;">
-                        Project ID
+                        Serial no.
                     </div>
                     <div class="project-name" style="border : none !important;">
                         Project Title
@@ -41,7 +41,7 @@
                 <li>
                     <div class="project-details">
                         <div class="project-id">
-                            {{ project.id }}
+                            {{ forloop.counter }}
                         </div>
                         <div class="project-name">
                             {{ project.name }}
