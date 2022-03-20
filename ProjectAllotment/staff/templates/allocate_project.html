@@ -1,15 +1,51 @@
 {% extends 'base.html' %}
 
-{% block cssfile %}../static/css/dashboard.css{% endblock cssfile %}
+{% block cssfile %}allocate_project.css{% endblock cssfile %}
 
-{% block title %}Projects{% endblock title %}
+{% block title %}Allocate Projects{% endblock title %}
 
 {% block navbar %}
 {% include 'header.html' %}
 {% endblock navbar %}
 
 {% block body %}
-
+<div class="container" id="main-content">
+    {{ projects|json_script:"projects"}}
+    <form action="#" method="post" name="allocate">
+        <div class="form-container">
+            {% csrf_token %}
+            <div class="rollNos">
+                
+                    <h5>Roll Numbers of students</h5>    
+                    <input type="number" name="rollNo1" id="rollNo1" maxlength="11" placeholder="First RollNo" required>
+                    
+                    <input type="number" name="rollNo2" id="rollNo2" placeholder="Second RollNo (Optional)" maxlength="11">
+                
+                
+            </div>
+            <div class="techInputs">
+                
+                    <h5>Project Details</h5>
+                    <!-- <input type="text" name="project_title" id="project_title" placeholder="Project Title" required> -->
+                    <div class="project-title-div">
+                        <select name="project_title" id="project_title" >
+                            <option value="" >project_title</option>
+                            {% for proj in projects %}
+                                <option value="{{ proj.title }}">{{proj.title}}</option>
+                            {% endfor %}
+                           
+                        </select>
+                    </div>
+                    <div class="project-desc">
+                        <input type="text" name="lang" id="lang" placeholder="Project Language">
+                        <input type="text" name="tech" id="tech" placeholder="Other Technologies">
+                    </div>
+                    <input type="submit" value="Allocate" id="submit">
+                
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock body %}
 

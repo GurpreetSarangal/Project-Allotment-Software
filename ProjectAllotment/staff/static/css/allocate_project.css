@@ -1,0 +1,168 @@
+*{
+    margin:0px;
+    padding: 0px;
+  }
+:root {
+    --primary: #4f6979;
+    --secondary: #607a83;
+    --tertiary: #6f8b8f;
+    --bg-primary: #928787;
+    --bg-secondary: #bdab9b;
+    --bg-tertiary: #ccbeae;
+    --text-primary: #e1d5c8;
+}
+
+/* navbar starts */
+
+#nav-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--tertiary);
+}
+#nav-div h1{
+    /* margin: .5rem 2rem; */
+    color:var(--text-primary);
+}
+#nav-div div{
+    margin: .5rem 2rem;
+}
+
+
+
+#nav-div div a{
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    background: var(--tertiary);
+    border-color: var(--bg-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.2s;
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+
+#nav-div div a:hover{
+    background: var(--secondary);
+    color: #fff;
+} 
+/* body starts */
+#main-content{
+    background: url('../../static/images/background1.webp') no-repeat center;
+    background-size: cover;
+    margin: auto;
+    padding: 0px;
+    width: 100%;
+    height: 78.5vh;
+    
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem auto;
+}
+.rollNos input{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: transparent transparent var(--primary) transparent;
+    
+}
+.techInputs{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+    flex-direction: column;
+    align-items: stretch;
+    margin: 2rem 0rem;
+    min-width: 32rem;
+}
+
+.project-title-div{
+    position: relative;
+}
+
+#project_title{
+    display: none;
+    width: 30rem;
+    margin: 0.5rem 1rem;
+}
+
+.select-selected{
+    color: var(--primary);
+    background: var(--text-primary);
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: var(--primary) transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent var(--primary) transparent;
+    top: 7px;
+}
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+/* .select-items{
+
+    background-color: rgba(0, 0, 0, 0.1);
+} */
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+    color: var(--primary);
+    background:rgba(152, 142, 167, 0.186);
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+
+.project-desc input{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: transparent transparent var(--primary) transparent;
+    top: 7px;
+}
+
+#lang{
+    width: 16rem;
+    margin: 0.5rem auto;
+}
+#tech{
+    margin: auto 0rem auto 0.5rem;
+}
+
+#submit{
+    margin: 0.5rem auto;
+}
+/* footer starts */
+
+.footer-dark{
+    background:var(--secondary);
+    color: var(--bg-secondary);
+}
+
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}

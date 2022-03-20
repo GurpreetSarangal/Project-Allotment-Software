@@ -1,14 +1,36 @@
+from multiprocessing import context
 from django.contrib import messages
 from django.shortcuts import redirect, render, HttpResponse
-from collegeAdmin.models import project
+from collegeAdmin.models import *
 
 # Create your views here.
 
 def dashboard(request):
-    return render(request, 'staff_dashboard.html')
+    context = {
+        "css":"staff_dashboard.css"
+    }
+    return render(request, 'staff_dashboard.html',context)
 
 def allocate_project(request):
-    return render(request, 'allocate_project.html')
+    context = {
+        "css":"allocate_project.css",
+        "js":"allocate_project.js",
+        "projects":[],
+    }
+    if request.method == "POST":
+
+        pass
+    else:
+        all_projects = project.objects.all()
+        for proj in all_projects:
+            temp = {
+                "title":proj.name ,
+                "language":proj.language,
+                "tech":proj.tech,
+            }
+            # print(temp)
+            context["projects"].append(temp)
+        return render(request, 'allocate_project.html',context)
 
 def allocate_guides_groups(request):
     return HttpResponse("Allocate- guides and groups here")
@@ -22,6 +44,7 @@ def guideswise(request):
 
 def all_projects(request):
     context = {
+        "css":"all_project.css",
         "projects": [
             
         ]
@@ -38,6 +61,9 @@ def all_projects(request):
     return render(request, "all_project.html",context)
 
 def add_projects(request):
+    context = {
+        "css" : "add_project.css"
+    }
     if request.method == "POST":
         project_name = request.POST['project_name']
         project_lang = request.POST['project_lang']
@@ -49,7 +75,7 @@ def add_projects(request):
         )
         messages.info(request, 'New Project has been added successfully!')
         new_project.save()
-    return render(request, "add_project.html")
+    return render(request, "add_project.html",context)
 
 def edit_projects(request,id):
     curr_proj = project.objects.get(id=id)
@@ -65,6 +91,7 @@ def edit_projects(request,id):
         
 
     context={
+        "css":"edit_project.css",
         "project":{
             "id":curr_proj.id,
             "name":curr_proj.name,
