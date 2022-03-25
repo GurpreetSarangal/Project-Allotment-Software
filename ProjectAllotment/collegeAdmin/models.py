@@ -30,7 +30,7 @@ class project(models.Model):
     tech = models.CharField(max_length=60)
 
     def __str__(self):
-        return self.name
+        return f"{self.name } --> {self.language} | {self.tech}" 
 
 
 class staffMember(models.Model):

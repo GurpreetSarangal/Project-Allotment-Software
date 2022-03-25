@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% block cssfile %}allocate_project.css{% endblock cssfile %}
-
 {% block title %}Allocate Projects{% endblock title %}
 
 {% block navbar %}
@@ -11,6 +9,8 @@
 {% block body %}
 <div class="container" id="main-content">
     {{ projects|json_script:"projects"}}
+    
+    
     <form action="#" method="post" name="allocate">
         <div class="form-container">
             {% csrf_token %}

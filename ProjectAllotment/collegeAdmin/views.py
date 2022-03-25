@@ -1,7 +1,3 @@
-
-import string
-from telnetlib import STATUS
-from urllib.error import ContentTooShortError
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -252,7 +248,7 @@ def is_valid(email):
 def validate_inputs(request, obj):
     if not is_valid(obj["email"]):
         messages.error(request, 'No Email Provided')
-        return None;
+        return None
 
     if(obj["mobile_1"]=='' and obj["mobile_2"]==''):
         messages.error(request, 'No Mobile Number Provided')
