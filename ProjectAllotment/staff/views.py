@@ -1,4 +1,4 @@
-from email.utils import encode_rfc2231
+from threading import get_ident
 from django.contrib import messages
 from django.shortcuts import redirect, render, HttpResponse
 from staff.models import allocationTable
@@ -49,8 +49,56 @@ def allocate_project(request):
     else:
         return render(request, 'allocate_project.html',context)
 
-def allocate_guides_groups(request):
-    return HttpResponse("Allocate- guides and groups here")
+def allocate_guides_groups(request, className="all"):
+    context = {
+        "css":"allocate_guide_group.css",
+        "js":"allocate_guide_group.js",
+    }
+
+    if className == "all":
+        context["classes"] = []
+        classes = student.objects.all().values("className").distinct()
+        for class_ in classes:
+            context["classes"].append(class_["className"])
+        return render(request, 'allocate_guide_group.html',context)
+    elif request.method =="POST":
+        guideName = request.POST["guideName"]
+
+        all_allocation_entries = allocationTable.objects.all()
+        
+        for entry in all_allocation_entries:
+            if entry.student_1.className == className:
+                if request.POST.get(f"{entry.student_1.rollNo}", "NO") == "on":
+                    guide_to_be_allocated = guide.objects.get(name=guideName)
+                    entry_to_be_allocated = allocationTable.objects.get(student_1=entry.student_1)
+                    entry_to_be_allocated.guide = guide_to_be_allocated
+                    entry_to_be_allocated.save()
+       
+
+    context["css"]="allocate_guide_to_class.css"
+    context["js"]="allocate_guide_to_class.js"
+    context["guides"]=[]
+    all_guides = guide.objects.all().values("name")
+    for guide_ in all_guides:
+        context["guides"].append(guide_["name"])
+    
+    all_allocation_entries = allocationTable.objects.all()
+    context["students"] = []
+    for entry in all_allocation_entries:
+        if entry.student_1.className == className:
+            temp = {
+                "student_1_rollNo": entry.student_1.rollNo,
+                "projectName": entry.project.name,
+                "lang": entry.project.language,
+                "allocated": entry.guide.name if entry.guide else "NO",
+            }
+            if entry.student_2:
+                temp["student_2_rollNo"] = entry.student_2.rollNo
+            context["students"].append(temp)
+    
+    return render(request, "allocate_guide_to_class.html", context)
+
+    
 
 def projectswise(request):
     context = {

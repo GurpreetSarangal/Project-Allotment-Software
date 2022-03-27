@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Allocate Guides and groups{% endblock title %}
+
+{% block navbar %}
+{% include 'header.html' %}
+{% endblock navbar %}
+
+{% block body %}
+<div class="container" id="main-content">
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                {% if message.tags %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="#" method="post">
+            {% csrf_token %}
+            <select name="guideName" id="guideName">
+                <option value="" >Select Guide</option>
+                {% for guideName in guides %}
+                    <option value="{{ guideName}}">{{guideName}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="sortBy">Sort By</label>
+            <select name="sortBy" id="sortBy">
+                <option value="RollNo">RollNo</option>
+                <option value="Project">Project</option>
+                <option value="lang">Lang</option>
+            </select>
+            
+            <button>Select All</button>
+            <button type="submit">Assign</button>
+        
+        <table>
+            <tr>
+                <th>Sn</th>
+                <th>RollNo 1</th>
+                <th>RollNo 2</th>
+                <th>Project</th>
+                <th>Language</th>
+                <th>Allocated</th>
+                <th>Selected</th>
+            </tr>
+            {% for stu in students %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ stu.student_1_rollNo}} </td>
+
+                    {% if stu.student_2_rollNo %}
+                        <td>{{ stu.student_2_rollNo}} </td>
+                    {% else %}
+                        <td> - </td>
+                    {% endif %}
+                    <td>{{ stu.projectName}} </td>
+                    <td>{{ stu.lang}} </td>
+                    <td>{{ stu.allocated}} </td>
+                    <td>
+                    {% if stu.allocated == "NO" %}
+                        <input type="checkbox" name="{{ stu.student_1_rollNo}}" id="" >
+                    {% else %}
+                        <input type="checkbox" name="{{ stu.student_1_rollNo}}" id="" checked disabled>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+
+{% endblock body %}
+
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

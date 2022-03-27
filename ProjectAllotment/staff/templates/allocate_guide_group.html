@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Allocate Guides and groups{% endblock title %}
+
+{% block navbar %}
+{% include 'header.html' %}
+{% endblock navbar %}
+
+{% block body %}
+<div class="container" id="main-content">
+    <div class="class_">
+        {% for class_ in classes %}
+            <div class="className">
+                <a href="{{class_}}">{{class_}}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}
+
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}
