@@ -14,28 +14,15 @@
   
     {% endfor %}
    <!-- The Modal -->
-    <div id="classes" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="cross" >
-                <span class="close">&times;</span>
-            </div>
-        <table id="classes-table">
-            <tr>
-                <th>Class</th>
-                <th>No of Students</th>
-            </tr>
-            
-        </table>
-        </div>
-  
-    </div>
-  
+    <div id="classes" class="modal"></div>
 </div>
 {% endblock body %}
 
 {%block footer%}
 {% include 'collegeAdmin/footer.html' %}
 {%endblock footer%}
+
+{% block script %} 
+<script src="../../static/js/all_session.js"></script>
+{% endblock script %} 
 

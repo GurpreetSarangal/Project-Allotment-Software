@@ -50,10 +50,10 @@
             {% for stu in students %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ stu.student_1_rollNo}} </td>
+                    <td>{{ stu.student_1_rollNo}}/ </td>
 
                     {% if stu.student_2_rollNo %}
-                        <td>{{ stu.student_2_rollNo}} </td>
+                        <td>{{ stu.student_2_rollNo}} /</td>
                     {% else %}
                         <td> - </td>
                     {% endif %}

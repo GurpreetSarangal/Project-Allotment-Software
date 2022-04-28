@@ -96,6 +96,12 @@ margin: 1rem 3rem 9rem;
     cursor: pointer;
 }
 
+.table-row:hover{
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
 .footer-dark{
     background:var(--secondary);
     color: var(--bg-secondary);
