@@ -1,4 +1,3 @@
-from threading import get_ident
 from django.contrib import messages
 from django.shortcuts import redirect, render, HttpResponse
 from staff.models import allocationTable
@@ -12,25 +11,29 @@ def dashboard(request):
     }
     return render(request, 'staff_dashboard.html',context)
 
-def allocate_project(request):
+def allocate_project(request, className="all"):
     context = {
         "css":"allocate_project.css",
         "js":"allocate_project.js",
         "projects":[],
     }
-    all_projects = project.objects.all()
-    for proj in all_projects:
-        temp = {
-            "title":proj.name ,
-            "language":proj.language,
-            "tech":proj.tech,
-        }
-        # print(temp)
-        context["projects"].append(temp)
     
-    if request.method == "POST":
+    
+    if className == "all":
+        # render the select_class_page.html
+        context["css"] = "select_class_page.css"
+        context["classes"] = []
+        classes = student.objects.all().values("className").distinct()
+        for class_ in classes:
+            context["classes"].append(class_["className"])
+
+        # print(context["classes"])
+        return render(request, 'select_class_page.html',context)
+        
+    elif request.method == "POST":
         print(request.POST)
         allocation_entry = {
+            "className" : className,
             "rollNo1" : request.POST["rollNo1"],
             "rollNo2" : request.POST["rollNo2"],
             "project_title" : request.POST["project_title"],
@@ -45,9 +48,38 @@ def allocate_project(request):
             messages.success(request, "this project has been allocated!!")
         else:
             messages.error(request, response)
-        return render(request, 'allocate_project.html',context)
-    else:
-        return render(request, 'allocate_project.html',context)
+
+
+    # all_projects = project.objects.all()
+
+    all_projects_ids = allocationTable.objects.filter(student_1__className=className).values("project")
+    allocated_projects = []
+    print("allocated projects : ")
+    for id in all_projects_ids:
+        proj = project.objects.get(id=id["project"])
+        print("id = ", id["project"])
+        allocated_projects.append(proj)
+
+    print("class ", className)
+    # print("allocated projects\n",allocated_projects)
+    avail_projects = []
+    all_projects = project.objects.all()
+    print("all projects")
+    for proj in all_projects:
+        print("id = ", proj.id)
+        if proj not in allocated_projects:
+            avail_projects.append(proj)
+    
+    print("available projects")
+    for proj in avail_projects:
+        print("id = ", proj.id)
+        temp = {
+            "title":proj.name ,
+            "language":proj.language,
+            "tech":proj.tech,
+        }
+        context["projects"].append(temp)
+    return render(request, 'allocate_project.html',context)
 
 def allocate_guides_groups(request, className="all"):
     context = {
@@ -210,6 +242,36 @@ def validate_allocation_form(form):
                         pass
                     else:
                         return "Students from different Classes"
+                    
+                    # this checks if the rollNo1 already allocated a project or not
+                    try:
+                        does_exist = allocationTable.objects.get(
+                            student_1__rollNo = form["rollNo1"]
+                        )
+                        return "Roll No 1 is already allocated a project"
+                    except:
+                        try:
+                            does_exist = allocationTable.objects.get(
+                                student_2__rollNo = form["rollNo1"]
+                            )
+                            return "Roll No 1 is already allocated a project"
+                        except:
+                            pass
+
+                    # this checks if the rollNo2 already allocated a project or not
+                    try:
+                        does_exist = allocationTable.objects.get(
+                            student_1__rollNo = form["rollNo2"]
+                        )
+                        return "Roll No 2 is already allocated a project"
+                    except:
+                        try:
+                            does_exist = allocationTable.objects.get(
+                                student_2__rollNo = form["rollNo2"]
+                            )
+                            return "Roll No 2 is already allocated a project"
+                        except:
+                            pass
                 except:
                     return "RollNo(s) not Registered!!"
             else:
@@ -218,15 +280,29 @@ def validate_allocation_form(form):
             try:
                 class_1 = (student.objects.get(rollNo=form["rollNo1"])).className
                 print(class_1)
+
             except:
                 return "RollNo Not Registered!!"
+            
+            try:
+                does_exist = allocationTable.objects.get(
+                    student_1__rollNo = form["rollNo1"]
+                )
+                return "Roll No 1 is already allocated a project"
+            except:
+                pass
         else:
             return "Invalid RollNo2"
     else : 
         return "Invalid RollNO1"
+    
+
+    
     # ? and doing this will not break the code because we are only showing those options which are already registered in the projects
     check_project = project.objects.get(
         name=form["project_title"],
+        language=form["lang"],
+        tech = form["tech"]
     )
     if form["lang"] == check_project.language and form["tech"] == check_project.tech:
         if is_already_allocated(form):
@@ -250,7 +326,7 @@ def is_already_allocated(form):
     
     try:
         if_exists = allocationTable.objects.get(
-            
+            student_1__className = form["className"],
             project=proj,
         )
         return True
