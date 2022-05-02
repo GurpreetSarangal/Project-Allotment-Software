@@ -79,6 +79,15 @@ def allocate_project(request, className="all"):
             "tech":proj.tech,
         }
         context["projects"].append(temp)
+    
+    rollNos = student.objects.all().values("rollNo").filter(className = className)
+    rollNos = list(rollNos)
+    temp = []
+    for stu in rollNos:
+        temp.append(str(stu["rollNo"]))
+    
+    context["rollNos"] = temp
+    print(temp)
     return render(request, 'allocate_project.html',context)
 
 def allocate_guides_groups(request, className="all"):

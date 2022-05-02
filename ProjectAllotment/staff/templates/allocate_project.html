@@ -9,7 +9,7 @@
 {% block body %}
 <div class="container" id="main-content">
     {{ projects|json_script:"projects"}}
-    
+    {{ rollNos|json_script:"rollNos"}}
    
     {% if messages %}
         <ul class="messages">
@@ -20,16 +20,18 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <form action="#" method="post" name="allocate">
+    <form autocomplete="off" action="#" method="post" name="allocate">
         <div class="form-container">
             {% csrf_token %}
             <div class="rollNos">
                 
-                    <h5>Roll Numbers of students</h5>    
+                <h5>Roll Numbers of students</h5>
+                <div class="autocomplete">    
                     <input type="number" name="rollNo1" id="rollNo1" maxlength="11" placeholder="First RollNo" required>
-                    
+                </div>
+                <div class="autocomplete">
                     <input type="number" name="rollNo2" id="rollNo2" placeholder="Second RollNo (Optional)" maxlength="11">
-                
+                </div>
                 
             </div>
             <div class="techInputs">
