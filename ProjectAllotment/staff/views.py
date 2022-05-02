@@ -141,13 +141,24 @@ def allocate_guides_groups(request, className="all"):
 
     
 
-def projectswise(request):
+def projectswise(request,className="all"):
     context = {
         "css":"allocate_project.css",
-        "js":"allocate_project.js",
+        
         "entries":[],
     }    
-    context["entries"] = get_allocation_data()
+    if className == "all":
+        # render the select_class_page.html
+        context["css"] = "select_class_page.css"
+        context["classes"] = []
+        classes = student.objects.all().values("className").distinct()
+        for class_ in classes:
+            context["classes"].append(class_["className"])
+
+        # print(context["classes"])
+        return render(request, 'select_class_page.html',context)
+    
+    context["entries"] = get_allocation_data(className)
     return render(request, 'project_wise_view.html',context)
 
 def guideswise(request):
@@ -356,9 +367,9 @@ def calculate_length(num):
     digits = re.split(r"[0-9]{1}?", num)
     return len(digits)-1
 
-def get_allocation_data():
+def get_allocation_data(className):
     entries = []
-    all_allocation_data = allocationTable.objects.order_by("project")
+    all_allocation_data = allocationTable.objects.all().filter(student_1__className=className).order_by("project")
     for entry in all_allocation_data:
         temp = {
             "className": entry.student_1.className,

@@ -203,3 +203,24 @@ color: #ffffff;
     text-decoration:underline;
 }
 
+/* ----------------------------------- */
+/* style for project_wise_view.html */
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 0.2rem 0.5rem;
+}
+th{
+    font-size: large;
+    min-width: 8rem;
+    background-color: var(--text-primary);
+}
+.odd{
+    min-width: 8rem;
+    background-color: var(--bg-secondary);
+}
+.even{
+    min-width: 8rem;
+    background-color: var(--text-primary);
+}

@@ -70,6 +70,15 @@
     width: fit-content;
 }
 
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th, td {
+    min-width: 8rem;
+    background-color: var(--text-primary);
+}
+
 
 
 /* footer starts */

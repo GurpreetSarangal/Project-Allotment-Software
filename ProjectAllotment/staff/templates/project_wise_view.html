@@ -21,7 +21,13 @@
             <th>Mobile</th>
         </tr>
         {% for entry in entries %}
-            <tr>
+            {% if forloop.counter|divisibleby:2 %}
+                <tr class="even">
+                {% else %}
+                <tr class="odd">
+            {% endif %}    
+                    
+        
                 <td>{{ forloop.counter }}</td>
                 <td>{{ entry.student_1.rollNo}}</td>
                 <td>{{ entry.student_1.name}} / {{ entry.student_1.fatherName}}</td>
@@ -33,7 +39,12 @@
             </tr>
 
             {% if  entry.student_2%}
-            <tr>
+            {% if forloop.counter|divisibleby:2 %}
+                <tr class="even">
+                {% else %}
+                <tr class="odd">
+            {% endif %}
+            
                 <td>{{ forloop.counter }}</td>
                 <td>{{ entry.student_2.rollNo}}</td>
                 <td>{{ entry.student_2.name}} / {{ entry.student_2.fatherName}}</td>
