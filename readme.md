@@ -205,3 +205,6 @@ this view will return an html page (`index.html`)
 __Error: That port is already in use.__  
     
     sudo fuser -k 8000/tcp
+
+# preload
+sudo apt install preload

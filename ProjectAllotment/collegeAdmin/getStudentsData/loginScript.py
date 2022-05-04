@@ -31,3 +31,4 @@ def login():
     logger.info("logged-in")
     driver.get("https://collegeadmissions.gndu.ac.in/ExUserArea/MarkAbsentee.aspx")
     return driver  
+

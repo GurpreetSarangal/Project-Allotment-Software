@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Guide{% endblock title %}
+
+{% block navbar %}
+{% include 'header.html' %}
+{% endblock navbar %}
+
+{% block body %}
+<div class="container" id="main-content">
+    <div class="guides">
+        {% for guide in guides %}
+            <div class="guideName">
+                <a href="{{guide}}">{{guide}}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}
+
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

@@ -161,7 +161,20 @@ def projectswise(request,className="all"):
     context["entries"] = get_allocation_data(className)
     return render(request, 'project_wise_view.html',context)
 
-def guideswise(request):
+def guideswise(request, guideName='all'):
+    context = {
+        "css":"allocate_project.css",
+        "entries":[],
+    }
+    if guideName == 'all':
+        context["css"] = "select_guide_page.css"
+        context["guides"] = []
+        guides = guide.objects.all().values("name")
+        for guide_ in guides:
+            context["guides"].append(guide_["name"])
+
+        return render(request, "select_guide_page.html",context)
+
     return HttpResponse("Guides wise here")
 
 
@@ -320,9 +333,7 @@ def validate_allocation_form(form):
     
     # ? and doing this will not break the code because we are only showing those options which are already registered in the projects
     check_project = project.objects.get(
-        name=form["project_title"],
-        language=form["lang"],
-        tech = form["tech"]
+        name=form["project_title"]
     )
     if form["lang"] == check_project.language and form["tech"] == check_project.tech:
         if is_already_allocated(form):

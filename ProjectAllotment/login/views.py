@@ -10,6 +10,8 @@ def index(request):
 
 def login_user(request):
     if request.user.is_authenticated:
+        if request.user.is_superuser:
+            return redirect('adminDashboard')
         return redirect('home')
 
     if request.method == 'POST':
@@ -26,8 +28,12 @@ def login_user(request):
             messages.error(request, "wrong credentials")
             return redirect('login')
     
+    context = {
+        "js" : "login_form.js",
+        "css" : "login_form.css"
+    }
     
-    return render(request, 'login/login_form.html')
+    return render(request, 'login/login_form.html', context)
 
 def logout_user(request):
     logout(request)
