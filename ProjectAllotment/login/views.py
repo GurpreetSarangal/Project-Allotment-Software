@@ -30,7 +30,7 @@ def login_user(request):
     
     context = {
         "js" : "login_form.js",
-        "css" : "login_form.css"
+        "css" : "login.css"
     }
     
     return render(request, 'login/login_form.html', context)
