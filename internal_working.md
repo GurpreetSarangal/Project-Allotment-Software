@@ -1,3 +1,11 @@
+# Internal working of the website
+
+- ## Allocate Project 
+- ## Allocate Guides
+- ## Create a New Project
+- ## Edit/Delete a Project
+- ## Generating project wise and guide wise allocation table
+
 
 # Fetch Student Details from Website Using Selenium
 
@@ -81,7 +89,7 @@ element.send_keys(keys.ADD)
 element.send_keys(keys.ARROW_UP)
 element.send_keys(keys.ARROW_DOWN)
 element.send_keys(keys.TAB)
-element.send_keys(keys.COMAND)
+element.send_keys(keys.COMMAND)
 element.send_keys(keys.CONTROL)
 element.send_keys(keys.ESCAPE)
 element.send_keys(keys.HOME)
@@ -127,7 +135,7 @@ time.sleep(10)# this will stop execution for 10 seconds
 ### Running project
     python manage.py runserver
 
-### Sreating new app
+### Creating new app
     python manage.py startapp <app_name>
 
 Django does not automatically detect that an app exists. Instead it has to be registered by adding its name to the list of `INSTALLED_APPS` in your settings.
@@ -186,7 +194,7 @@ basically write you html in pieces and join them at time of rendering
 
 this is used to specify base html file, this `base.html` file basically contains the basic format of the html page
 
-### Create views that acutally do something
+### Create views that actually do something
 ```python
 def index(request):
     return render(request, 'index.html')
@@ -207,5 +215,3 @@ __Error: That port is already in use.__
     
     sudo fuser -k 8000/tcp
 
-# preload
-sudo apt install preload

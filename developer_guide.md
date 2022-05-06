@@ -45,7 +45,7 @@ Download the zip file and extract it to the folder of your choice.
 > If you accidentally close the terminal without quitting the server, and again try to run the server, it'll show an error that `this port is already in use`. To remove this error refer [this](#error--this-port-is-already-in-use)
 
 ## Step 4 : Login as a user
-In this project we have two types of susers: Staff and the Admin. And you will need to contact me for usernames and passwords ; )
+In this project we have two types of users: Staff and the Admin. And you will need to contact me for usernames and passwords ; )
 
 ---
 >>Now you will need to understand internal working of the project so refer to [this](internal_working.md) guide
