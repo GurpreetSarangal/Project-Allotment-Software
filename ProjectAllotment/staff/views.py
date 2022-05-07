@@ -158,7 +158,7 @@ def projectswise(request,className="all"):
         # print(context["classes"])
         return render(request, 'select_class_page.html',context)
     
-    context["entries"] = get_allocation_data(className)
+    context["entries"] = get_allocation_data_classWise(className)
     return render(request, 'project_wise_view.html',context)
 
 def guideswise(request, guideName='all'):
@@ -174,6 +174,8 @@ def guideswise(request, guideName='all'):
             context["guides"].append(guide_["name"])
 
         return render(request, "select_guide_page.html",context)
+
+    context["entries"] = get_allocation_data_guideWise(guideName)
 
     return HttpResponse("Guides wise here")
 
@@ -222,7 +224,7 @@ def edit_projects(request,id):
         curr_proj.name = new_title
         curr_proj.language = new_lang
         curr_proj.tech = new_tech
-        messages.info(request, 'Project discription has been changed successfully!')
+        messages.info(request, 'Project description has been changed successfully!')
         curr_proj.save()
         
 
@@ -378,7 +380,7 @@ def calculate_length(num):
     digits = re.split(r"[0-9]{1}?", num)
     return len(digits)-1
 
-def get_allocation_data(className):
+def get_allocation_data_classWise(className):
     entries = []
     all_allocation_data = allocationTable.objects.all().filter(student_1__className=className).order_by("project")
     for entry in all_allocation_data:
@@ -424,4 +426,40 @@ def get_allocation_data(className):
 
     return entries
 
-    
+def get_allocation_data_guideWise(guideName):
+    entries = []
+    all_allocation_data = allocationTable.objects.all().filter(guide__name="Mandeep Singh").order_by("student_1__className")
+    for entry in all_allocation_data:
+        temp = {
+            "className": entry.student_1.className,
+            "session": entry.student_1.session,
+            "student_1" : {
+                "rollNo": entry.student_1.rollNo,
+                "name": entry.student_1.name,
+                "email": entry.student_1.email,
+                "mobile1": entry.student_1.mobile_1,
+                "mobile2": entry.student_1.mobile_2,
+            }
+        }
+
+        if entry.student_2:
+            temp["student_2"] = {
+                "rollNo": entry.student_2.rollNo,
+                "name": entry.student_2.name,
+                "email": entry.student_2.email,
+                "mobile1": entry.student_2.mobile_1,
+                "mobile2": entry.student_2.mobile_2,
+            }
+        else:
+            temp["student_2"] = None
+        
+        temp["guide"] = {
+                "name": entry.guide.name
+            }
+        
+        temp["project"]={
+            "name": entry.project.name,
+            "lang": entry.project.language,
+        }
+
+        entries.append(temp)

@@ -1,7 +1,9 @@
+from django import conf
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -38,3 +40,28 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('index')
+
+def reset_password(request):
+    context = {
+        "js" : "change_password.js",
+        "css" : "change_password.css"
+    }
+
+    if(request.method == "POST"):
+        username = request.user.username
+        old_password = request.POST["old_password"]
+        new_password = request.POST["new_password"]
+        confirm_password = request.POST["confirm_password"]
+        user = authenticate(username=username, password=old_password)
+        if user is None:
+            messages.error(request, "wrong credentials")
+        else:
+            if new_password != confirm_password:
+                messages.error(request, "New password did'nt match")
+            else:
+                user.set_password(new_password)
+                user.save()
+                messages.success(request, "New password is set")
+
+    return render(request, "login/change_password.html", context)
+    
