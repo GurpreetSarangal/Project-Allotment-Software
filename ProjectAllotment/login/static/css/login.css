@@ -1,15 +1,14 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
-body{
-    display: flex;
-    justify-content: center;
-}
+
 .main-content {
     padding: 3.5rem 3rem;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     max-width: 87vw;
     min-height: 44vh;
     margin: 0rem;
@@ -19,9 +18,9 @@ body{
     background-size: cover;
     margin: 0px;
     padding: 0px;
-    width: 52vw;
-    height: 70vh;
-}
+    width: 50vw;
+ height: 70vh;
+} 
 .right-side {
     margin: 3rem 1rem;
     padding: 1rem 3rem;
@@ -33,4 +32,43 @@ body{
 
 .fields div{
     margin: 1rem 0rem;
+}
+#submit {
+    background: rgba(10, 185, 216, 0.863);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    padding: 7px 15px;
+    color: #fff;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+    border-radius: 50px;
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+.input-field {
+    outline: none;
+    box-shadow: none;
+    border:none;
+    background: rgb(238, 238, 237);
+    padding: 7px 12px;
+    border-radius: 9px;
+    width: 300px;
+}
+.remember-me {
+    margin-left: 9px;
+}
+.error {
+    padding: 8px 15px;
+    font-size: 1rem;
+    font-family: sans-serif;
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    font-weight: 600;
+    display: none;
+}
+.login-button {
+    /* text-align: center; */
+    margin: 15px 0;
 }
