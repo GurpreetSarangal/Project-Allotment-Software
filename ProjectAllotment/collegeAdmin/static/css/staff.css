@@ -3,13 +3,11 @@
     padding: 0px;
   }
 :root {
-    --primary: #4f6979;
-    --secondary: #607a83;
-    --tertiary: #6f8b8f;
-    --bg-primary: #928787;
-    --bg-secondary: #bdab9b;
-    --bg-tertiary: #ccbeae;
-    --text-primary: #e1d5c8;
+ --primary:rgb(14 34 82 / 94%);
+ --black: #000;
+ --white:#fff;
+ --textColor: rgb(230, 230, 230);
+
 }
 
 /* dashboard  starts*/
@@ -18,11 +16,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--tertiary);
+    background: #000;
 }
 #nav-div h1{
+    text-transform: uppercase;
+    letter-spacing: 2px;
     /* margin: .5rem 2rem; */
-    color:var(--text-primary);
+    color:var(--textColor);
 }
 #nav-div div{
     margin: .5rem 2rem;
@@ -30,32 +30,39 @@
 #nav-div div a{
     padding: 0.5rem 1.5rem;
     border-radius: 8%;
-    background-color: var(--tertiary);
-    border-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--black);
+    border-color: var(--white);
+    color: var(--textColor);
+    transition: 0.4s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 #nav-div div a:hover{
-    background-color: var(--bg-primary);
-    color: #fff;
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: bold;
 }
-#main-content{
-    /* min-width:100%;
-    min-height:100vh; */
-  background:var(--bg-tertiary);
-}
+/* #main-content{
+    min-width:100%;
+    min-height:100vh; 
+   background:var(--bg-tertiary);
+} */
 
 #menu-container{
 display: flex;
 justify-content: space-evenly;
 margin: 9rem 1rem;
+flex-wrap: wrap;
+gap: 19px;
 }
 
 .menu-items{
-background-color: var(--tertiary);
+    background:var(--primary);
 border-radius: 14px;
 /* padding: 4rem 2rem; */
 min-width: 18rem;
 min-height: 25rem;
+box-shadow: 8px 6px 4px rgb(171, 176, 177);
 
 }
 
@@ -63,13 +70,19 @@ min-height: 25rem;
     display: flex;
     justify-content: end;
     padding: 0.5rem 1rem;
-    color: var(--text-primary);
+    transition: all 0.4s;
 
+}
+.pencil a i {
+    color: var(--white);
+}
+.pencil a i:hover {
+    font-size: 1.2rem;
 }
 
 .menu-items a{      
     text-decoration:none;
-    color: var(--text-primary);
+    color: var(--textColor);
 }
 .menu-items a:hover{      
     text-decoration:none;
@@ -88,7 +101,7 @@ min-height: 10rem;
 border-radius: 50%;
 }
 .menu-heading{
-    color: var(--text-primary);
+    color: var(--textColor);
 
 }
 
@@ -105,16 +118,16 @@ border-radius: 50%;
 }
 
 .footer-dark{
-    background:var(--secondary);
-    color: var(--bg-secondary);
+    background: var(--black);
+    color: var(--white);
 }
 
 #report{
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 #report:hover{
-    color: white;
+    color: var(--white);
     text-decoration:underline;
 }
 /* dashboard ends */

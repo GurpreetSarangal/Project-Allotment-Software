@@ -5,11 +5,11 @@
 :root {
     --primary: #4f6979;
     --secondary: #607a83;
-    --tertiary: #6f8b8f;
-    --bg-primary: #928787;
-    --bg-secondary: #bdab9b;
-    --bg-tertiary: #ccbeae;
-    --text-primary: #e1d5c8;
+    --tertiary: rgba(19, 120, 187, 0.938);
+    --bg-primary: #fff;
+    --bg-secondary: #fff;
+    --bg-tertiary: #fff;
+    --text-primary: #fff;
 }
 
 /* dashboard  starts*/
@@ -18,9 +18,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--tertiary);
+    background:#222;
+    height: 10vh;
 }
 #nav-div h1{
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: sans-serif;
     /* margin: .5rem 2rem; */
     color:var(--text-primary);
 }
@@ -29,29 +33,42 @@
 }
 #nav-div div a{
     padding: 0.5rem 1.5rem;
-    border-radius: 8%;
-    background-color: var(--tertiary);
-    border-color: var(--bg-primary);
-    color: var(--text-primary);
+    border-radius: 20px;
+    background: transparent;
+    border:1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 1rem;
+    font-family: monospace;
+    transition: 0.4s;
+    
 }
 #nav-div div a:hover{
-    background-color: var(--bg-primary);
-    color: #fff;
+
+    /* background-color: var(--bg-primary); */
+    background: #fff;
+    color: #000;
+
 }
 #main-content{
     /* min-width:100%;
     min-height:100vh; */
   background:var(--bg-tertiary);
+  height: 100vh;
+  width: 100%;
 }
 
 #menu-container{
 display: flex;
 justify-content: space-evenly;
-margin: 9rem 1rem;
+height: 84vh;
+align-items: center;
 }
 
 .menu-items{
-background-color: var(--tertiary);
+    background-color: rgb(14 34 82 / 94%);
 border-radius: 14px;
 padding: 4rem 2rem;
 }
@@ -77,9 +94,40 @@ justify-content: center;
 margin: 2rem 1rem;
 
 }
+/* -------------- hover underline effect ------------------- */
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #ffffff;
+    margin: 10px 0;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -10px;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.5s;
+    /* margin: 3px 0; */
 
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    margin: 3px 0;
+
+  }
 .footer-dark{
-    background:var(--secondary);
+    height: 6vh;
+    text-align: center;
+    padding: 10px 0 0 0;
+    background:black;
     color: var(--bg-secondary);
 }
 
@@ -90,5 +138,8 @@ margin: 2rem 1rem;
 #report:hover{
     color: white;
     text-decoration:underline;
+}
+strong {
+    text-transform: uppercase;
 }
 /* dashboard ends */
