@@ -1,5 +1,5 @@
-from django import conf
-from django.shortcuts import render, redirect, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -37,10 +37,12 @@ def login_user(request):
     
     return render(request, 'login/login_form.html', context)
 
+@login_required
 def logout_user(request):
     logout(request)
     return redirect('index')
 
+@login_required
 def reset_password(request):
     context = {
         "js" : "change_password.js",

@@ -1,16 +1,19 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render, HttpResponse
+from django.contrib.auth.decorators import login_required
 from staff.models import allocationTable
 from collegeAdmin.models import *
 import re
 
 
+@login_required
 def dashboard(request):
     context = {
         "css":"staff_dashboard.css"
     }
     return render(request, 'staff_dashboard.html',context)
 
+@login_required
 def allocate_project(request, className="all"):
     context = {
         "css":"allocate_project.css",
@@ -90,6 +93,7 @@ def allocate_project(request, className="all"):
     print(temp)
     return render(request, 'allocate_project.html',context)
 
+@login_required
 def allocate_guides_groups(request, className="all"):
     context = {
         "css":"allocate_guide_group.css",
@@ -140,7 +144,7 @@ def allocate_guides_groups(request, className="all"):
     return render(request, "allocate_guide_to_class.html", context)
 
     
-
+@login_required
 def projectswise(request,className="all"):
     context = {
         "css":"allocate_project.css",
@@ -161,6 +165,7 @@ def projectswise(request,className="all"):
     context["entries"] = get_allocation_data_classWise(className)
     return render(request, 'project_wise_view.html',context)
 
+@login_required
 def guideswise(request, guideName='all'):
     context = {
         "css":"allocate_project.css",
@@ -179,7 +184,7 @@ def guideswise(request, guideName='all'):
 
     return HttpResponse("Guides wise here")
 
-
+@login_required
 def all_projects(request):
     context = {
         "css":"all_project.css",
@@ -198,6 +203,7 @@ def all_projects(request):
         context["projects"].append(proj_details)
     return render(request, "all_project.html",context)
 
+@login_required
 def add_projects(request):
     context = {
         "css" : "add_project.css"
@@ -215,6 +221,7 @@ def add_projects(request):
         new_project.save()
     return render(request, "add_project.html",context)
 
+@login_required
 def edit_projects(request,id):
     curr_proj = project.objects.get(id=id)
     if request.method == "POST":
@@ -239,9 +246,15 @@ def edit_projects(request,id):
     }
     return render(request, "edit_project.html",context)
 
+@login_required
 def delete_projects(request, id):
     project.objects.get(id=id).delete()
     return redirect( "all-project")
+
+
+'''
+Utility functions
+'''
 
 def add_entry_in_allocationsTable(form):
     stu_1 = student.objects.get(rollNo=form["rollNo1"])
@@ -374,8 +387,6 @@ def same_project_different_lang(form):
     )
     new_project.save()
     
-   
-
 def calculate_length(num):
     digits = re.split(r"[0-9]{1}?", num)
     return len(digits)-1

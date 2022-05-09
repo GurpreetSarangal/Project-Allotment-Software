@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, HttpResponse
+
 from .models import *
 from . import getStudentsData
 import logging
@@ -13,12 +15,14 @@ import json
 
 
 # Create your views here.
+@login_required
 def adminDashboard(request):
     context = {
         "css": "admin_dashboard"
     }
     return render(request, "collegeAdmin/dashboard.html", context)
 
+@login_required
 def staffview(request):
     temp_user = User.objects.all()
     data={
@@ -34,6 +38,7 @@ def staffview(request):
     return render(request, "collegeAdmin/all_staff.html", data)
     
 
+@login_required
 def all_guide(request):
     context = {
         "css":"all_guide",
@@ -52,6 +57,7 @@ def all_guide(request):
         context["users"].append(temp)
     return render(request, "collegeAdmin/all_guide.html",context)
 
+@login_required
 def add_guide(request):
     context={
         "css":"add_guide",
@@ -74,6 +80,7 @@ def add_guide(request):
         
     return render(request, 'collegeAdmin/add_guide.html',context)
 
+@login_required
 def edit_guide(request, id):
     curr_guide = guide.objects.get(id=id)
     if request.method == "POST":
@@ -106,10 +113,12 @@ def edit_guide(request, id):
 
     return render(request, "collegeAdmin/edit_guide.html",context)
 
+@login_required
 def delete_guide(request, id):
     guide.objects.get(id=id).delete()
     return redirect("all_guide")
 
+@login_required
 def sessionsview(request):
     context = {
         "css" : "all_session",
@@ -152,7 +161,7 @@ def sessionsview(request):
             
         return render(request, "collegeAdmin/all_session.html",context)
     
-
+@login_required
 def classview(request, className):
     context = {
         "css" : "class_template",
