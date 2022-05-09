@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Guide wise allocation table{% endblock title %}
+
+{% block navbar %}
+{% include 'header.html' %}
+{% endblock navbar %}
+
+{% block body %}
+<div class="container" id="main-content">
+    <table>
+        <tr>
+            <th>Serial No.</th>
+            <th>Roll No.</th>
+            <th>Name / Father Name</th>
+            <th>Class</th>
+            <th>Project Title</th>
+            <th>Language</th>
+            <th>Email</th>
+            <th>Mobile</th>
+        </tr>
+        {% for entry in entries %}
+            {% if forloop.counter|divisibleby:2 %}
+                <tr class="even">
+                {% else %}
+                <tr class="odd">
+            {% endif %}    
+                    
+        
+                <td>{{ forloop.counter }}</td>
+                <td>{{ entry.student_1.rollNo}}</td>
+                <td>{{ entry.student_1.name}} / {{ entry.student_1.fatherName}}</td>
+                <td>{{ entry.className}} - {{ entry.session }}</td>
+                <td>{{ entry.project.name}}</td>
+                <td>{{ entry.project.lang}}</td>
+                <td>{{ entry.student_1.email }}</td>
+                <td>{{ entry.student_1.mobile1}}, {{ entry.student_1.mobile2}}</td>
+            </tr>
+            
+            {% if  entry.student_2%}
+            {% if forloop.counter|divisibleby:2 %}
+                <tr class="even">
+            {% else %}
+                <tr class="odd">
+            {% endif %}
+                <td>{{ forloop.counter }}</td>
+                <td>{{ entry.student_2.rollNo}}</td>
+                <td>{{ entry.student_2.name}} / {{ entry.student_2.fatherName}}</td>
+                <td>{{ entry.className}} - {{ entry.session }}</td>
+                <td>{{ entry.project.name}}</td>
+                <td>{{ entry.project.lang}}</td>
+                <td>{{ entry.student_2.email }}</td>
+                <td>{{ entry.student_2.mobile1}}, {{ entry.student_2.mobile2}}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    
+</div>
+
+{% endblock body %}
+
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

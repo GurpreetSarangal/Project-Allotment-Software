@@ -168,7 +168,7 @@ def projectswise(request,className="all"):
 @login_required
 def guideswise(request, guideName='all'):
     context = {
-        "css":"allocate_project.css",
+        "css":"guide_wise_view.css",
         "entries":[],
     }
     if guideName == 'all':
@@ -182,7 +182,7 @@ def guideswise(request, guideName='all'):
 
     context["entries"] = get_allocation_data_guideWise(guideName)
 
-    return HttpResponse("Guides wise here")
+    return render(request, 'guide_wise_view.html', context)
 
 @login_required
 def all_projects(request):
@@ -439,7 +439,7 @@ def get_allocation_data_classWise(className):
 
 def get_allocation_data_guideWise(guideName):
     entries = []
-    all_allocation_data = allocationTable.objects.all().filter(guide__name="Mandeep Singh").order_by("student_1__className")
+    all_allocation_data = allocationTable.objects.all().filter(guide__name=guideName).order_by("student_1__className")
     for entry in all_allocation_data:
         temp = {
             "className": entry.student_1.className,
@@ -447,6 +447,7 @@ def get_allocation_data_guideWise(guideName):
             "student_1" : {
                 "rollNo": entry.student_1.rollNo,
                 "name": entry.student_1.name,
+                "fatherName": entry.student_1.fatherName,
                 "email": entry.student_1.email,
                 "mobile1": entry.student_1.mobile_1,
                 "mobile2": entry.student_1.mobile_2,
@@ -457,6 +458,7 @@ def get_allocation_data_guideWise(guideName):
             temp["student_2"] = {
                 "rollNo": entry.student_2.rollNo,
                 "name": entry.student_2.name,
+                "fatherName": entry.student_2.fatherName,
                 "email": entry.student_2.email,
                 "mobile1": entry.student_2.mobile_1,
                 "mobile2": entry.student_2.mobile_2,
@@ -474,3 +476,5 @@ def get_allocation_data_guideWise(guideName):
         }
 
         entries.append(temp)
+        
+    return entries

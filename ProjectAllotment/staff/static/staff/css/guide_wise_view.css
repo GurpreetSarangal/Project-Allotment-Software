@@ -1,0 +1,98 @@
+*{
+    margin:0px;
+    padding: 0px;
+  }
+:root {
+    --primary: #4f6979;
+    --secondary: #607a83;
+    --tertiary: #6f8b8f;
+    --bg-primary: #928787;
+    --bg-secondary: #bdab9b;
+    --bg-tertiary: #ccbeae;
+    --text-primary: #e1d5c8;
+}
+
+/* navbar starts */
+
+#nav-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--tertiary);
+}
+#nav-div h1{
+    /* margin: .5rem 2rem; */
+    color:var(--text-primary);
+}
+#nav-div div{
+    margin: .5rem 2rem;
+}
+
+
+
+#nav-div div a{
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    background: var(--tertiary);
+    border-color: var(--bg-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.2s;
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+
+#nav-div div a:hover{
+    background: var(--secondary);
+    color: #fff;
+} 
+/* body starts */
+#main-content{
+    background: url('../../static/images/background1.webp') no-repeat center;
+    background-size: cover;
+    margin: auto;
+    padding: 0px;
+    width: 100%;
+    height: 78.5vh;
+    
+}
+
+/* ----------------------------------- */
+/* style for project_wise_view.html */
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 0.2rem 0.5rem;
+}
+th{
+    font-size: large;
+    min-width: 8rem;
+    background-color: var(--text-primary);
+}
+.odd{
+    min-width: 8rem;
+    background-color: var(--bg-secondary);
+}
+.even{
+    min-width: 8rem;
+    background-color: var(--text-primary);
+}
+
+
+/* footer starts */
+
+.footer-dark{
+    background:var(--secondary);
+    color: var(--bg-secondary);
+}
+
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}
