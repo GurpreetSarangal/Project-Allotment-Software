@@ -50,23 +50,27 @@
     outline: none;
     box-shadow: none;
     border:none;
-    background: rgb(238, 238, 237);
-    padding: 7px 12px;
+    background: rgb(238, 238, 237) !important;
+    padding: 7px 12px !important;
     border-radius: 9px;
-    width: 300px;
+    width: 300px !important;
 }
 .remember-me {
     margin-left: 9px;
 }
 .error {
+    margin: 2px 0px;
     padding: 8px 15px;
     font-size: 1rem;
     font-family: sans-serif;
     color: #842029;
     background-color: #f8d7da;
-    border-color: #f5c2c7;
+    border-color: #f5c2c7 ;
     font-weight: 600;
-    display: none;
+    /* display: none; */
+}
+.error::placeholder{
+    color: #8420288c;
 }
 .login-button {
     /* text-align: center; */
