@@ -1,20 +1,30 @@
-
+console.log("this is the js file of allsessions");
 
 // Get the modal
-var modal = document.getElementById("classes");
+let model = document.querySelector(".model");
+let modal = document.getElementById("classes");
 
 // Get the button that opens the modal
-var btns = document.getElementsByClassName("sessions");
+let  btns = document.querySelectorAll(".sessions");
+btns.forEach((e) => {
+  // console.log(e);
+  e.addEventListener("click", () => {
+        modal.style.visibility="visible";
+        // console.log('inside the btns');
+        
+  })
+});
+
 
 // Get the <span> element that closes the modal
 // var spans = $(".close");
 
 // When the user clicks the button, open the modal 
-for (let btn of btns){
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
-}
+// for (let btn of btns){
+//     btn.onclick = function() {
+//     modal.style.display = "flex";
+//     }
+// }
 // When the user clicks on <span> (x), close the modal
 // for (let span of spans){
 //     span.onclick = function() {

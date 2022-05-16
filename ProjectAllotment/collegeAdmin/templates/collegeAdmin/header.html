@@ -1,7 +1,9 @@
 
 <nav id="nav-div">
-  {% url 'edit_guide' user.id as edit %}
-  {% url 'class' rawURL as thisClass %}
+  <div class="left">
+
+    {% url 'edit_guide' user.id as edit %}
+    {% url 'class' rawURL as thisClass %}
 
   {% if request.path == '/projectadmin/' %}
     <div>
@@ -32,20 +34,29 @@
       <h1>Sessions</h1>
     </div>
   
-  {% elif request.path == rawURL %}
+    {% elif request.path == rawURL %}
     <div>
       <h1>Students | {{curr_class}}</h1>
     </div>
-  {% endif %}
-  
+    {% endif %}
+  </div>
+  <div class="ab">
+    <li><a href="/logout">logout</a></li>
+    <li><a href="">Setting</a></li>
+  </div>
     
-  
-
-  {% url 'add_guide' as add %}
-  {% if request.path == '/projectadmin/' %}
+    <div class="right">
+      
+    
+    {% url 'add_guide' as add %}
+    {% if request.path == '/projectadmin/' %}
+    
     <div>
-      <a type="button" class="btn" href="/logout" >logout</a>
+      <div class="bg">
+        <i class="fa fa-user"></i>
+      </div>
     </div>
+    
     
   {% elif request.path == '/projectadmin/class/'%}
     <div>
@@ -60,18 +71,30 @@
     <div>
       <a type="button" class="btn" href=" {% url 'all_guide' %}" >All Guides</a>
     </div>
-  {% elif request.path == rawURL %}
+    {% elif request.path == rawURL %}
     <div>
       <a type="button" class="btn" href=" {% url 'sessions' %}" >Sessions</a>
     </div>
-  
-  {% else %}
     <div>
-      <a type="button" class="btn" href="{% url 'adminDashboard' %}" >Home</a>
+      <div class="bg">
+        <i class="fa fa-user"></i>
+      </div>
     </div>
-
-  {% endif %}
+    
+    {% else %}
+    <div>
+      <a type="button" class="btn" href="{% url 'adminDashboard' %}" > <i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+    <div>
+      <div class="bg">
+        <i class="fa fa-user"></i>
+      </div>
+    </div>
+    
+  </div>
+    
+    {% endif %}
   </nav>
-
+  
 
 

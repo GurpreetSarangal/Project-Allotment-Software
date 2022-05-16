@@ -7,39 +7,36 @@
 
 {% block body %}
 
-<div class="container ">
-
-    <form action="#" method="post" class="new-guide-form" name="addguide" onsubmit=" return validate()">
+{% if messages %}
+<div class="alert alert-success" role="alert">
+   {{ message }}
+   {{ message }}
+  </div>
+    
+{% endif %}
+<div class="container main-content">
+    <form action="#" method="post" class="new-guide-form">
         {% csrf_token %}
         <div class="new-guide-div">
             <div class="guide-name">
-                <input type="text" name="guide_name" id="name" placeholder="Guide Name" required>
+                <input type="text" name="guide_name" id="name" placeholder="Guide Name" >
             </div>
             <div class="mobile-number">
-                <input type="number" name="mobile1" id="mobile1" placeholder="Mobile 1" maxlength="10" required>
+                <input type="number" name="mobile1" id="mobile1" placeholder="Mobile 1" >
             </div>
             <div class="mobile-number">
-                <input type="number" name="mobile2" id="mobile2" placeholder="Mobile 2" maxlength="10">
+                <input type="number" name="mobile2" id="mobile2" placeholder="Mobile 2" >
             </div>
             <div class="email">
-                <input type="email" name="email" id="email" placeholder="guidesemail@example.com" required>
+                <input type="email" name="email" id="email" placeholder="guidesemail@example.com" >
             </div>
-
+            
             <div class="save-button-div">
-                <input class="save-btn" type="submit" id="submit" value="SAVE">
+                <input class="save-btn" type="submit" value="SAVE">
             </div>
         </div>
     </form>
 </div>
-{% if messages %}
-<div class="model">
-    <div>
-        <span> X </span>
-        <img src="../../static/images/tick.png" alt="round tick images">
-        <p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
-    </div>
-</div>
-{% endif %}
 
 {% endblock body %}
 
@@ -47,35 +44,3 @@
 {%block footer%}
 {% include 'collegeAdmin/footer.html' %}
 {%endblock footer%}
-{% block script %}
-<script>
-    // let submit = document.querySelector("#submit");
-    // submit.addEventListener('click', function(){
-    //     let model =document.querySelector('.model');
-    //    model.style.visibility = 'visible';
-    // }); 
-    function validate() {
-        let retval = true;
-        let name = document.forms['addguide']['guide_name'].value;
-        let mobile1 = document.forms['addguide']['mobile1'].value;
-        let mobile2 = document.forms['addguide']['mobile2'].value;
-        let email = document.forms['addguide']['email'].value;
-        if (name.length < 3) {
-            retval = false;
-        }
-        if (mobile1.length != 10) {
-            retval = false;
-        }
-        if ((mobile2.length != 10) && (mobile2 === mobile1)) {
-            retval = false;
-        }
-        if (email.length < 5) {
-            retval = false;
-        }
-
-
-        return retval;
-
-    }
-</script>
-{% endblock script %}

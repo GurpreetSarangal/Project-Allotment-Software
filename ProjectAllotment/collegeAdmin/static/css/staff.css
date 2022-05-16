@@ -12,41 +12,7 @@
 
 /* dashboard  starts*/
 
-#nav-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #000;
-}
-#nav-div h1{
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    /* margin: .5rem 2rem; */
-    color:var(--textColor);
-}
-#nav-div div{
-    margin: .5rem 2rem;
-}
-#nav-div div a{
-    padding: 0.5rem 1.5rem;
-    border-radius: 8%;
-    background-color: var(--black);
-    border-color: var(--white);
-    color: var(--textColor);
-    transition: 0.4s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-#nav-div div a:hover{
-    background-color: var(--white);
-    color: var(--black);
-    font-weight: bold;
-}
-/* #main-content{
-    min-width:100%;
-    min-height:100vh; 
-   background:var(--bg-tertiary);
-} */
+
 
 #menu-container{
 display: flex;
