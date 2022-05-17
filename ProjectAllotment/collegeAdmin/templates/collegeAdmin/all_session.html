@@ -11,6 +11,7 @@
 <div id="menu-container">
     {% for session in sessions %}
         <button  class="sessions" id="{{ session.id }}"><H1>{{ session.title }}</H1></button>
+        {% comment %} <button  class="sessions" id="{{ session.id }}"><H1>{{ session.title }}</H1></button> {% endcomment %}
   
     {% endfor %}
    <!-- The Modal -->
