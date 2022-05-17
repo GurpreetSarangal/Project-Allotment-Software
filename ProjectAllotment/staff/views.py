@@ -84,12 +84,26 @@ def allocate_project(request, className="all"):
         context["projects"].append(temp)
     
     rollNos = student.objects.all().values("rollNo").filter(className = className)
-    rollNos = list(rollNos)
-    temp = []
-    for stu in rollNos:
-        temp.append(str(stu["rollNo"]))
+    allocatedRollnumber = list(allocationTable.objects.all().values("student_1", "student_2").filter(student_1__className__contains=className))
+
+    allocated = []
+
+    for rollnum in allocatedRollnumber:
+        studen1, student2 = rollnum.values()
+        allocated.append(str(studen1))
+        if student2: allocated.append(str(student2))
+
+
+    rollNos =  [ str(student["rollNo"]) for student in rollNos]
+
+    for allo in allocated:
+        rollNos.remove(allo)
+
+    # temp = []
+    # for stu in rollNos:
+    #     temp.append(str(stu["rollNo"]))
     
-    context["rollNos"] = temp
+    context["rollNos"] = rollNos
     print(temp)
     return render(request, 'allocate_project.html',context)
 
