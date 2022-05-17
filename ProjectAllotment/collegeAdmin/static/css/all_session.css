@@ -96,10 +96,7 @@ padding: 1.5rem 3rem;
 
 }
 
-.footer-dark{
-    background:var(--secondary);
-    color: var(--bg-secondary);
-}
+
 
 #report{
     color: white;

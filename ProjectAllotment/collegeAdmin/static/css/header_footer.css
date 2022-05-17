@@ -113,3 +113,13 @@
     justify-content: center;
     align-items: center;
 }
+
+
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}
