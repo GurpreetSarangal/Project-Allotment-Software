@@ -4,15 +4,17 @@
 {% block navbar %}
 {% include 'collegeAdmin/header.html'%}
 {% endblock navbar %}
-
+ <!-- css for the datatabels  -->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
 {% block body %}
 
 <div id="menu-container">
-    <div class="count">
+    <!-- <div class="count">
         No of Students : {{ No_of_students }}
-    </div>
-    <table id="table_id" class="display">
+    </div> -->
+     <!-- <table id="table_id" class="display">
+         <thead>
         <tr>
             <th>RollNo</th>
             <th>Name</th>
@@ -21,6 +23,8 @@
             <th>Mobile-2</th>
             <th>Email</th>
         </tr>
+         </thead>
+         <tbody>
         {% for stu in all_students %}
         <tr>
             <td>{{ stu.rollNo}} </td>
@@ -30,12 +34,53 @@
             <td>{{ stu.mobile_2}} </td>
             <td>{{ stu.email}} </td>
         </tr>
-        
+         </tbody>
         {% endfor %}
     </table>
-  
+   -->
+   <table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>RollNo</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Mobile-1</th>
+            <th>Mobile-2</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stu in all_students %}
+        <tr>
+            <td>{{ stu.rollNo}} </td>
+            <td>{{ stu.name}} </td>
+            <td>{{ stu.fatherName}} </td>
+            <td>{{ stu.mobile_1}} </td>
+            <td>{{ stu.mobile_2}} </td>
+            <td>{{ stu.email}} </td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
 </div>
 {% endblock body %}
+{%block script%}
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );    
+</script>
+
+
+{%endblock script %}
 
 {%block footer%}
 {% include 'collegeAdmin/footer.html' %}

@@ -12,13 +12,40 @@
         Add New guide <i class="fa fa-plus"></i>
     </a>
 </div>
+
 <div id="menu-container">
     {% for user in users %}
+     <!-- modal that take conformation to delete the guide  -->
+<!-- modal start  -->
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Guide </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you Sure to delete the guide ?
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="btn btn-primary" href="{% url 'delete_guide' user.id %}">Yes</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal end  -->
 
         <div class="menu-items py-2 px-2">
             <div class="pencil">
                 <a href="{{user.id}}">
                     <i class="fa fa-pencil "></i>
+                </a>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" id="delete">
+                    <i class="fa fa-trash "></i>
                 </a>
             </div>
             <div class="menu-icon">
@@ -56,9 +83,15 @@
 
 </div>
 
+
 {% endblock body %}
 
 
 {%block footer%}
 {% include 'collegeAdmin/footer.html' %}
 {%endblock footer%}
+{% block script %}
+
+
+
+{% endblock script%}

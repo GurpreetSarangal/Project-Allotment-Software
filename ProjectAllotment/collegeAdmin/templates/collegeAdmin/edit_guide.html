@@ -6,21 +6,23 @@
 {% endblock navbar %}
 
 {% block body %}
-
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+    <!-- A simple success alert—check it out! -->
+   {{ message }}
+  </div>
+  {% endfor %}
+       
 <div class="container main-content">
-    <div class="menu">
+    <!-- <div class="menu">
     
         <a class="btn  btn-danger" href="{% url 'delete_guide' user.id %}">
             Delete
         </a>
-    </div>
+    </div> -->
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
+    
     {% endif %}
     <form action="#" method="post" class="new-guide-form">
         {% csrf_token %}
