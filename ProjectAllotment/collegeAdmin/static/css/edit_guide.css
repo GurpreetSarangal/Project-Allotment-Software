@@ -34,9 +34,11 @@
 }
 
 .new-guide-div {
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     /* border: #4f6979 solid 1px; */
 }
 .new-guide-div input {
