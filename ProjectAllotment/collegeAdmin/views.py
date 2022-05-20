@@ -18,7 +18,7 @@ import json
 @login_required
 def adminDashboard(request):
     context = {
-        "css": "admin_dashboard"
+        "css": "admin_dashboard.css"
     }
     return render(request, "collegeAdmin/dashboard.html", context)
 
@@ -26,7 +26,7 @@ def adminDashboard(request):
 def staffview(request):
     temp_user = User.objects.all()
     data={
-        "css":"staff",
+        "css":"staff.css",
         "users":[],
     }
     for u in temp_user:
@@ -41,7 +41,7 @@ def staffview(request):
 @login_required
 def all_guide(request):
     context = {
-        "css":"all_guide",
+        "css":"all_guide.css",
         "users": []
     }
 
@@ -60,7 +60,7 @@ def all_guide(request):
 @login_required
 def add_guide(request):
     context={
-        "css":"add_guide",
+        "css":"add_guide.css",
         
     }
 
@@ -96,11 +96,12 @@ def edit_guide(request, id):
         if updated_guide != None:
             curr_guide=updated_guide
             curr_guide.save()
-            messages.info(request, 'Details of Guide has been changed successfully!')
+            messages.success(request, 'Details of Guide has been changed successfully!')
         
 
     context = {
-        "css":'edit_guide',
+        "css":'edit_guide.css',
+        "js": 'edit_guide.js',
         "user":{
             "id":curr_guide.id,
             "username":curr_guide.name,
@@ -121,8 +122,8 @@ def delete_guide(request, id):
 @login_required
 def sessionsview(request):
     context = {
-        "css" : "all_session",
-        "js" : "all_session",
+        "css" : "all_session.css",
+        "js" : "all_session.js",
     }
     if is_ajax(request=request) and request.method == "GET":
         context["classes"] = []
@@ -164,8 +165,8 @@ def sessionsview(request):
 @login_required
 def classview(request, className):
     context = {
-        "css" : "class_template",
-        "js": "class_template",
+        "css" : "class_template.css",
+        "js": "class_template.js",
         "rawURL": "/projectadmin/sessions/class/"+className,
         
     }
