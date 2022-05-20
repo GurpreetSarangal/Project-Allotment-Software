@@ -6,14 +6,12 @@
 {% endblock navbar %}
 
 {% block body %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-success" role="alert">
     <!-- A simple success alert—check it out! -->
-   {{ message }}
-  </div>
-  {% endfor %}
-       
+{% if messages %}
+    {% for message in messages %}
+    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+{% endfor %}
+{% endif %}   
 <div class="container main-content">
     <!-- <div class="menu">
     
@@ -23,8 +21,7 @@
     </div> -->
 
     
-    {% endif %}
-    <form action="#" method="post" class="new-guide-form">
+    <form action="#" method="post" class="new-guide-form" id="edit-guide-form">
         {% csrf_token %}
         <div class="new-guide-div">
             <div class="guide-name">
