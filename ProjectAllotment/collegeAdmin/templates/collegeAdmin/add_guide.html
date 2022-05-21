@@ -6,10 +6,9 @@
 {% endblock navbar %}
 
 {% block body %}
-<<<<<<< HEAD
 {% if messages %}
 {% for message in messages %}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-success alert-dismissible fade show" role="alert">
     <!-- <strong>Holy guacamole!</strong> -->
     {{ message }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -20,40 +19,21 @@
   {% endfor %}
        
   {% endif %}
-=======
 
-{% if messages %}
-<div class="alert alert-success" role="alert">
-   {{ message }}
-   {{ message }}
-  </div>
-    
-{% endif %}
->>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
+
 <div class="container main-content">
     <form action="#" method="post" class="new-guide-form">
         {% csrf_token %}
         <div class="new-guide-div">
             <div class="guide-name">
-<<<<<<< HEAD
-                <input type="text" name="guide_name" id="name" placeholder="Guide Name" maxlength="25" required>
-=======
                 <input type="text" name="guide_name" id="name" placeholder="Guide Name" >
->>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
             </div>
         <div class="d-flex">
             <div class="mobile-number">
-<<<<<<< HEAD
-                <input type="tel" name="mobile1" id="mobile1" placeholder="Mobile 1" required >
-            </div>
-            <div class="mobile-number">
-                <input type="number" name="mobile2" id="mobile2" placeholder="Mobile 2"required >
-=======
                 <input type="number" name="mobile1" id="mobile1" placeholder="Mobile 1" >
             </div>
             <div class="mobile-number">
                 <input type="number" name="mobile2" id="mobile2" placeholder="Mobile 2" >
->>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
             </div>
         </div>
           
@@ -73,11 +53,4 @@
 
 {%block footer%}
 {% include 'collegeAdmin/footer.html' %}
-<<<<<<< HEAD
 {%endblock footer%}
-{% block script %} 
-<script src="../../static/js/add_guide.js"></script>
-{% endblock script %} 
-=======
-{%endblock footer%}
->>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
