@@ -6,14 +6,21 @@
 {% endblock navbar %}
 
 {% block body %}
-
 {% if messages %}
-<div class="alert alert-success" role="alert">
-   {{ message }}
-   {{ message }}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <!-- <strong>Holy guacamole!</strong> -->
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  
+    <!-- A simple success alert—check it out! -->
+   
   </div>
-    
-{% endif %}
+  {% endfor %}
+       
+  {% endif %}
+
+
 <div class="container main-content">
     <form action="#" method="post" class="new-guide-form">
         {% csrf_token %}
@@ -21,12 +28,15 @@
             <div class="guide-name">
                 <input type="text" name="guide_name" id="name" placeholder="Guide Name" >
             </div>
+        <div class="d-flex">
             <div class="mobile-number">
                 <input type="number" name="mobile1" id="mobile1" placeholder="Mobile 1" >
             </div>
             <div class="mobile-number">
                 <input type="number" name="mobile2" id="mobile2" placeholder="Mobile 2" >
             </div>
+        </div>
+          
             <div class="email">
                 <input type="email" name="email" id="email" placeholder="guidesemail@example.com" >
             </div>

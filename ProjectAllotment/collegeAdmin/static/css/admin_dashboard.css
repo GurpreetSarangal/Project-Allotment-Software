@@ -35,12 +35,15 @@ display: flex;
 justify-content: space-evenly;
 height: 74vh;
 align-items: center;
+flex-wrap:wrap;
 }
 
 .menu-items{
-    background-color: rgb(14 34 82 / 94%);
+background-color: rgb(14 34 82 / 94%);
 border-radius: 14px;
 padding: 4rem 2rem;
+box-shadow: 10px 7px 10px #0000007a;
+
 }
 .menu-items a{      
     text-decoration:none;
@@ -86,27 +89,3 @@ justify-content: center;
 margin: 2rem 1rem;
 
 }
-
-/* hover underline effect  */
-
-  
-.footer-dark{
-    height: 6vh;
-    text-align: center;
-    padding: 10px 0 0 0;
-    background:black;
-    color: var(--bg-secondary);
-}
-
-#report{
-    color: white;
-    text-decoration: none;
-}
-#report:hover{
-    color: white;
-    text-decoration:underline;
-}
-strong {
-    text-transform: uppercase;
-}
-/* dashboard ends */

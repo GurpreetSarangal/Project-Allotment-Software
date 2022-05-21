@@ -28,19 +28,21 @@ border-radius: 14px;
 /* padding: 4rem 2rem; */
 min-width: 18rem;
 min-height: 25rem;
-box-shadow: 8px 6px 4px rgb(171, 176, 177);
+box-shadow: 10px 7px 10px #0000007a;
 
 }
 
 .pencil{
     display: flex;
     justify-content: end;
+    gap:12px;
     padding: 0.5rem 1rem;
     transition: all 0.4s;
 
 }
 .pencil a i {
     color: var(--white);
+    margin: 0 5px;
 }
 .pencil a i:hover {
     font-size: 1.2rem;

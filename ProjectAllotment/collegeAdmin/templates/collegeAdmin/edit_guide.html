@@ -6,12 +6,19 @@
 {% endblock navbar %}
 
 {% block body %}
-    <!-- A simple success alert—check it out! -->
 {% if messages %}
-    {% for message in messages %}
-    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-{% endfor %}
-{% endif %}   
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <!-- <strong>Holy guacamole!</strong> -->
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  
+    <!-- A simple success alert—check it out! -->
+   
+  </div>
+  {% endfor %}
+       
+  {% endif %}
 <div class="container main-content">
     <!-- <div class="menu">
     
@@ -21,20 +28,25 @@
     </div> -->
 
     
-    <form action="#" method="post" class="new-guide-form" id="edit-guide-form">
+    <form action="#" method="post" class="new-guide-form">
         {% csrf_token %}
         <div class="new-guide-div">
             <div class="guide-name">
-                <input type="text" name="guide_name" id="name" value="{{user.username}}" >
+                <input type="text" name="guide_name" id="name required" value="{{user.username}}" >
             </div>
-            <div class="mobile-number">
-                <input type="number" name="mobile1" id="mobile1" value="{{user.mobile1}}" >
+            <!-- start of d-flex -->
+            <div class="d-flex">
+
+                <div class="mobile-number">
+                    <input type="number" name="mobile1" id="mobile1" required value="{{user.mobile1}}" >
+                </div>
+                <div class="mobile-number">
+                    <input type="number" name="mobile2" id="mobile2" required value="{{user.mobile2}}" >
+                </div>
             </div>
-            <div class="mobile-number">
-                <input type="number" name="mobile2" id="mobile2" value="{{user.mobile2}}" >
-            </div>
+            <!-- end of d-flex -->
             <div class="email">
-                <input type="email" name="email" id="email" value="{{user.email}}" >
+                <input type="email" name="email" id="email" required value="{{user.email}}" >
             </div>
             
             <div class="save-button-div">
