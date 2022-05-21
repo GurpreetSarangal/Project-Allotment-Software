@@ -23,7 +23,6 @@ All Guides
     <button id="searchBtn"><i class="fa fa-search"></i></button>
   </div>
 </div>
-<<<<<<< HEAD
 <!-- start of the menu contaienr -->
 <div class="menu-container">
   {% for user in users %}
@@ -49,70 +48,6 @@ All Guides
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
-=======
-
-<div id="menu-container">
-    {% for user in users %}
-     <!-- modal that take conformation to delete the guide  -->
-<!-- modal start  -->
-<!-- Button trigger modal -->
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete Guide </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Are you Sure to delete the guide ?
-        </div>
-        <div class="modal-footer">
-            <a type="button" class="btn btn-primary" href="{% url 'delete_guide' user.id %}">Yes</a>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- modal end  -->
-
-        <div class="menu-items py-2 px-2">
-            <div class="pencil">
-                <a href="{{user.id}}">
-                    <i class="fa fa-pencil "></i>
-                </a>
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" id="delete">
-                    <i class="fa fa-trash "></i>
-                </a>
-            </div>
-            <div class="menu-icon">
-                <img src="../../static/images/staff2.jpg" alt="staff-icon"  class="icon-img">
-            </div>
-                
-            <div class="menu-heading text-center my-3 mx-2">
-                <strong>
-                    {{user.username}}
-                </strong>
-
-                {% if user.mobile1 != 0 %}
-                    <strong>
-                        {{user.mobile1}}
-                    </strong>
-                {% endif %}
-
-                {% if user.mobile2 != 0 %}
-                    <strong>
-                        {{user.mobile2}}
-                    </strong>
-                {% endif %}
-
-                <strong>
-                    {{user.email}}
-                </strong>
-                
-            </div>
->>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
         </div>
         <div class="modal-body">Are you Sure to delete the guide ?</div>
         <div class="modal-footer">
@@ -224,7 +159,6 @@ else if(  guideMobile.innerText.includes(inputVal))
 {
     item.style.display = "block";
 
-<<<<<<< HEAD
 }
 else {
     
@@ -239,17 +173,3 @@ else {
 </script>
 
 {% endblock script%}
-=======
-
-{% endblock body %}
-
-
-{%block footer%}
-{% include 'collegeAdmin/footer.html' %}
-{%endblock footer%}
-{% block script %}
-
-
-
-{% endblock script%}
->>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
