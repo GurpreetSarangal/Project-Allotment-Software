@@ -20,7 +20,7 @@
 }
 
 .container {
-    height: 85vh;
+    height: 84vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,8 @@
     /* border: #4f6979 solid 1px; */
 }
 .new-guide-div input {
-    width: 450px;
+    /* width: 450px; */
+    width: 100%;
     outline: none;
     border:none;
     background: rgb(226, 226, 226);
@@ -53,64 +54,21 @@
 
 
 .save-button-div .save-btn {
-    background-color: rgb(16, 146, 233);
+    background-color: rgb(16, 165, 3);
     color:white;
+    transition: background 0.5s;
+}
+.save-btn:hover {
+    background-color: rgb(13, 134, 2);
+    font-weight: bold;
 }
 .edit-project a:hover {
     text-decoration: underline;
 }
 
-/* css for the footer ...... */
-.footer-dark {
-    background: var(--secondary);
-    color: var(--bg-secondary);
+
+.d-flex {
+    display: flex;
+    gap:5px;
 }
 
-#report {
-    color: white;
-    text-decoration: none;
-}
-
-#report:hover {
-    color: white;
-    text-decoration: underline;
-}
-/* css for the messge  */
-.model {
-    position:absolute;
-    top:0;
-    left:0;
-    height:100vh;
-    width:100%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(3px);
-    visibility: hidden;
-    
-}
-.model div {
-    position: relative;
-    background: rgb(223, 223, 223);
-    height:300px;
-    width: 400px;
-    padding: 1rem;
-    border-radius:12px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-.model div span {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 1.7rem;
-    cursor: pointer;
-    font-weight: bolder;
-    
-    font-family:Arial, Helvetica, sans-serif;
-}
-.model div img {
-    width: 200px;
-}

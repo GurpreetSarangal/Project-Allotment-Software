@@ -14,44 +14,6 @@
 
 /* dashboard  starts*/
 
-#nav-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background:#222;
-    height: 10vh;
-}
-#nav-div h1{
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-family: sans-serif;
-    /* margin: .5rem 2rem; */
-    color:var(--text-primary);
-}
-#nav-div div{
-    margin: .5rem 2rem;
-}
-#nav-div div a{
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    background: transparent;
-    border:1px solid #fff;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    font-size: 1rem;
-    font-family: monospace;
-    transition: 0.4s;
-    
-}
-#nav-div div a:hover{
-
-    /* background-color: var(--bg-primary); */
-    background: #fff;
-    color: #000;
-
-}
 #main-content{
     /* min-width:100%;
     min-height:100vh; */
@@ -60,10 +22,18 @@
   width: 100%;
 }
 
+.Container{
+height: 84vh;
+/* align-items: center; */
+}
+.Container h1 {
+    padding: 1rem;
+    height: 10vh;
+}
 #menu-container{
 display: flex;
 justify-content: space-evenly;
-height: 84vh;
+height: 74vh;
 align-items: center;
 }
 
@@ -75,10 +45,32 @@ padding: 4rem 2rem;
 .menu-items a{      
     text-decoration:none;
     color: var(--text-primary);
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
 }
-.menu-items a:hover{      
-    text-decoration:none;
-}
+.menu-items a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  .menu-items a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+
 
 .icon-img{
 max-width: 10rem;
@@ -94,35 +86,10 @@ justify-content: center;
 margin: 2rem 1rem;
 
 }
-/* -------------- hover underline effect ------------------- */
-.hover-underline-animation {
-    display: inline-block;
-    position: relative;
-    color: #ffffff;
-    margin: 10px 0;
-  }
-  
-  .hover-underline-animation:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1.5px;
-    bottom: -10px;
-    left: 0;
-    background-color: #ffffff;
-    transform-origin: bottom right;
-    transition: transform 0.5s;
-    /* margin: 3px 0; */
 
-  }
-  
-  .hover-underline-animation:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-    margin: 3px 0;
+/* hover underline effect  */
 
-  }
+  
 .footer-dark{
     height: 6vh;
     text-align: center;

@@ -11,6 +11,7 @@ display: flex;
 justify-content: space-evenly;
 flex-wrap: wrap;
 margin: 1rem 3rem 9rem;
+min-height: 53vh;
 
 }
 
@@ -34,6 +35,8 @@ margin: 3rem 2rem;
 }
 .pencil a i {
     color: var(--white);
+    margin: 0 8px;
+    cursor: pointer;
 }
 .pencil a i:hover {
     font-size: 1.2rem;
@@ -70,6 +73,7 @@ border-radius: 50%;
 
     text-align: end;
     margin: 15px 20px;
+    height: 5vh;
 }
 .new-guide a{
     margin: 0 5px;
