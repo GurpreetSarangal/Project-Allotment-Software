@@ -11,9 +11,13 @@
     --textColor: rgb(230, 230, 230);
    
    }
+<<<<<<< HEAD
    .left h1 {
        font-size: 1.3rem;
    }
+=======
+   
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 
 
 #main-content{
@@ -35,6 +39,7 @@ margin: 7vh 2rem;
     background:var(--primary);
     color: var(--white);
 }
+<<<<<<< HEAD
 #table_id_filter {
     margin-bottom: 20px;
 }
@@ -48,6 +53,17 @@ margin: 7vh 2rem;
 }
 table.dataTable.no-footer {
     border-bottom: 1px solid var(--primary);
+=======
+/* #menu-container table tr th{
+    font-size: 25px;
+} */
+
+
+
+#report{
+    color: white;
+    text-decoration: none;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 }
 .footer-dark a {
     color: var(--white);

@@ -6,6 +6,7 @@
     position:relative;
 }
 
+<<<<<<< HEAD
 .container {
     height: 84vh;
     width: 100%;
@@ -16,9 +17,26 @@
 }
 /* css for the new guide div  */
 .new-guide-div {
+=======
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}
+/* dashboard ends */
+
+.container {
+    height: 85vh;
+    width: 100%;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     /* border: #4f6979 solid 1px; */
 }
 .new-guide-div input {
@@ -53,4 +71,40 @@
 .d-flex {
     display: flex;
     gap:5px;
+=======
+}
+
+.new-guide-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: #4f6979 solid 1px; */
+}
+.new-guide-div input {
+    width: 450px;
+    outline: none;
+    border:none;
+    background: rgb(226, 226, 226);
+    padding: 9px 14px;
+    box-shadow: none;
+    border-radius:9px;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+}
+
+.new-guide-div div {
+    border-radius: 5px;
+    margin: 1.5rem 0.5rem !important;
+}
+
+
+.save-button-div .save-btn {
+    background-color: rgb(16, 146, 233);
+    color:white;
+}
+.messages {
+    background: rgb(31, 165, 31);
+    color:lightgreen;
+    padding: 6px 12px;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 }

@@ -28,8 +28,12 @@
 }
 
 .left h1{
+<<<<<<< HEAD
     margin: 4px 0;
     text-transform: capitalize;
+=======
+    text-transform: uppercase;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     letter-spacing: 2px;
     /* margin: .5rem 2rem; */
     color:var(--textColor);
@@ -40,13 +44,20 @@
 .right {
     display: flex;
     gap: 10px;
+<<<<<<< HEAD
     /* position: relative; */
+=======
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 }
 
 
 .right div a{
+<<<<<<< HEAD
     /* margin: 10px 12px; */
     margin: 10px 12px 5px 12px;
+=======
+    margin: 10px;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     border-radius: 8%;
     background-color: var(--black);
     color: var(--textColor);
@@ -63,7 +74,39 @@
 letter-spacing: 2px;
 font-family: sans-serif;
 }
+.right div a i{
+  margin-right: 5px;
+}
 
+.right div a:hover{
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: bold;
+}
+.right .bg {
+    background: #fff;
+    padding: 4px;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 55px;
+    text-align: center;
+    margin-top: 4px;
+}
+.right .bg i {
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.ab {
+    position: absolute;
+    top:67px;
+    right: 0px;
+    background: #000;
+    padding:15px 10px;
+    margin:1px 1px;
+    list-style-type: none;
+    visibility: hidden;
+
+<<<<<<< HEAD
 .right div a:hover{
     background: var(--black);
     color: var(--white);
@@ -121,6 +164,13 @@ font-family: sans-serif;
 .ab li {
     display: flex;
     align-items: center;
+=======
+}
+.showhide {
+    visibility: visible;
+}
+.ab li {
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     margin: 10px 2px;
 
 }
@@ -134,6 +184,7 @@ font-family: sans-serif;
     text-decoration: none;
     padding: 7px 10px;
 }
+<<<<<<< HEAD
 .ab li a i {
     font-size: 1.3rem;
     margin: 0 7px;
@@ -141,6 +192,11 @@ font-family: sans-serif;
 }
 .ab li a:hover {
     border:2px solid var(--textColor);
+=======
+.ab li a:hover {
+    background-color: var(--white);
+    color: var(--black);
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     font-weight: bold;
 }
 
@@ -148,7 +204,11 @@ font-family: sans-serif;
 .footer-dark{
     background:var(--black);
     color: var(--white);
+<<<<<<< HEAD
     height: 6vh;
+=======
+    height: \6vh;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     /* text-align: center; */
     display: flex;
     justify-content: center;

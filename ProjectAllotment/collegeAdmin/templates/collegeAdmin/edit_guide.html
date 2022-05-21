@@ -8,6 +8,7 @@
 {% block body %}
 {% if messages %}
 {% for message in messages %}
+<<<<<<< HEAD
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <!-- <strong>Holy guacamole!</strong> -->
     {{ message }}
@@ -19,6 +20,14 @@
   {% endfor %}
        
   {% endif %}
+=======
+<div class="alert alert-success" role="alert">
+    <!-- A simple success alert—check it out! -->
+   {{ message }}
+  </div>
+  {% endfor %}
+       
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 <div class="container main-content">
     <!-- <div class="menu">
     
@@ -28,6 +37,10 @@
     </div> -->
 
     
+<<<<<<< HEAD
+=======
+    {% endif %}
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     <form action="#" method="post" class="new-guide-form">
         {% csrf_token %}
         <div class="new-guide-div">

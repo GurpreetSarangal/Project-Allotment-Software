@@ -2,6 +2,7 @@
     margin:0px;
     padding: 0px;
   }
+<<<<<<< HEAD
   :root {
     --primary:rgb(14 34 82 / 94%);
     --black: #000;
@@ -9,6 +10,18 @@
     --textColor: rgb(230, 230, 230);
    
    }
+=======
+:root {
+    --primary: #4f6979;
+    --secondary: #607a83;
+    --tertiary: #6f8b8f;
+    --bg-primary: #928787;
+    --bg-secondary: #bdab9b;
+    --bg-tertiary: #ccbeae;
+    --text-primary: #e1d5c8;
+}
+
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 
 #main-content{
     height: 100vh;

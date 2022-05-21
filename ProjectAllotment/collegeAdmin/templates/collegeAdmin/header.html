@@ -39,6 +39,7 @@
       <h1>Students | {{curr_class}}</h1>
     </div>
     {% endif %}
+<<<<<<< HEAD
     <!-- landing navbar when chick on the user icon  -->
   </div>
   <div class="ab">
@@ -48,13 +49,25 @@
   </div>
     <!-- right side of the header  -->
 
+=======
+  </div>
+  <div class="ab">
+    <li><a href="/logout">logout</a></li>
+    <li><a href="">Setting</a></li>
+  </div>
+    
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     <div class="right">
       
     
     {% url 'add_guide' as add %}
     {% if request.path == '/projectadmin/' %}
     
+<<<<<<< HEAD
     <div id="bg-outer">
+=======
+    <div>
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
       <div class="bg">
         <i class="fa fa-user"></i>
       </div>
@@ -79,15 +92,19 @@
     <div>
       <a type="button" class="Btn" href=" {% url 'all_guide' %}" ></i> All Guides</a>
     </div>
+<<<<<<< HEAD
     <div id="bg-outer">  
       <div class="bg">
         <i class="fa fa-user"></i>
       </div>
     </div>
+=======
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
     {% elif request.path == rawURL %}
     <div>
       <a type="button" class="Btn" href=" {% url 'sessions' %}"  class="hover-underline-animation"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
+<<<<<<< HEAD
     <div id="bg-outer">
       <div class="bg">
         <i class="fa fa-user"></i>
@@ -99,6 +116,19 @@
       <a type="button" class="Btn" href="{% url 'adminDashboard' %}" > <i class="fa fa-arrow-left"></i> Back</a>
     </div>
     <div id="bg-outer">  
+=======
+    <div>
+      <div class="bg">
+        <i class="fa fa-user"></i>
+      </div>
+    </div>
+    
+    {% else %}
+    <div>
+      <a type="button" class="btn" href="{% url 'adminDashboard' %}" > <i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+    <div>
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
       <div class="bg">
         <i class="fa fa-user"></i>
       </div>
@@ -108,6 +138,7 @@
     
     {% endif %}
   </nav>
+<<<<<<< HEAD
   {%block script%}
   <script>
     let user = document.querySelector(".bg");
@@ -117,6 +148,8 @@
     })
   </script>
   {%endblock script%}
+=======
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
   
 
 

@@ -89,3 +89,30 @@ justify-content: center;
 margin: 2rem 1rem;
 
 }
+<<<<<<< HEAD
+=======
+
+/* hover underline effect  */
+
+  
+.footer-dark{
+    height: 6vh;
+    text-align: center;
+    padding: 10px 0 0 0;
+    background:black;
+    color: var(--bg-secondary);
+}
+
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+}
+strong {
+    text-transform: uppercase;
+}
+/* dashboard ends */
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704

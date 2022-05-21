@@ -12,6 +12,7 @@
 }
 /* ------------ css for the main container --------------------- */
 
+<<<<<<< HEAD
 .menu-container {
   display: flex;
   justify-content: center;
@@ -19,6 +20,15 @@
   flex-wrap: wrap;
   margin: 1rem 3rem 9rem;
   min-height: 53vh;
+=======
+#menu-container{
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+margin: 1rem 3rem 9rem;
+min-height: 53vh;
+
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 }
 
 .menu-items {
@@ -39,9 +49,15 @@
   transition: all 0.4s;
 }
 .pencil a i {
+<<<<<<< HEAD
   color: var(--white);
   margin: 0 8px;
   cursor: pointer;
+=======
+    color: var(--white);
+    margin: 0 8px;
+    cursor: pointer;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 }
 .pencil a i:hover {
   font-size: 1.2rem;
@@ -122,6 +138,7 @@
   transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
+<<<<<<< HEAD
 #search-box input:hover {
   box-shadow: 2px 2px 8px rgb(139, 139, 139);
 }
@@ -140,4 +157,27 @@
 #searchBtn:hover {
     /* background: rgb(201, 201, 201); */
     box-shadow: 1px 1px 8px rgb(139, 139, 139);
+=======
+    text-align: end;
+    margin: 15px 20px;
+    height: 5vh;
+}
+.new-guide a{
+    margin: 0 5px;
+    font-family: sans-serif;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.new-guide a:hover{
+    text-decoration: underline;
+}
+/* end of the new guide  */
+#report{
+    color: white;
+    text-decoration: none;
+}
+#report:hover{
+    color: white;
+    text-decoration:underline;
+>>>>>>> 08e1da11e38578ae0c3d21f385f0a40a84712704
 }
