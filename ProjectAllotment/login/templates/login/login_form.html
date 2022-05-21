@@ -7,29 +7,44 @@
     </div>
     <div class="right-side">
         <div class="upper-right-heading">
-            <h1>Welcome Back :)</h1>
-            <p>To start working please login with your credentials</p>
+            <h1>Welcome Back :-)</h1>
+            <p >To start working please login with your credentials</p>
         </div>
         <div class="login-form-div">
             <form action="#" method="post">
                 {% csrf_token %}
                 <div class="fields">
                     <div>
-                        <input class="input-field" type="text" placeholder="username" name="username">
+                        <i class="fa fa-user"></i>
+                        <input class="input-field" type="text" placeholder="username" name="username" autocomplete="username" required>
                     </div>
                     <div>
-                        <input class="input-field" type="text" placeholder="password" name="password">
+                        <i class="fa fa-lock"></i>
+                        <div class="pass">
+                            <input class="input-field" type="password" placeholder="password" name="password" id="password" autocomplete="current-password" required>
+                            <i class="fa fa-eye eye-button" id="eyebtn"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="remember-me">
-                    <input type="checkbox" name="remember_me" id="remember-me"> Remember Me
-                </div>
+                    <div>
+
+                        <input type="checkbox" name="remember_me" id="remember-me"> Remember Me
+                    </div>
+                    <a href="#">forgot password</a>
+                    </div>
                 <div class="login-button">
                     <input type="submit" value="Login Now" id="submit">
                 </div>
             </form>
+            <div class="createACC">
+                <hr>
+                <h4>or</h4>
+                <p>Don't have an account?<a href="#"> Create New One</a></p>
+            </div>
         </div>
     </div>
 </div>
 {% endblock form %}
+
 

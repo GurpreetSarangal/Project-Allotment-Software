@@ -2,16 +2,13 @@
     margin:0px;
     padding: 0px;
   }
-:root {
-    --primary: #4f6979;
-    --secondary: #607a83;
-    --tertiary: #6f8b8f;
-    --bg-primary: #928787;
-    --bg-secondary: #bdab9b;
-    --bg-tertiary: #ccbeae;
-    --text-primary: #e1d5c8;
-}
-
+  :root {
+    --primary:rgb(14 34 82 / 94%);
+    --black: #000;
+    --white:#fff;
+    --textColor: rgb(230, 230, 230);
+   
+   }
 
 #main-content{
     height: 100vh;
@@ -96,10 +93,6 @@ padding: 1.5rem 3rem;
 
 }
 
-.footer-dark{
-    background:var(--secondary);
-    color: var(--bg-secondary);
-}
 
 #report{
     color: white;

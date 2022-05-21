@@ -11,7 +11,9 @@
     --textColor: rgb(230, 230, 230);
    
    }
-   
+   .left h1 {
+       font-size: 1.3rem;
+   }
 
 
 #main-content{
@@ -21,31 +23,34 @@
 }
 
 #menu-container{
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-flex-wrap: wrap;
-margin: 1rem 3rem 9rem;
+min-height: 70vh;
+margin: 7vh 2rem;
 
 }
-
-.count{
-    margin: 0.5rem 2rem 0.2rem;
-    text-align: right;
-    font-weight: 800;
+#table_id {
+    padding: 5px;
 }
-/* #menu-container table tr th{
-    font-size: 25px;
-} */
 
+#table_id thead tr {
+    background:var(--primary);
+    color: var(--white);
+}
+#table_id_filter {
+    margin-bottom: 20px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--primary);
+    color: var(--white);
+}
 
-
-#report{
-    color: white;
+.dataTables_wrapper .dataTables_info , .dataTables_paginate {
+    margin-top: 20px;
+}
+table.dataTable.no-footer {
+    border-bottom: 1px solid var(--primary);
+}
+.footer-dark a {
+    color: var(--white);
     text-decoration: none;
 }
-#report:hover{
-    color: white;
-    text-decoration:underline;
-}
-/* dashboard ends */
+

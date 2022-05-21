@@ -7,7 +7,7 @@
 
   {% if request.path == '/projectadmin/' %}
     <div>
-      <h1>Welcome, {{user.username}}</h1>
+      <h1>Welcome {{user.username}} ,</h1>
     </div>
   
   {% elif request.path == '/projectadmin/allstaff/'%}
@@ -39,19 +39,22 @@
       <h1>Students | {{curr_class}}</h1>
     </div>
     {% endif %}
+    <!-- landing navbar when chick on the user icon  -->
   </div>
   <div class="ab">
-    <li><a href="/logout">logout</a></li>
-    <li><a href="">Setting</a></li>
+    <li><a href=""><i class="fa fa-bell"></i> Notification</a></li>
+    <li><a href=""><i class="fa fa-cog"></i> Setting</a></li>
+    <li><a href="/logout"> <i class="fa fa-sign-out"></i>logout</a></li>
   </div>
-    
+    <!-- right side of the header  -->
+
     <div class="right">
       
     
     {% url 'add_guide' as add %}
     {% if request.path == '/projectadmin/' %}
     
-    <div>
+    <div id="bg-outer">
       <div class="bg">
         <i class="fa fa-user"></i>
       </div>
@@ -60,22 +63,32 @@
     
   {% elif request.path == '/projectadmin/class/'%}
     <div>
-      <a type="button" class="btn" href=" {% url 'sessions_url' %}" >Sessions</a>
+      <a type="button" class="Btn" href=" {% url 'sessions_url' %}" >Sessions</a>
     </div>
 
   {% elif request.path == edit %}
     <div>
-      <a type="button" class="btn" href=" {% url 'all_guide' %}" >All Guides</a>
+      <a type="button" class="Btn" href=" {% url 'all_guide' %}" > All Guides</a>
+    </div>
+    <div id="bg-outer">  
+      <div class="bg">
+        <i class="fa fa-user"></i>
+      </div>
     </div>
   {% elif request.path == add %}
     <div>
-      <a type="button" class="btn" href=" {% url 'all_guide' %}" >All Guides</a>
+      <a type="button" class="Btn" href=" {% url 'all_guide' %}" ></i> All Guides</a>
+    </div>
+    <div id="bg-outer">  
+      <div class="bg">
+        <i class="fa fa-user"></i>
+      </div>
     </div>
     {% elif request.path == rawURL %}
     <div>
-      <a type="button" class="btn" href=" {% url 'sessions' %}" >Sessions</a>
+      <a type="button" class="Btn" href=" {% url 'sessions' %}"  class="hover-underline-animation"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
-    <div>
+    <div id="bg-outer">
       <div class="bg">
         <i class="fa fa-user"></i>
       </div>
@@ -83,9 +96,9 @@
     
     {% else %}
     <div>
-      <a type="button" class="btn" href="{% url 'adminDashboard' %}" > <i class="fa fa-arrow-left"></i> Back</a>
+      <a type="button" class="Btn" href="{% url 'adminDashboard' %}" > <i class="fa fa-arrow-left"></i> Back</a>
     </div>
-    <div>
+    <div id="bg-outer">  
       <div class="bg">
         <i class="fa fa-user"></i>
       </div>
@@ -95,6 +108,15 @@
     
     {% endif %}
   </nav>
+  {%block script%}
+  <script>
+    let user = document.querySelector(".bg");
+    user.addEventListener('click', ()=> {
+      document.querySelector(".ab").classList.toggle("showhide");
+      
+    })
+  </script>
+  {%endblock script%}
   
 
 
