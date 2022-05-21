@@ -1,97 +1,173 @@
-{% extends 'collegeAdmin/base.html' %}
-{% block title %}All Guides{% endblock title %}
-
-{% block navbar %}
+{% extends 'collegeAdmin/base.html' %} 
+{% block title %}
+All Guides
+{% endblock title %} 
+{% block navbar %} 
 {% include 'collegeAdmin/header.html'%}
-{% endblock navbar %}
-
-{% block body %}
+ {% endblock navbar %} 
+ {% block body %}
 
 <div class="new-guide">
-    <a href="{% url 'add_guide'%}">
-        Add New guide <i class="fa fa-plus"></i>
-    </a>
+  <!-- <div id="blank"></div>  -->
+  <a href="{% url 'add_guide'%}" class="hover-underline-animation">
+    Add New guide <i class="fa fa-user-plus"></i>
+  </a>
+  <div id="search-box">
+    <input
+      type="search"
+      name="search"
+      id="search"
+      class="show-input"
+      placeholder="Search here"
+    />
+    <button id="searchBtn"><i class="fa fa-search"></i></button>
+  </div>
 </div>
-
-<div id="menu-container">
-    {% for user in users %}
-     <!-- modal that take conformation to delete the guide  -->
-<!-- modal start  -->
-<!-- Button trigger modal -->
-  
+<!-- start of the menu contaienr -->
+<div class="menu-container">
+  {% for user in users %}
+  <!-- modal that take conformation to delete the guide  -->
+  <!-- modal start  -->
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal{{ user.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete Guide </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="exampleModalLabel">Delete Guide</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-        <div class="modal-body">
-          Are you Sure to delete the guide ?
-        </div>
+        <div class="modal-body">Are you Sure to delete the guide ?</div>
         <div class="modal-footer">
-            <a type="button" class="btn btn-primary" href="{% url 'delete_guide' user.id %}">Yes</a>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+          <a
+            type="button"
+            class="btn btn-primary"
+            href="{% url 'delete_guide' user.id %}"
+            >Yes</a
+          >
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            NO
+          </button>
         </div>
       </div>
     </div>
   </div>
   <!-- modal end  -->
 
-        <div class="menu-items py-2 px-2">
-            <div class="pencil">
-                <a href="{{user.id}}">
-                    <i class="fa fa-pencil "></i>
-                </a>
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal{{ user.id }}" id="delete">
-                    <i class="fa fa-trash "></i>
-                </a>
-            </div>
-            <div class="menu-icon">
-                <img src="../../static/images/staff2.jpg" alt="staff-icon"  class="icon-img">
-            </div>
-                
-            <div class="menu-heading text-center my-3 mx-2">
-                <strong>
-                    {{user.username}}
-                </strong>
+  <div class="menu-items py-2 px-2">
+    <div class="pencil">
+      <a href="{{user.id}}">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a data-bs-toggle="modal" data-bs-target="#exampleModal" id="delete">
+        <i class="fa fa-trash"></i>
+      </a>
+    </div>
+    <div class="menu-icon">
+      <img
+        src="../../static/images/staff2.jpg"
+        alt="staff-icon"
+        class="icon-img"
+      />
+    </div>
 
-                {% if user.mobile1 != 0 %}
-                    <strong>
-                        {{user.mobile1}}
-                    </strong>
-                {% endif %}
+    <div class="menu-heading text-center my-3 mx-2">
+      <strong> {{user.username}} </strong>
+      <strong> {{user.email}} </strong>
 
-                {% if user.mobile2 != 0 %}
-                    <strong>
-                        {{user.mobile2}}
-                    </strong>
-                {% endif %}
+      {% if user.mobile1 != 0 %}
 
-                <strong>
-                    {{user.email}}
-                </strong>
-                
-            </div>
-        </div>
+      <strong> {{user.mobile1}} </strong>
+      {% endif %} 
 
-    {% endfor %}  
+      {% if user.mobile2 != 0 %}
+
+      <strong> {{user.mobile2}} </strong>
+      {% endif %}
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+<!-- end of the menu container  -->
+
+{% endblock body %} {%block footer%} {% include 'collegeAdmin/footer.html' %}
+{%endblock footer%} {% block script %}
+
+<script>
+  var count = 0;
+  console.log("hello world");
+  const searchBtn = document.querySelector("#searchBtn");
+  const searchBar = document.querySelector("#search");
+  searchBtn.addEventListener("click", () => {
+    count++;
+    if (count % 2 == 0) {
+      // console.log("even");
+      searchBar.style.transform = "translate(-1000%, 0px)";
+      searchBar.style.visibility = "hidden";
+    } else {
+        // console.log("odd");
+        searchBar.style.transform = "translate(0px, 0px)";
+        searchBar.style.visibility = "visible";
+    }
+  });
+  
+  // search function define here    
+  searchBar.addEventListener("input", () => {
+    //   get the input value of the search bar input 
+    let inputVal = searchBar.value.toLowerCase().trim();
+    // console.log(inputVal);
+    // capture all the menu items 
+    let menuItem = document.getElementsByClassName("menu-items");
+  Array.from(menuItem).forEach(function (item) {
+    // console.log(item);
+    let name = item.querySelectorAll(".menu-heading strong ");
+    // 
+    const guideName = name[0];
+    const guideEmail= name[1];
+    const guideMobile = name[2];
+    // console.log(guideMobile.innerText);
+    // console.log(name);
     
-</div>
-<div>
+    
+   if(  guideEmail.innerText.includes(inputVal)) {
+    item.style.display = "block";
+    
+}
+else if(  guideName.innerText.toLowerCase().includes(inputVal))
+{
+    item.style.display = "block";
 
-</div>
+}
+else if(  guideMobile.innerText.includes(inputVal))
+{
+    item.style.display = "block";
+
+}
+else {
+    
+    item.style.display = "none";
+    }
 
 
-{% endblock body %}
-
-
-{%block footer%}
-{% include 'collegeAdmin/footer.html' %}
-{%endblock footer%}
-{% block script %}
-
-
+    
+  });
+  });
+ 
+</script>
 
 {% endblock script%}

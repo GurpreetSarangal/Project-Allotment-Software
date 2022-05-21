@@ -1,95 +1,143 @@
-
+/* css reset and root variable  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary: rgb(14 34 82 / 94%);
+  --black: #000;
+  --white: #fff;
+  --textColor: rgb(230, 230, 230);
+}
 /* ------------ css for the main container --------------------- */
-#main-content{
-    /* min-width:100%;
-    min-height:100vh; */
-  background:var(--bg-tertiary);
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 3rem 9rem;
+  min-height: 53vh;
 }
 
-#menu-container{
-display: flex;
-justify-content: space-evenly;
-flex-wrap: wrap;
-margin: 1rem 3rem 9rem;
-min-height: 53vh;
-
+.menu-items {
+  background-color: var(--primary);
+  color: var(--textColor);
+  border-radius: 14px;
+  /* padding: 4rem 2rem; */
+  min-width: 18rem;
+  min-height: 25rem;
+  margin: 3rem 2rem;
+  box-shadow: 10px 7px 10px #0000007a;
 }
 
-.menu-items{
-background-color: var(--primary);
-color: var(--textColor);
-border-radius: 14px;
-/* padding: 4rem 2rem; */
-min-width: 18rem;
-min-height: 25rem;
-margin: 3rem 2rem;
-
-}
-
-.pencil{
-    display: flex;
-    justify-content: end;
-    padding: 0.5rem 1rem;
-    transition: all 0.4s;
-
+.pencil {
+  display: flex;
+  justify-content: end;
+  padding: 0.5rem 1rem;
+  transition: all 0.4s;
 }
 .pencil a i {
-    color: var(--white);
-    margin: 0 8px;
-    cursor: pointer;
+  color: var(--white);
+  margin: 0 8px;
+  cursor: pointer;
 }
 .pencil a i:hover {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
-.menu-icon{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.menu-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.icon-img{
-max-width: 10rem;
-min-width: 10rem;
-max-height: 10rem;
-min-height: 10rem;
-border-radius: 50%;
+.icon-img {
+  max-width: 10rem;
+  min-width: 10rem;
+  max-height: 10rem;
+  min-height: 10rem;
+  border-radius: 50%;
 }
 
-.menu-heading strong{
-    display: block;
+.menu-heading strong {
+  display: block;
 }
 
-.edit-icon{
-    align-self: flex-end;
+.edit-icon {
+  align-self: flex-end;
 }
 
-.edit-icon i{
-    font-size: medium;
+.edit-icon i {
+  font-size: medium;
 }
 
 /* ------- css for the new guide link ----------- */
-.new-guide{
+.new-guide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* text-align: end; */
+  margin: 15px 20px;
+  height: 5vh;
+}
+.new-guide a {
+  margin: 0 5px;
+  font-family: sans-serif;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-radius: 12px;
+  transition: 0.4s;
+}
+.new-guide a:hover {
+  color: #0a58ca;
+  background: var(--primary);
+  color: var(--white);
+  padding: 6px 10px;
+}
+.new-guide a i {
+  font-size: 1.2rem;
+}
+/* css for the search box */
+#search-box {
+  position: relative;
+  /* overflow: hidden; */
+}
+#search-box input {
+  background: rgb(226, 226, 226);
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  padding: 5px 20px;
+  border-radius: 15px;
+  width: 300px;
+  position: absolute;
+  top: 0;
+  right: 60px;
+  transform: translate(-1000%, 0px);
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
 
-    text-align: end;
-    margin: 15px 20px;
-    height: 5vh;
+#search-box input:hover {
+  box-shadow: 2px 2px 8px rgb(139, 139, 139);
 }
-.new-guide a{
-    margin: 0 5px;
-    font-family: sans-serif;
-    text-decoration: none;
-    letter-spacing: 1px;
+#searchBtn {
+    background: transparent;
+    margin: 0 10px;
+    outline: none;
+    box-sizing: none;
+    padding: 7px 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgb(226, 226, 226);
+    transition: background 0.2s;
+    /* display: none; */
 }
-.new-guide a:hover{
-    text-decoration: underline;
-}
-/* end of the new guide  */
-#report{
-    color: white;
-    text-decoration: none;
-}
-#report:hover{
-    color: white;
-    text-decoration:underline;
+#searchBtn:hover {
+    /* background: rgb(201, 201, 201); */
+    box-shadow: 1px 1px 8px rgb(139, 139, 139);
 }
