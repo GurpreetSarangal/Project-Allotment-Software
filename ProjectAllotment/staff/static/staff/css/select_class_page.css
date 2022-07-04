@@ -12,84 +12,53 @@
     --text-primary: #e1d5c8;
 }
 
-/* navbar starts */
-
-#nav-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--tertiary);
-}
-#nav-div h1{
-    /* margin: .5rem 2rem; */
-    color:var(--text-primary);
-}
-#nav-div div{
-    margin: .5rem 2rem;
-}
-
-
-
-#nav-div div a{
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    background: var(--tertiary);
-    border-color: var(--bg-primary);
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: background 0.2s;
-    font-size: 18px;
-    font-weight: 500;
-    
-}
-
-#nav-div div a:hover{
-    background: var(--secondary);
-    color: #fff;
-} 
 /* body starts */
 #main-content{
-    background: url('../../static/images/background1.webp') no-repeat center;
+    /* background: url('../../static/images/background1.webp') no-repeat center; */
     background-size: cover;
     margin: auto;
     padding: 0px;
     width: 100%;
-    height: 78.5vh;
-    
+    /* height: `00%; */
+    height: 100%;
+    min-height: 85vh;
 }
 
 .class_{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
 }
 
 .className{
     margin: 2rem 1rem 0.5rem;
-    padding: 1.5rem;
-    width: fit-content;
+    padding: 3rem 10px;
+    /* width: fit-content; */
+    height: 300px;
+    width: 400px;
+    background: #0f374a;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    /* text-decoration: none; */
+    /* display: grid; */
+    transition: all .2s;
+}
+
+.className:hover{
+    transform: scale(1.05);
+    box-shadow: 13px 15px 11px 1px #00000087;
 }
 
 .className a{
     font-size: 25px;
+    text-decoration: none;
     color: var(--primary);
+    color: white;
 }
 .className a:hover{
-    text-decoration: none;
+    text-decoration: underline;
 }
 
-/* footer starts */
-
-.footer-dark{
-    background:var(--secondary);
-    color: var(--bg-secondary);
-}
-
-#report{
-    color: white;
-    text-decoration: none;
-}
-#report:hover{
-    color: white;
-    text-decoration:underline;
-}

@@ -2,14 +2,15 @@
 
 
 {% block title %}Project wise allocation table{% endblock title %}
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 {% block navbar %}
 {% include 'header.html' %}
 {% endblock navbar %}
 
 {% block body %}
-<div class="container" id="main-content">
-    <table>
+<div  id="main-content">
+    <table id="table_id" class="display">
+        <thead>
         <tr>
             <th>Serial No.</th>
             <th>Roll No.</th>
@@ -20,6 +21,8 @@
             <th>Email</th>
             <th>Mobile</th>
         </tr>
+    </thead>
+    <tbody>
         {% for entry in entries %}
             {% if forloop.counter|divisibleby:2 %}
                 <tr class="even">
@@ -56,9 +59,26 @@
             </tr>
             {% endif %}
         {% endfor %}
+        </tbody>
     </table>
     
 </div>
+{%block script%}
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );    
+</script>
+
+
+{%endblock script %}
 
 {% endblock body %}
 
