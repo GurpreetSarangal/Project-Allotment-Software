@@ -1,82 +1,126 @@
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
 
-{% block title %}Allocate Guides and groups{% endblock title %}
+    {% block title %}Allocate Guides and groups{% endblock title %}
+    <!-- cdn for the datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    {% block navbar %}
+    {% include 'header.html' %}
+    {% endblock navbar %}
 
-{% block navbar %}
-{% include 'header.html' %}
-{% endblock navbar %}
+    {% block body %}
+    <div id="main-content">
 
-{% block body %}
-<div class="container" id="main-content">
-
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                {% if message.tags %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <form action="#" method="post">
-            {% csrf_token %}
-            <select name="guideName" id="guideName">
-                <option value="" >Select Guide</option>
-                {% for guideName in guides %}
-                    <option value="{{ guideName}}">{{guideName}}</option>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    {% if message.tags %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endif %}
                 {% endfor %}
-            </select>
+            </ul>
+        {% endif %}
+        <form action="#" method="post">
+                {% csrf_token %}
+                <div class=" d-flex mx-2 w-50" mx-auto >
 
-            <label for="sortBy">Sort By</label>
-            <select name="sortBy" id="sortBy">
-                <option value="RollNo">RollNo</option>
-                <option value="Project">Project</option>
-                <option value="lang">Lang</option>
-            </select>
+                    <select class="form-select col" aria-label="Default select example" id="guideName" name="guideName">
+                        <option selected>Select Guide</option>
+                        {% for guideName in guides %}
+                        <option value="{{ guideName}}">{{guideName}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary w-25 mx-5">Assign</button>
+                </div>
+                
+                <!--  -->
+                <!-- <select name="guideName" id="guideName">
+                    <option value="" >Select Guide</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select> -->
+
+                <!-- <label for="sortBy">Sort By</label>
+                <select name="sortBy" id="sortBy">
+                    <option value="RollNo">RollNo</option>
+                    <option value="Project">Project</option>
+                    <option value="lang">Lang</option>
+                </select>
+                -->
+                <!-- <button>Select All</button> -->
             
-            <button>Select All</button>
-            <button type="submit">Assign</button>
-        
-        <table>
-            <tr>
-                <th>Sn</th>
-                <th>RollNo 1</th>
-                <th>RollNo 2</th>
-                <th>Project</th>
-                <th>Language</th>
-                <th>Allocated</th>
-                <th>Selected</th>
-            </tr>
-            {% for stu in students %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ stu.student_1_rollNo}}/ </td>
-
-                    {% if stu.student_2_rollNo %}
-                        <td>{{ stu.student_2_rollNo}} /</td>
-                    {% else %}
-                        <td> - </td>
-                    {% endif %}
-                    <td>{{ stu.projectName}} </td>
-                    <td>{{ stu.lang}} </td>
-                    <td>{{ stu.allocated}} </td>
-                    <td>
-                    {% if stu.allocated == "NO" %}
-                        <input type="checkbox" name="{{ stu.student_1_rollNo}}" id="" >
-                    {% else %}
-                        <input type="checkbox" name="{{ stu.student_1_rollNo}}" id="" checked disabled>
-                    {% endif %}
-                    </td>
+            <table id="table_id" class="display table">
+                <thead>
+                <tr class="table-dark">
+                    <th>Sn</th>
+                    <th>RollNo 1</th>
+                    <th>RollNo 2</th>
+                    <th>Project</th>
+                    <th>Language</th>
+                    <th>Allocated</th>
+                    <th>Selected</th>
                 </tr>
-            {% endfor %}
-        </table>
-    </form>
-</div>
+                </thead>
+                <tbody>
+                {% for stu in students %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ stu.student_1_rollNo}}/ </td>
 
-{% endblock body %}
+                        {% if stu.student_2_rollNo %}
+                            <td>{{ stu.student_2_rollNo}} /</td>
+                        {% else %}
+                            <td> - </td>
+                        {% endif %}
+                        <td>{{ stu.projectName}} </td>
+                        <td>{{ stu.lang}} </td>
+                        <td>{{ stu.allocated}} </td>
+                        <td>
+                        {% if stu.allocated == "NO" %}
+                            <!-- <input type="checkbox" name="{{ stu.student_1_rollNo}}" id="" > -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                </div>
+                              </div>
+                        {% else %}
+                        <div class="input-group mb-3">
+                            <div class="input-group-text">
+
+                                <input type="checkbox" class="form-check-input mt-0" aria-label="Checkbox for following text input" name="{{ stu.student_1_rollNo}}" id="" checked disabled >
+                            </div>
+                        </div>
+                        {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    {%block script%}
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );    
+    </script>
+
+
+    {%endblock script %}
 
 
 
-{% block footer %}
-{% include 'footer.html' %}
-{% endblock footer %}
+    {% endblock body %}
+
+
+    {% block footer %}
+    {% include 'footer.html' %}
+    {% endblock footer %}

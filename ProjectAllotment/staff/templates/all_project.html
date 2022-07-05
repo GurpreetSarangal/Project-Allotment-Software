@@ -9,21 +9,146 @@
 {% endblock navbar %}
 
 
+
 {% block body %}
-<div class="container main-content">
-    <div class="new-project">
-        <a href="{% url 'add-project'%}">
-            Add New Project <i class="fa fa-plus"></i>
-        </a>
+<div class=" main-content">
+  <!-- alert messages  -->
+  <!-- -----------start ------------------- -->
+<div id="alertMessage" >
+  <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div> -->
+
+</div>
+
+  <!-- -------------end -------------------- -->
+    <div class="options">
+
+        <div class="new-project">
+            <a data-bs-toggle="modal" data-bs-target="#addProject">
+                Add New Project <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div id="search-box">
+            <input type="search" detail="search" id="search" placeholder="Search Here">
+            <button id="searchBtn"><i class="fa fa-search"></i></button>
+        </div>
     </div>
+    <!-- -----------------------start of modals ----------------------  -->
+  
+  <!-- Modal for add project  -->
+  <div class="modal fade" id="addProject" tabindex="-1" aria-labelledby="addProjectlabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProjectlabel>Add a new Project </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+       <div class="addProjectForm">
+        <!-- start of form1 from here  -->
+        <form  id="form1" action="" method="post">
+            <div class="mb-3">
+              <label for="projectTitle" class="form-label">Project Ttile</label>
+              <input type="text" class="form-control" name="projectTtile"  id="projectTitle" required maxlength="30">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="LanguageUsed" class="form-label">Language Used </label>
+              <input type="text" class="form-control" name="tectUsed" id="techUsed" required maxlength="25">
+            </div>
+            <div class="mb-3">
+              <label for="otherTechUsed" class="form-label"  >Other Technology Used </label>
+              <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed" required maxlength="25">
+            </div>
+            <div class="modal-footer">
+             
+              <button type="submit" class="btn btn-primary" id="addProject">Add Project</button>
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </form>
+           
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <!-- edit project modal project -->
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editProjectlabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModal">Edit Project </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    
+      <div class="modal-body">
+        <div class="addProjectForm">
+          <!-- form2 start from here  -->
+         <form action="" method="post" id="form2">
+             <div class="mb-3">
+               <label for="projectTitle" class="form-label">Project Ttile</label>
+               <input type="text" class="form-control" name="projectTtile"  id="projectTitle" required maxlength="30">
+               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+             </div>
+             <div class="mb-3">
+               <label for="LanguageUsed" class="form-label">Language Used </label>
+               <input type="text" class="form-control" name="tectUsed" id="techUsed" required maxlength="25">
+             </div>
+             <div class="mb-3">
+               <label for="otherTechUsed" class="form-label"  >Other Technology Used </label>
+               <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed" required maxlength="25">
+             </div>
+             <div class="modal-footer">
+              
+               <button type="submit" class="btn btn-success" id="editProject"> Save Changes</button>
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             </div>
+           </form>
+            
+           </div>
+         </div>
+     
+    </div>
+  </div>
+</div>
+
+<!-- delete project modal start from here -->
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <p>Are you sure to delete the project?</p>
+      </div>
+      <!-- form3 start from here  -->
+      <form  name="form3" method="post" action="">
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="deleteProject">Yes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+        </div>
+      </form>
+     
+    </div>
+  </div>
+</div>
+<!-- ------------ end of modals -------------------- -->
+  
+  <!-- all project list start for here -->
     <div class="all-projects-list">
-        <ul>
-            <li>
-                <div class="project-details">
+    <!-- <div class="project-details">
                     <div class="project-id" style="border : none !important;">
                         Serial no.
                     </div>
-                    <div class="project-name" style="border : none !important;">
+                    <div class="project-detail" style="border : none !important;">
                         Project Title
                     </div>
                     <div class="project-language" style="border : none !important;">
@@ -36,15 +161,31 @@
                         
                     </div>
                 </div>
-            </li>
+            -->
+           
+                      
+                   
+                <table  class="table table-hover">
+                    <thead>
+                      <tr class="table-dark">
+                        <th scope="col">serial No.</th>
+                        <th scope="col">Project Title</th>
+                        <th scope="col">Language Used</th>
+                        <th scope="col">Technology Used</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+               
+
+            <tbody>
             {% for project in projects %}
-                <li>
+                <!-- <li>
                     <div class="project-details">
                         <div class="project-id">
                             {{ forloop.counter }}
                         </div>
-                        <div class="project-name">
-                            {{ project.name }}
+                        <div class="project-detail">
+                            {{ project.detail }}
                         </div>
                         <div class="project-language">
                             {{ project.lang }}
@@ -56,14 +197,126 @@
                             <a href="{% url 'home' %}editproject/{{project.id}}">Edit</a>
                         </div>
                     </div>
-                </li>
-            {% endfor %}            
-        </ul>
+                </li> -->
+                    <tr >
+                        <td> {{ forloop.counter }}</td>
+                        <td>{{ project.detail }}</td>
+                        <td> {{ project.lang }}</td>
+                        <td>   {{ project.tech }}</td>
+                        <td class="d-flex "><button class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#editModal"> Edit</button> <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> Delete</button></td>
+                        </tr>
+                   
+                        {% endfor %}            
+                    </tbody>
+            <!-- </ul> -->
+        </table>
+        </div>
     </div>
-</div>
+    {% block script %}
+<!-- script for this page start for onwards -->
+<!-- please add this js file to the external js file to make it more simple to read and understand . -->
+    <script>
+      var count = 0;
+      console.log("This is js file of all project");
+      const searchBtn = document.querySelector("#searchBtn");
+      const searchBar = document.querySelector("#search");
+      searchBtn.addEventListener("click", () => {
+        count++;
+        if (count % 2 == 0) {
+          searchBar.style.transform = "translate(-1000%, 0px)";
+          searchBar.style.visibility = "hidden";
+        } else {
+            searchBar.style.transform = "translate(0px, 0px)";
+            searchBar.style.visibility = "visible";
+        }
+      });
+      
+      // search function define here    
+      searchBar.addEventListener("input", () => {
+        //   get the input value of the search bar input 
+        let inputVal = searchBar.value.toLowerCase().trim();
+        console.log(inputVal);
+        // capture all the menu items 
+        let tableItem = document.querySelectorAll(".table tbody tr");
+        // console.log(tableItem.length);
+        
+      Array.from(tableItem).forEach(function (item) {
+        // console.log(item);
+        let detail = item.querySelectorAll("td");
+        const sno = detail[0];
+        const projectName = detail[1];
+        const ProjectLang= detail[2];
+        const projectTech = detail[3];
+        
+        
+       if(  sno.innerText.includes(inputVal)) {
+        item.style.display = "";
+        
+    }
+    else if(  projectName.innerText.toLowerCase().includes(inputVal))
+    {
+        item.style.display = "";
+    
+    }
+    else if(  projectTech.innerText.includes(inputVal))
+    {
+        item.style.display = "";
+    
+    }
+    else if(  ProjectLang.innerText.includes(inputVal))
+    {
+        item.style.display = "";
+    
+    }
+    else {
+        
+        item.style.display = "none";
+        }   
+      });
+      });
+
+      // js functionality of modal ( add project , edit project and delete project)
+      const addProjectBtn = document.getElementById("addProject");
+      const editprojectBtn = document.getElementById("editProject");
+      const deleteProjectBtn = document.getElementById("deleteProject");
+      // add event listener to all the abouve button and show alert message according to the functionality they perform
+      // add event listener to addProjectBtn
+      const alertMessage = document.getElementById("alertMessage");
+      addProjectBtn.addEventListener("click", ()=> {
+        alertMessage.innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success !</strong> Successfully added project.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+        `;
+      })
+      editprojectBtn.addEventListener("click", ()=> {
+        alertMessage.innerHTML = `
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success !</strong> Successfully edited project.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+        `;
+      })
+      deleteProjectBtn.addEventListener("click", ()=> {
+        alertMessage.innerHTML = `
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Delete !</strong> Successfully deleted the  project.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+        `;
+      })
+
+     
+    </script>
+    
+    {% endblock script%}
+    
 {% endblock body %}
 
 
 {% block footer %}
 {% include 'footer.html' %}
 {% endblock footer %}
+
+

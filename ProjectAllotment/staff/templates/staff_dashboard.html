@@ -24,18 +24,18 @@
     </div>
 </div>
 <div class="bottom">
-    <div class="right-side">
-        <div>
+    <div class="left-side">
+        <div class="card">
             <a href="{% url 'project-wise-table' 'all'%}"><h1>View Project Wise Allocation Table</h1></a>
             <p>Click here to view and download the project allocation table of class {{recent_class}}. </p>
         </div>
-        <div>
+        <div class="card">
             <a href="{% url 'guide-wise-table' 'all' %}"><h1>View Guide Wise Allocation Table</h1></a>
             <p>Click here to view and download the project allocation table of class {{recent_class}}. </p>
         </div>
     </div>
-    <div class="left-side">
-        <div>
+    <div class="right-side">
+        <div class="card">
             <a href="{% url 'all-project'%}"><h1>Add New Projects</h1></a>
             <p>Click here to add new project ideas and to view existing projects.</p>
         </div>
