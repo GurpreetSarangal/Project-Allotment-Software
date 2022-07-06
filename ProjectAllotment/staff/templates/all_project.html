@@ -26,7 +26,7 @@
     <div class="options">
 
         <div class="new-project">
-            <a data-bs-toggle="modal" data-bs-target="#addProject">
+            <a data-bs-toggle="modal" data-bs-target="#addProjectModal">
                 Add New Project <i class="fa fa-plus"></i>
             </a>
         </div>
@@ -38,33 +38,34 @@
     <!-- -----------------------start of modals ----------------------  -->
   
   <!-- Modal for add project  -->
-  <div class="modal fade" id="addProject" tabindex="-1" aria-labelledby="addProjectlabel" aria-hidden="true">
+  <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectlabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addProjectlabel>Add a new Project </h5>
+          <h5 class="modal-title" id="addProjectlabel">Add a new Project </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
        <div class="addProjectForm">
         <!-- start of form1 from here  -->
         <form  id="form1" action="" method="post">
+          {% csrf_token %}  
             <div class="mb-3">
               <label for="projectTitle" class="form-label">Project Ttile</label>
-              <input type="text" class="form-control" name="projectTtile"  id="projectTitle" required maxlength="30">
+              <input type="text" class="form-control" name="projectTitle"  id="projectTitle1" required maxlength="30">
               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3">
-              <label for="LanguageUsed" class="form-label">Language Used </label>
-              <input type="text" class="form-control" name="tectUsed" id="techUsed" required maxlength="25">
+              <label for="langUsed1 class="form-label">Language Used </label>
+              <input type="text" class="form-control" name="langUsed" id="langUsed1" required maxlength="25">
             </div>
             <div class="mb-3">
-              <label for="otherTechUsed" class="form-label"  >Other Technology Used </label>
-              <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed" required maxlength="25">
+              <label for="otherTechUsed1" class="form-label"  >Other Technology Used </label>
+              <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed1" required maxlength="25">
             </div>
             <div class="modal-footer">
              
-              <button type="submit" class="btn btn-primary" id="addProject">Add Project</button>
+              <button type="submit" class="btn btn-primary" name="addProject" id="addProject">Add Project</button>
               <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </form>
@@ -87,25 +88,27 @@
       </div>
     
       <div class="modal-body">
-        <div class="addProjectForm">
+        <div class="editProjectForm">
           <!-- form2 start from here  -->
          <form action="" method="post" id="form2">
+              {% csrf_token %}
+              <input type="hidden" name="id" id="project-id2">
              <div class="mb-3">
-               <label for="projectTitle" class="form-label">Project Ttile</label>
-               <input type="text" class="form-control" name="projectTtile"  id="projectTitle" required maxlength="30">
+               <label for="projectTitle2" class="form-label">Project Ttile</label>
+               <input type="text" class="form-control" name="projectTitle"  id="projectTitle2" required maxlength="30">
                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
              </div>
              <div class="mb-3">
-               <label for="LanguageUsed" class="form-label">Language Used </label>
-               <input type="text" class="form-control" name="tectUsed" id="techUsed" required maxlength="25">
+               <label for="langUsed2" class="form-label">Language Used </label>
+               <input type="text" class="form-control" name="langUsed" id="langUsed2"  maxlength="25">
              </div>
              <div class="mb-3">
-               <label for="otherTechUsed" class="form-label"  >Other Technology Used </label>
-               <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed" required maxlength="25">
+               <label for="otherTechUsed2" class="form-label"  >Other Technology Used </label>
+               <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed2"  maxlength="25">
              </div>
              <div class="modal-footer">
               
-               <button type="submit" class="btn btn-success" id="editProject"> Save Changes</button>
+               <button type="submit" class="btn btn-success" name="editProject" id="editProject"> Save Changes</button>
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
              </div>
            </form>
@@ -130,89 +133,66 @@
        <p>Are you sure to delete the project?</p>
       </div>
       <!-- form3 start from here  -->
-      <form  name="form3" method="post" action="">
+      <form  name="confirm-delete" method="post" action="">
+        {% csrf_token %}
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="deleteProject">Yes</button>
+          <input type="hidden" name="id" id="to-be-deleted">
+          <button type="submit" name="delete" class="btn btn-primary" id="deleteProject">Yes</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
         </div>
       </form>
-     
+      
     </div>
   </div>
 </div>
 <!-- ------------ end of modals -------------------- -->
-  
-  <!-- all project list start for here -->
-    <div class="all-projects-list">
-    <!-- <div class="project-details">
-                    <div class="project-id" style="border : none !important;">
-                        Serial no.
-                    </div>
-                    <div class="project-detail" style="border : none !important;">
-                        Project Title
-                    </div>
-                    <div class="project-language" style="border : none !important;">
-                        Langugage
-                    </div>
-                    <div class="project-tech" style="border : none !important;">
-                        Technology Used
-                    </div>
-                    <div class="edit-project ">
-                        
-                    </div>
-                </div>
-            -->
-           
-                      
+
+<!-- all project list start from here -->
+    <div class="all-projects-list">          
                    
-                <table  class="table table-hover">
-                    <thead>
-                      <tr class="table-dark">
-                        <th scope="col">serial No.</th>
-                        <th scope="col">Project Title</th>
-                        <th scope="col">Language Used</th>
-                        <th scope="col">Technology Used</th>
-                        <th scope="col">Actions</th>
-                      </tr>
-                    </thead>
+      <table  class="table table-hover">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">serial No.</th>
+            <th scope="col">Project Title</th>
+            <th scope="col">Language Used</th>
+            <th scope="col">Technology Used</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
                
 
-            <tbody>
-            {% for project in projects %}
-                <!-- <li>
-                    <div class="project-details">
-                        <div class="project-id">
-                            {{ forloop.counter }}
-                        </div>
-                        <div class="project-detail">
-                            {{ project.detail }}
-                        </div>
-                        <div class="project-language">
-                            {{ project.lang }}
-                        </div>
-                        <div class="project-tech">
-                            {{ project.tech }}
-                        </div>
-                        <div class="edit-project ">
-                            <a href="{% url 'home' %}editproject/{{project.id}}">Edit</a>
-                        </div>
-                    </div>
-                </li> -->
-                    <tr >
-                        <td> {{ forloop.counter }}</td>
-                        <td>{{ project.detail }}</td>
-                        <td> {{ project.lang }}</td>
-                        <td>   {{ project.tech }}</td>
-                        <td class="d-flex "><button class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#editModal"> Edit</button> <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> Delete</button></td>
-                        </tr>
-                   
-                        {% endfor %}            
-                    </tbody>
+    <tbody>
+    {% for project in projects %}
+        
+            <tr >
+                <td> {{ forloop.counter }}</td>
+                <td>{{ project.name }}</td>
+                <td> {{ project.lang }}</td>
+                <td>   {{ project.tech }}</td>
+                <td class="d-flex ">
+                  
+                  <button class="btn btn-primary mx-2" id="editproject{{ project.id }}"> Edit</button> 
+                  <button class="btn btn-danger" id="delete{{ project.id }}"> Delete</button></td>
+                </tr>
+            
+                {% endfor %}            
+            </tbody>
             <!-- </ul> -->
         </table>
         </div>
     </div>
-    {% block script %}
+ 
+    
+{% endblock body %}
+
+
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}
+
+{% block script %}
 <!-- script for this page start for onwards -->
 <!-- please add this js file to the external js file to make it more simple to read and understand . -->
     <script>
@@ -240,39 +220,39 @@
         let tableItem = document.querySelectorAll(".table tbody tr");
         // console.log(tableItem.length);
         
-      Array.from(tableItem).forEach(function (item) {
-        // console.log(item);
-        let detail = item.querySelectorAll("td");
-        const sno = detail[0];
-        const projectName = detail[1];
-        const ProjectLang= detail[2];
-        const projectTech = detail[3];
-        
-        
-       if(  sno.innerText.includes(inputVal)) {
-        item.style.display = "";
-        
-    }
-    else if(  projectName.innerText.toLowerCase().includes(inputVal))
-    {
-        item.style.display = "";
-    
-    }
-    else if(  projectTech.innerText.includes(inputVal))
-    {
-        item.style.display = "";
-    
-    }
-    else if(  ProjectLang.innerText.includes(inputVal))
-    {
-        item.style.display = "";
-    
-    }
-    else {
-        
-        item.style.display = "none";
-        }   
-      });
+        Array.from(tableItem).forEach(function (item) {
+            // console.log(item);
+            let detail = item.querySelectorAll("td");
+            const sno = detail[0];
+            const projectName = detail[1];
+            const ProjectLang= detail[2];
+            const projectTech = detail[3];
+            
+            
+          if(  sno.innerText.includes(inputVal)) {
+            item.style.display = "";
+            
+          }
+          else if(  projectName.innerText.toLowerCase().includes(inputVal))
+          {
+              item.style.display = "";
+          
+          }
+          else if(  projectTech.innerText.includes(inputVal))
+          {
+              item.style.display = "";
+          
+          }
+          else if(  ProjectLang.innerText.includes(inputVal))
+          {
+              item.style.display = "";
+          
+          }
+          else {
+              
+              item.style.display = "none";
+              }   
+        });
       });
 
       // js functionality of modal ( add project , edit project and delete project)
@@ -308,15 +288,11 @@
       })
 
      
+
     </script>
     
-    {% endblock script%}
+{{ projects|json_script:"projects" }}
     
-{% endblock body %}
+    <script src="../../static/staff/js/all_project.js"></script>
 
-
-{% block footer %}
-{% include 'footer.html' %}
-{% endblock footer %}
-
-
+    {% endblock script%}

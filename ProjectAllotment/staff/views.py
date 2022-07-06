@@ -200,6 +200,23 @@ def guideswise(request, guideName='all'):
 
 @login_required
 def all_projects(request):
+    
+    if request.method=='POST' and 'editProject' in request.POST :
+        print("we accept edit requests")
+        id = request.POST["id"]
+        edit_projects(request, id)
+        # print("id of project is ",id)
+        pass
+
+    if request.method == "POST" and "addProject" in request.POST:
+        # print("we accept new requests")
+        add_projects(request)
+
+    if request.method == "POST" and "delete" in request.POST:
+        id = request.POST["id"]
+        # print("id which is deleted : ", id)
+        delete_projects(request,id)
+
     context = {
         "css":"all_project.css",
         "projects": [
@@ -223,9 +240,9 @@ def add_projects(request):
         "css" : "add_project.css"
     }
     if request.method == "POST":
-        project_name = request.POST['project_name']
-        project_lang = request.POST['project_lang']
-        project_tech = request.POST['project_tech']
+        project_name = request.POST['projectTitle']
+        project_lang = request.POST['langUsed']
+        project_tech = request.POST['otherTechUsed']
         new_project = project(
             name=project_name,
             language=project_lang,
@@ -239,9 +256,9 @@ def add_projects(request):
 def edit_projects(request,id):
     curr_proj = project.objects.get(id=id)
     if request.method == "POST":
-        new_title = request.POST["project_name"]
-        new_lang = request.POST["project_lang"]
-        new_tech = request.POST["project_tech"]
+        new_title = request.POST["projectTitle"]
+        new_lang = request.POST["langUsed"]
+        new_tech = request.POST["otherTechUsed"]
         curr_proj.name = new_title
         curr_proj.language = new_lang
         curr_proj.tech = new_tech
