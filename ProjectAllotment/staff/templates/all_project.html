@@ -21,6 +21,19 @@
   </div> -->
 
 </div>
+{% if messages %}
+<div class="messages">  
+    {% for message in messages %}
+        {% if message.tags %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>{{ message.tags }}</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <!-- <li class="{{ message.tags }}">{{ message }}</li> -->
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
 
   <!-- -------------end -------------------- -->
     <div class="options">
@@ -153,7 +166,7 @@
       <table  class="table table-hover">
         <thead>
           <tr class="table-dark">
-            <th scope="col">serial No.</th>
+            <th scope="col">Sr. No.</th>
             <th scope="col">Project Title</th>
             <th scope="col">Language Used</th>
             <th scope="col">Technology Used</th>
