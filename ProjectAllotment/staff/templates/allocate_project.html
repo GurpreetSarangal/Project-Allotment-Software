@@ -8,24 +8,61 @@
     {{ projects|json_script:"projects"}}
     {{ rollNos|json_script:"rollNos"}}
 
+<!-- --------------------------------------  -->  
+  <!-- Modal for add project  -->
+  <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectlabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProjectlabel">Add a new Project </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+       <div class="addProjectForm">
+        <!-- start of form1 from here  -->
+        <form  id="form1" action="" method="post">
+          {% csrf_token %}  
+            <div class="mb-3">
+              <label for="projectTitle" class="form-label">Project Ttile</label>
+              <input type="text" class="form-control" name="projectTitle"  id="projectTitle1" required maxlength="30">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="langUsed1 class="form-label">Language Used </label>
+              <input type="text" class="form-control" name="langUsed" id="langUsed1" required maxlength="25">
+            </div>
+            <div class="mb-3">
+              <label for="otherTechUsed1" class="form-label"  >Other Technology Used </label>
+              <input type="text" class="form-control" name="otherTechUsed" id="otherTechUsed1" required maxlength="25">
+            </div>
+            <div class="modal-footer">
+             
+              <button type="submit" class="btn btn-primary" name="addProject" id="addProject">Add Project</button>
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </form>
+           
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <!-- end of modal -->
+  <!-- ----------------------------------------------- -->
     {% if messages %}
-        <ul class="messages">
-
-    
-        
-          
-    
-
-        
-    
-    @@ -20,16 +20,18 @@
-  
+        <div class="messages">  
             {% for message in messages %}
                 {% if message.tags %}
-                <li class="{{ message.tags }}">{{ message }}</li>
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <strong>{{ message.tags }}</strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                <!-- <li class="{{ message.tags }}">{{ message }}</li> -->
                 {% endif %}
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
     <form autocomplete="off" action="#" method="post" name="allocate">
         <div class="form-container">
@@ -58,7 +95,14 @@
                         <input type="text" name="lang" id="lang" placeholder="Project Language">
                         <input type="text" name="tech" id="tech" placeholder="Other Technologies">
                     </div>
-                    <input type="submit" value="Allocate" id="submit">
+
+                    <div class="new-project">
+                        <a class="hover-underline-animation " data-bs-toggle="modal" data-bs-target="#addProjectModal">
+                            Want a New Project <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" name="allocate" id="allocate">Allocate Project</button>
                 
             </div>
         </div>

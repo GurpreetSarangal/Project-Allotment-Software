@@ -33,7 +33,7 @@ def allocate_project(request, className="all"):
         # print(context["classes"])
         return render(request, 'select_class_page.html',context)
         
-    elif request.method == "POST":
+    elif request.method == "POST" and 'allocate' in request.POST:
         print(request.POST)
         allocation_entry = {
             "className" : className,
@@ -52,6 +52,8 @@ def allocate_project(request, className="all"):
         else:
             messages.error(request, response)
 
+    elif request.method == "POST" and 'addProject' in request.POST:
+        add_projects(request)
 
     # all_projects = project.objects.all()
 
@@ -240,16 +242,23 @@ def add_projects(request):
         "css" : "add_project.css"
     }
     if request.method == "POST":
-        project_name = request.POST['projectTitle']
-        project_lang = request.POST['langUsed']
-        project_tech = request.POST['otherTechUsed']
-        new_project = project(
-            name=project_name,
-            language=project_lang,
-            tech=project_tech,
-        )
-        messages.info(request, 'New Project has been added successfully!')
-        new_project.save()
+        new_project = {
+            "name" : request.POST['projectTitle'],
+            "lang" : request.POST['langUsed'],
+            "tech" : request.POST['otherTechUsed'],
+        }
+        
+        if not alreadyExisted(new_project):
+            new_project = project(
+                name=new_project["name"],
+                language=new_project["lang"],
+                tech=new_project["tech"],
+            )
+            new_project.save()
+            messages.success()(request, 'New Project has been added successfully!')
+        
+        else :
+            messages.warning(request, "This project already exists!")
     return render(request, "add_project.html",context)
 
 @login_required
@@ -509,3 +518,14 @@ def get_allocation_data_guideWise(guideName):
         entries.append(temp)
         
     return entries
+
+def alreadyExisted(new_project):
+    try:
+        if_exist = project.objects.get(
+            name = new_project["name"],
+            language = new_project["lang"],
+            tech = new_project["tech"],
+        )
+        return True
+    except:
+        return False

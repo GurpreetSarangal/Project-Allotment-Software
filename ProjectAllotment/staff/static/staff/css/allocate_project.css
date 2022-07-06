@@ -159,6 +159,35 @@ color: #ffffff;
     margin: 0.5rem auto;
 }
 
+.new-project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* text-align: end; */
+    margin: 15px 20px;
+    height: 5vh;
+  }
+  .new-project a {
+    color: var(--dark);
+    margin: 0 5px;
+    font-family: sans-serif;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    transition: 0.4s;
+  }
+  .new-project a:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
+    /* color: #0a58ca; */
+    /* background: var(--primary); */
+    color: var(--white);
+    /* padding: 6px 10px; */
+  }
+  .new-project a i {
+    font-size: 1.2rem;
+  }
+
 /* -----------------------------------  */
  /* style for project_wise_view.html  */
 
