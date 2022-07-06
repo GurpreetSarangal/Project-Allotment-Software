@@ -1,101 +1,74 @@
 {% extends 'base.html' %}
-
 {% block title %}Allocate Projects{% endblock title %}
-
 {% block navbar %}
 {% include 'header.html' %}
 {% endblock navbar %}
-
 {% block body %}
-<div  id="main-content">
+<div class="container" id="main-content">
     {{ projects|json_script:"projects"}}
     {{ rollNos|json_script:"rollNos"}}
 
     {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        {% if message.tags %}
-        <li class="{{ message.tags }}">{{ message }}</li>
-        {% endif %}
-        {% endfor %}
-    </ul>
+        <ul class="messages">
+
+    
+        
+          
+    
+
+        
+    
+    @@ -20,16 +20,18 @@
+  
+            {% for message in messages %}
+                {% if message.tags %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     {% endif %}
     <form autocomplete="off" action="#" method="post" name="allocate">
-        <div class="form-container w-75 mx-auto">
+        <div class="form-container">
             {% csrf_token %}
-            <div class="rollNos ">
+            <div class="rollNos">
 
-                <h5 class="h5">Roll Numbers of students</h5>
-               
-                    <div class="mb-3 ">
-                        <label for="rollNo1" class="form-label">first RollNo</label>
-                        <input type="tel" class="form-control" id="rollno1" >
-                    </div>
-                    <div class="mb-3 ">
-                        <label for="rollNo2" class="form-label">first RollNo</label>
-                        <input type="tel" class="form-control" id="rollno2" >
-                    </div>
-                
-
+                <h5>Roll Numbers of students</h5>
+                <div class="autocomplete">    
+                    <input type="number" name="rollNo1" id="rollNo1" maxlength="11" placeholder="First RollNo" required>
+                </div>
+                <div class="autocomplete">
+                    <input type="number" name="rollNo2" id="rollNo2" placeholder="Second RollNo (Optional)" maxlength="11">
+                </div>
 
             </div>
-            <div class="techInputs">
-                <h5>Project Details</h5>
-
-
-                <div class="project-title-div">
-
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <!-- <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option> -->
-                        {% for proj in projects %}
-                        <option value="{{ proj.title }}">{{proj.title}}</option>
-                        {% endfor %}
-
-                    </select>
-
-
-
-
-
-                    <!-- <input type="text" name="project_title" id="project_title" placeholder="Project Title" required>
+            <div class="techInputs">  
+                
+                    <h5>Project Details</h5>
+                    <!-- <input type="text" name="project_title" id="project_title" placeholder="Project Title" required> -->
+                    <div class="project-title-div">
                         <select name="project_title" id="project_title" >
                             <option value="" >project_title</option>
                             {% for proj in projects %}
                                 <option value="{{ proj.title }}">{{proj.title}}</option>
                             {% endfor %}
                            
-                        </select> 
-                    </div>  -->
-                    <!-- <div class="project-desc">
+                        </select>
+                    </div>
+                    <div class="project-desc">
                         <input type="text" name="lang" id="lang" placeholder="Project Language">
                         <input type="text" name="tech" id="tech" placeholder="Other Technologies">
-                    </div> -->
-
-                    <div class="mb-3">
-                        <label for="projectLanguage" class="form-label">Project Language</label>
-                        <input type="text" class="form-control" name="projectLanguage" id="projectLanguage" placeholder="javascript">
-                      </div>
-                    <div class="mb-3">
-                        <label for="otherTech" class="form-label">Other Technologies</label>
-                        <input type="text" class="form-control" name="otherTech" id="otherTech" placeholder="Node Js, ExpressJs">
-                      </div>
-                    <!-- <input type="submit" value="Allocate" id="submit"> -->
-                    <p>To use custom project click <a href="#">Here.</a></p>
-                    <button type="submit"  id="submit" class="btn btn-primary"> Allocate Project </button>
-
-                </div>
+                    </div>
+                    <input type="submit" value="Allocate" id="submit">
+                
             </div>
-            </div>
+        </div>
     </form>
 </div>
-
 {% endblock body %}
-
-
-
 {% block footer %}
 {% include 'footer.html' %}
 {% endblock footer %}
+
+{% block script %}
+<script src="../../static/staff/js/{{ js }}"></script>
+{% endblock script %}
