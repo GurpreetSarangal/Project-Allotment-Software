@@ -215,7 +215,7 @@ def all_projects(request):
         add_projects(request)
 
     if request.method == "POST" and "delete" in request.POST:
-        id = request.POST["id"]
+        id = int(request.POST["id"])
         # print("id which is deleted : ", id)
         delete_projects(request,id)
 
@@ -536,8 +536,8 @@ def alreadyExisted(new_project):
         return False
 
 def alreadyAllocatedToAny(project_id):
-    try:
-        if_exist = allocationTable.objects.get(project__id = project_id)
-        return True
-    except:
+    possible_entries = allocationTable.objects.all().filter(project__id = project_id)
+    if len(possible_entries) == 0:
         return False
+    else:
+        return True

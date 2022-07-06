@@ -268,37 +268,40 @@
         });
       });
 
-      // js functionality of modal ( add project , edit project and delete project)
-      const addProjectBtn = document.getElementById("addProject");
-      const editprojectBtn = document.getElementById("editProject");
-      const deleteProjectBtn = document.getElementById("deleteProject");
-      // add event listener to all the abouve button and show alert message according to the functionality they perform
-      // add event listener to addProjectBtn
-      const alertMessage = document.getElementById("alertMessage");
-      addProjectBtn.addEventListener("click", ()=> {
-        alertMessage.innerHTML = `
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success !</strong> Successfully added project.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-        `;
-      })
-      editprojectBtn.addEventListener("click", ()=> {
-        alertMessage.innerHTML = `
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Success !</strong> Successfully edited project.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-        `;
-      })
-      deleteProjectBtn.addEventListener("click", ()=> {
-        alertMessage.innerHTML = `
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Delete !</strong> Successfully deleted the  project.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-        `;
-      })
+// The following code is commented because the task of messaging is now managed using the in built messages of django
+// so now messages are coming from the server and not from javascript
+
+  //     // js functionality of modal ( add project , edit project and delete project)
+  //     const addProjectBtn = document.getElementById("addProject");
+  //     const editprojectBtn = document.getElementById("editProject");
+  //     const deleteProjectBtn = document.getElementById("deleteProject");
+  //     // add event listener to all the abouve button and show alert message according to the functionality they perform
+  //     // add event listener to addProjectBtn
+  //     const alertMessage = document.getElementById("alertMessage");
+  //     addProjectBtn.addEventListener("click", ()=> {
+  //       alertMessage.innerHTML = `
+  //       <div class="alert alert-success alert-dismissible fade show" role="alert">
+  //   <strong>Success !</strong> Successfully added project.
+  //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  // </div>
+  //       `;
+  //     })
+  //     editprojectBtn.addEventListener("click", ()=> {
+  //       alertMessage.innerHTML = `
+  //       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  //   <strong>Success !</strong> Successfully edited project.
+  //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  // </div>
+  //       `;
+  //     })
+  //     deleteProjectBtn.addEventListener("click", ()=> {
+  //       alertMessage.innerHTML = `
+  //       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  //   <strong>Delete !</strong> Successfully deleted the  project.
+  //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  // </div>
+  //       `;
+  //     })
 
      
 
