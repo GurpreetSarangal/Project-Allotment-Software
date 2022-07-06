@@ -255,7 +255,7 @@ def add_projects(request):
                 tech=new_project["tech"],
             )
             new_project.save()
-            messages.success()(request, 'New Project has been added successfully!')
+            messages.success(request, 'New Project has been added successfully!')
         
         else :
             messages.warning(request, "This project already exists!")
@@ -288,7 +288,12 @@ def edit_projects(request,id):
 
 @login_required
 def delete_projects(request, id):
-    project.objects.get(id=id).delete()
+    if not alreadyAllocatedToAny(id):
+        project.objects.get(id=id).delete()
+        messages.success(request, "The project is successfully deleted")
+    else:
+        messages.warning(request, "This project is allocated to students and cannot be deleted")
+
     return redirect( "all-project")
 
 
@@ -526,6 +531,13 @@ def alreadyExisted(new_project):
             language = new_project["lang"],
             tech = new_project["tech"],
         )
+        return True
+    except:
+        return False
+
+def alreadyAllocatedToAny(project_id):
+    try:
+        if_exist = allocationTable.objects.get(project__id = project_id)
         return True
     except:
         return False
