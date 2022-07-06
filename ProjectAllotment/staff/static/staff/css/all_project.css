@@ -1,6 +1,7 @@
 *{
     margin:0px;
     padding: 0px;
+    box-sizing: border-box;
   }
 :root {
     --primary: #4f6979;
@@ -12,146 +13,86 @@
     --text-primary: #e1d5c8;
 }
 
-/* navbar starts */
-
-#nav-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--tertiary);
-}
-#nav-div h1{
-    /* margin: .5rem 2rem; */
-    color:var(--text-primary);
-}
-#nav-div div{
-    margin: .5rem 2rem;
-}
-
-
-
-#nav-div div a{
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    background: var(--tertiary);
-    border-color: var(--bg-primary);
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: background 0.2s;
-    font-size: 18px;
-    font-weight: 500;
-    
-}
-
-#nav-div div a:hover{
-    background: var(--secondary);
-    color: #fff;
-} 
 
 /* body starts */
 .main-content {
     padding: 1vw 3vw;
-    height: 84.6vh;
+    height:100%;
+    min-height: 85vh;
 }
-.new-project{
+
+
+/* ------- css for the new guide link ----------- */
+.options {
     display: flex;
-    flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    margin: 0.4rem 1rem;
 }
-
-.new-project a{
-    color: rgb(36, 36, 36);
-    font-size: 23px;
-    
-}
-.new-project a:hover{
-    color: black;
-    text-decoration: none;
-}
-
-.all-projects-list ul {
-    list-style-type:none;
-}
-
-.project-details{
+.new-project {
     display: flex;
-    justify-content: space-around;
-    border: #4f6979 solid 1px;
-}
-
-
-.project-id{
-    border: #6f8b8f solid 1px;
-    border-radius: 10px;
-    margin: 0.25rem 0.5rem;
-    padding: 0.15rem 0.3rem;
-    width: 7%;
-    text-align: center;
-}
-
-.project-name{
-    border: #6f8b8f solid 1px;
-    border-radius: 10px;
-    margin: 0.25rem 0.5rem;
-    padding: 0.15rem 0.3rem;
-    width: 50%;
-}
-.project-language{
-    border: #6f8b8f solid 1px;
-    border-radius: 10px;
-    margin: 0.25rem 0.5rem;
-    padding: 0.15rem 0.3rem;
-    width: 15%;
-}
-.project-tech{
-    border: #6f8b8f solid 1px;
-    border-radius: 10px;
-    margin: 0.25rem 0.5rem;
-    padding: 0.15rem 0.3rem;
-    width: 15%;
-}
-.edit-project{
-    /* border: #6f8b8f solid 1px; */
-    margin: 0.25rem 0.5rem;
-    padding: 0.5rem 0.3rem;
-    width: 8%;
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
-    border-radius: 10px;
-}
-.edit-project a{
-    padding: 0.15rem 0.3rem;
-    border-radius: 30px;
-    background: var(--tertiary);
-    color: var(--text-primary);
+    justify-content: space-between;
+    align-items: center;
+    /* text-align: end; */
+    margin: 15px 20px;
+    height: 5vh;
+  }
+  .new-project a {
+    margin: 0 5px;
+    font-family: sans-serif;
     text-decoration: none;
-    transition: background 0.2s;
-    font-size: 15px;
-    max-height: 1.7rem;
-    min-width: 3.5rem;
-    font-weight: 600;
-    text-align: center;
-}
-.edit-project a:hover{
-    text-decoration: underline;
-}
-
-
-/* footer starts */
-
-.footer-dark{
-    background:var(--secondary);
-    color: var(--bg-secondary);
-}
-
-#report{
-    color: white;
-    text-decoration: none;
-}
-#report:hover{
-    color: white;
-    text-decoration:underline;
-}
+    letter-spacing: 1px;
+    border-radius: 12px;
+    transition: 0.4s;
+  }
+  .new-project a:hover {
+    color: #0a58ca;
+    background: var(--primary);
+    color: var(--white);
+    padding: 6px 10px;
+  }
+  .new-project a i {
+    font-size: 1.2rem;
+  }
+  /* css for the search box */
+  #search-box {
+    position: relative;
+    /* overflow: hidden; */
+  }
+  #search-box input {
+    background: rgb(226, 226, 226);
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding: 5px 20px;
+    border-radius: 15px;
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 60px;
+    transform: translate(-1000%, 0px);
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  
+  #search-box input:hover {
+    box-shadow: 2px 2px 8px rgb(139, 139, 139);
+  }
+  #searchBtn {
+      background: transparent;
+      margin: 0 10px;
+      outline: none;
+      box-sizing: none;
+      padding: 7px 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgb(226, 226, 226);
+      transition: background 0.2s;
+      /* display: none; */
+  }
+  #searchBtn:hover {
+      /* background: rgb(201, 201, 201); */
+      box-shadow: 1px 1px 8px rgb(139, 139, 139);
+  }
+  
